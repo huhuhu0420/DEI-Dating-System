@@ -1,0 +1,34 @@
+stages:
+  - test
+  - quality
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+cache:
+  paths:
+    - .m2/repository # Cache Maven dependencies
+    - target # Cache build outputs
+
+# Test stage
+unit_tests:
+  stage: test
+  image: maven:3.8.7-openjdk-18
+  script:
+    - mvn clean test jacoco:report
+  artifacts:
+    paths:
+      - target/surefire-reports
+      - target/site/jacoco
+    expire_in: 1 week
+
+# Checkstyle and quality assurance
+code_quality:
+  stage: quality
+  image: maven:3.8.5-jdk-11
+  script:
+    - mvn checkstyle:check
+  artifacts:
+    paths:
+      - target/checkstyle-result.xml
+    expire_in: 1 week
