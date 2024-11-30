@@ -1,6 +1,5 @@
 stages:
   - test
-  - quality
 
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
@@ -22,13 +21,16 @@ unit_tests:
       - target/site/jacoco
     expire_in: 1 week
 
-# Checkstyle and quality assurance
-code_quality:
-  stage: quality
+jacoco_coverage:
+  stage: test
   image: maven:3.8.5-jdk-11
   script:
-    - mvn checkstyle:check
+    - mvn -Pjacoco test jacoco:report
   artifacts:
     paths:
-      - target/checkstyle-result.xml
+      - target/site/jacoco
     expire_in: 1 week
+  only:
+    - master
+    - develop
+    - merge_requests
