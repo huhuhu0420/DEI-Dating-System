@@ -1,19 +1,21 @@
 package org.ntut.dei.models;
 
 import java.util.List;
+import java.util.Set;
 
 public class PreferenceProfile {
-    private GenderIdentity preferedGenderIdentity;
+    private Set<GenderIdentity> preferedGenderIdentity;
     private List<String> preferedInterests;
     private AgeRange preferedAgeRange;
 
-    public PreferenceProfile(GenderIdentity preferedGenderIdentity, List<String> preferedInterests, AgeRange ageRange) {
+    public PreferenceProfile(Set<GenderIdentity> preferedGenderIdentity, List<String> preferedInterests,
+            AgeRange ageRange) {
         this.preferedGenderIdentity = preferedGenderIdentity;
         this.preferedInterests = preferedInterests;
         this.preferedAgeRange = ageRange;
     }
 
-    public GenderIdentity getPreferedGenderIdentity() {
+    public Set<GenderIdentity> getPreferedGenderIdentity() {
         return preferedGenderIdentity;
     }
 

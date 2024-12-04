@@ -1,6 +1,7 @@
 package org.ntut.dei.models;
 
 import java.util.List;
+import java.util.Set;
 
 public class UserProfile {
     private String name;
@@ -19,6 +20,7 @@ public class UserProfile {
         this.sexualOrientation = sexualOrientation;
         this.bio = bio;
         this.interests = interests;
+        this.preferenceProfile = null;
     }
 
     public String getName() {
@@ -46,7 +48,19 @@ public class UserProfile {
     }
 
     public PreferenceProfile getPreferenceProfile() {
-        return preferenceProfile;
+        if (preferenceProfile == null) {
+            // If the user has not set a preference profile, use the default compatibility
+            // matrix
+            DefaultCompatibilityMatrix compatibilityMatrix = DefaultCompatibilityMatrix.getInstance();
+            Set<GenderIdentity> defaultSexualOrientation = compatibilityMatrix
+                    .getDefaultPreferencedGenderIdentities(sexualOrientation, genderIdentity);
+            PreferenceProfileBuilder preferenceProfileBuilder = new PreferenceProfileBuilder();
+            preferenceProfile = preferenceProfileBuilder.setPreferedGenderIdentity(defaultSexualOrientation)
+                    .setPreferedInterests(interests).build();
+            return preferenceProfile;
+        } else {
+            return preferenceProfile;
+        }
     }
 
     public void setPreferenceProfile(PreferenceProfile preferenceProfile) {

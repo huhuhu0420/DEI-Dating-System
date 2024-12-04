@@ -2,19 +2,20 @@ package org.ntut.dei.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class PreferenceProfileBuilder {
-    private GenderIdentity preferedGenderIdentity;
+    private Set<GenderIdentity> preferedGenderIdentity;
     private List<String> preferedInterests;
     private AgeRange ageRange;
 
     public PreferenceProfileBuilder() {
-        this.preferedGenderIdentity = GenderIdentity.CUSTOM;
+        this.preferedGenderIdentity = Set.of();
         this.preferedInterests = new ArrayList<>();
         this.ageRange = new AgeRange(0, 100);
     }
 
-    public PreferenceProfileBuilder setPreferedGenderIdentity(GenderIdentity preferedGenderIdentity) {
+    public PreferenceProfileBuilder setPreferedGenderIdentity(Set<GenderIdentity> preferedGenderIdentity) {
         this.preferedGenderIdentity = preferedGenderIdentity;
         return this;
     }

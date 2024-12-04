@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,13 +13,14 @@ public class PreferenceProfileBuilderTest {
     public void testPreferenceProfileBuilder() {
         PreferenceProfileBuilder preferenceProfileBuilder = new PreferenceProfileBuilder();
         List<String> interests = List.of("testInterest", "testInterest2");
+        Set<GenderIdentity> genderIdentities = Set.of(GenderIdentity.MALE);
         PreferenceProfile preferenceProfile = preferenceProfileBuilder
-                .setPreferedGenderIdentity(GenderIdentity.MALE)
+                .setPreferedGenderIdentity(genderIdentities)
                 .setPreferedInterests(interests)
                 .setAgeRange(new AgeRange(10, 20))
                 .build();
 
-        assertEquals(GenderIdentity.MALE, preferenceProfile.getPreferedGenderIdentity());
+        assertEquals(genderIdentities, preferenceProfile.getPreferedGenderIdentity());
         assertEquals(interests, preferenceProfile.getPreferedInterests());
         assertEquals(10, preferenceProfile.getPreferedAgeRange().getMinAge());
         assertEquals(20, preferenceProfile.getPreferedAgeRange().getMaxAge());
@@ -29,7 +31,7 @@ public class PreferenceProfileBuilderTest {
         PreferenceProfileBuilder preferenceProfileBuilder = new PreferenceProfileBuilder();
         PreferenceProfile preferenceProfile = preferenceProfileBuilder.build();
 
-        assertEquals(GenderIdentity.CUSTOM, preferenceProfile.getPreferedGenderIdentity());
+        assertEquals(Set.of(), preferenceProfile.getPreferedGenderIdentity());
         assertEquals(new ArrayList<>(), preferenceProfile.getPreferedInterests());
         assertEquals(0, preferenceProfile.getPreferedAgeRange().getMinAge());
         assertEquals(100, preferenceProfile.getPreferedAgeRange().getMaxAge());
