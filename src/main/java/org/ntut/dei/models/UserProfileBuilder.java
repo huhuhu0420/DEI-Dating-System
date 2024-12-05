@@ -13,8 +13,8 @@ public class UserProfileBuilder {
     public UserProfileBuilder() {
         this.name = "";
         this.age = 0;
-        this.genderIdentity = GenderIdentity.CUSTOM;
-        this.sexualOrientation = SexualOrientation.CUSTOM;
+        this.genderIdentity = GenderIdentity.OTHER;
+        this.sexualOrientation = SexualOrientation.OTHER;
         this.bio = "";
         this.interests = null;
     }

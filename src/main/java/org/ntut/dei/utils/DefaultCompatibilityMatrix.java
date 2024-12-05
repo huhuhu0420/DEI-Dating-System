@@ -1,9 +1,12 @@
-package org.ntut.dei.models;
+package org.ntut.dei.utils;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
+
+import org.ntut.dei.models.GenderIdentity;
+import org.ntut.dei.models.SexualOrientation;
 
 public class DefaultCompatibilityMatrix {
     private static DefaultCompatibilityMatrix instance;
@@ -26,6 +29,10 @@ public class DefaultCompatibilityMatrix {
         defaultMappings.put(SexualOrientation.HOMOSEXUAL, this::getSameGender);
         defaultMappings.put(SexualOrientation.BISEXUAL, gender -> Set.of(GenderIdentity.MALE, GenderIdentity.FEMALE));
         defaultMappings.put(SexualOrientation.PANSEXUAL, gender -> this.getAllGenderIdentities());
+        defaultMappings.put(SexualOrientation.ASEXUAL, gender -> this.getAllGenderIdentities());
+        defaultMappings.put(SexualOrientation.DEMISEXUAL, gender -> this.getAllGenderIdentities());
+        defaultMappings.put(SexualOrientation.QUEER, gender -> this.getAllGenderIdentities());
+        defaultMappings.put(SexualOrientation.OTHER, gender -> this.getAllGenderIdentities());
     }
 
     public Set<GenderIdentity> getDefaultPreferencedGenderIdentities(SexualOrientation sexualOrientation,

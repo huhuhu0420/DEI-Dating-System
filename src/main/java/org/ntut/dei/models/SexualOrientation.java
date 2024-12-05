@@ -9,5 +9,4 @@ public enum SexualOrientation {
     DEMISEXUAL,
     QUEER,
     OTHER,
-    CUSTOM
 }

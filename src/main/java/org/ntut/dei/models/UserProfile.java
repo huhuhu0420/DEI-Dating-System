@@ -3,6 +3,8 @@ package org.ntut.dei.models;
 import java.util.List;
 import java.util.Set;
 
+import org.ntut.dei.utils.DefaultCompatibilityMatrix;
+
 public class UserProfile {
     private String name;
     private int age;
