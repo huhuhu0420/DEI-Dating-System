@@ -3,6 +3,8 @@ package org.ntut.dei.models;
 import java.util.List;
 import java.util.Set;
 
+import org.ntut.dei.utils.DefaultCompatibilityMatrix;
+
 public class UserProfile {
     private String name;
     private int age;
@@ -65,5 +67,13 @@ public class UserProfile {
 
     public void setPreferenceProfile(PreferenceProfile preferenceProfile) {
         this.preferenceProfile = preferenceProfile;
+    }
+
+    public void setCustomGenderIdentityDisplayName(String customDisplayName) {
+        if (genderIdentity == GenderIdentity.CUSTOM) {
+            genderIdentity.setCustomeDisplayName(customDisplayName);
+        } else {
+            throw new UnsupportedOperationException("Cannot set custom display name for non-custom identity");
+        }
     }
 }

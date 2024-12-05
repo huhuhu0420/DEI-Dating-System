@@ -71,4 +71,12 @@ public class UserProfileTest {
     @Test
     public void testSetPreferenceProfile() {
     }
+
+    @Test
+    public void testSetCustomGenderIdentity() {
+        userProfile = new UserProfile("John Doe", 25, GenderIdentity.CUSTOM, SexualOrientation.HETEROSEXUAL, "Bio",
+                Arrays.asList("Reading", "Traveling"));
+        userProfile.setCustomGenderIdentityDisplayName("testCustomIdentity");
+        assertEquals("testCustomIdentity", userProfile.getGenderIdentity().getDisplayName());
+    }
 }

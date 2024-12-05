@@ -35,9 +35,33 @@ public class UserProfileBuilderTest {
 
         assertEquals("", userProfile.getName());
         assertEquals(0, userProfile.getAge());
-        assertEquals(GenderIdentity.CUSTOM, userProfile.getGenderIdentity());
-        assertEquals(SexualOrientation.CUSTOM, userProfile.getSexualOrientation());
+        assertEquals(GenderIdentity.OTHER, userProfile.getGenderIdentity());
+        assertEquals(SexualOrientation.OTHER, userProfile.getSexualOrientation());
         assertEquals("", userProfile.getBio());
         assertEquals(null, userProfile.getInterests());
+    }
+
+    @Test
+    public void testCustomIdentity() {
+        UserProfileBuilder userProfileBuilder = new UserProfileBuilder();
+        List<String> interests = List.of("testInterest", "testInterest2");
+        GenderIdentity customIdentity = GenderIdentity.CUSTOM;
+        customIdentity.setCustomeDisplayName("testCustomIdentity");
+        UserProfile userProfile = userProfileBuilder
+                .setName("testName")
+                .setAge(20)
+                .setGenderIdentity(customIdentity)
+                .setSexualOrientation(SexualOrientation.HETEROSEXUAL)
+                .setBio("testBio")
+                .setInterests(interests)
+                .build();
+
+        assertEquals("testName", userProfile.getName());
+        assertEquals(20, userProfile.getAge());
+        assertEquals(GenderIdentity.CUSTOM, userProfile.getGenderIdentity());
+        assertEquals("testCustomIdentity", userProfile.getGenderIdentity().getDisplayName());
+        assertEquals(SexualOrientation.HETEROSEXUAL, userProfile.getSexualOrientation());
+        assertEquals("testBio", userProfile.getBio());
+        assertEquals(interests, userProfile.getInterests());
     }
 }
