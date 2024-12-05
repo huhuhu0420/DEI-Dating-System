@@ -68,4 +68,12 @@ public class UserProfile {
     public void setPreferenceProfile(PreferenceProfile preferenceProfile) {
         this.preferenceProfile = preferenceProfile;
     }
+
+    public void setCustomGenderIdentityDisplayName(String customDisplayName) {
+        if (genderIdentity == GenderIdentity.CUSTOM) {
+            genderIdentity.setCustomeDisplayName(customDisplayName);
+        } else {
+            throw new UnsupportedOperationException("Cannot set custom display name for non-custom identity");
+        }
+    }
 }
