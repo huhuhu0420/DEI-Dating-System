@@ -1,18 +1,21 @@
 package org.ntut.dei.specifications;
 
-public abstract class AbstractSpecification {
-    public abstract boolean isSatisfiedBy(Object candidate);
+public abstract class AbstractSpecification<T> implements Specification<T> {
+    public abstract boolean isSatisfiedBy(T candidate);
 
-    public AbstractSpecification and(AbstractSpecification other) {
-        return new AndSpecification(this, other);
+    @Override
+    public Specification<T> and(Specification<T> other) {
+        return new AndSpecification<T>(this, other);
     }
 
-    public AbstractSpecification or(AbstractSpecification other) {
-        return new OrSpecification(this, other);
+    @Override
+    public Specification<T> or(Specification<T> other) {
+        return new OrSpecification<T>(this, other);
     }
 
-    public AbstractSpecification not() {
-        return new NotSpecification(this);
+    @Override
+    public Specification<T> not() {
+        return new NotSpecification<T>(this);
     }
 
 }

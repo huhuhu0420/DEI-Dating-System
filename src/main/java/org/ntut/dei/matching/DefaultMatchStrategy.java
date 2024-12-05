@@ -7,6 +7,7 @@ import org.ntut.dei.models.UserProfile;
 
 public class DefaultMatchStrategy implements MatchStrategy {
     public List<UserProfile> match(UserProfile userProfile, List<UserProfile> candidates) {
+        throw new UnsupportedOperationException("Unimplemented method 'match'");
     }
 
 }

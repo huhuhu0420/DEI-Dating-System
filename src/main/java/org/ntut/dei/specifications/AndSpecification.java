@@ -1,15 +1,16 @@
 package org.ntut.dei.specifications;
 
-public class AndSpecification extends AbstractSpecification {
-    private AbstractSpecification leftSpecification;
-    private AbstractSpecification rightSpecification;
+public class AndSpecification<T> extends AbstractSpecification<T> {
+    private Specification<T> leftSpecification;
+    private Specification<T> rightSpecification;
 
-    public AndSpecification(AbstractSpecification left, AbstractSpecification right) {
+    public AndSpecification(Specification<T> left, Specification<T> right) {
         this.leftSpecification = left;
         this.rightSpecification = right;
     }
 
-    public boolean isSatisfiedBy(Object candidate) {
-        return leftSpecification.isSatisfiedBy(candidate) && rightSpecification.isSatisfiedBy(candidate);
+    @Override
+    public boolean isSatisfiedBy(T candidate) {
+        return this.leftSpecification.isSatisfiedBy(candidate) && this.rightSpecification.isSatisfiedBy(candidate);
     }
 }

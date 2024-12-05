@@ -1,13 +1,20 @@
 package org.ntut.dei.specifications;
 
-public class IdentitySpecification extends AbstractSpecification {
-    private Object candidate;
+import java.util.List;
 
-    public IdentitySpecification(Object candidate) {
-        this.candidate = candidate;
+import org.ntut.dei.models.GenderIdentity;
+import org.ntut.dei.models.UserProfile;
+
+public class IdentitySpecification extends AbstractSpecification<UserProfile> {
+    private List<GenderIdentity> preferedGenderIdentities;
+
+    public IdentitySpecification(List<GenderIdentity> preferedGenderIdentities) {
+        this.preferedGenderIdentities = preferedGenderIdentities;
     }
 
-    public boolean isSatisfiedBy(Object candidate) {
-        return this.candidate.equals(candidate);
+    @Override
+    public boolean isSatisfiedBy(UserProfile candidate) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+
 }
