@@ -57,7 +57,7 @@ public class UserProfile {
     }
 
     public PreferenceProfile getPreferenceProfile() {
-        if (preferenceProfile == null) {
+        if (preferenceProfile == null || preferenceProfile.getPreferedGenderIdentity().isEmpty()) {
             // If the user has not set a preference profile, use the default compatibility
             // matrix
             DefaultCompatibilityMatrix compatibilityMatrix = DefaultCompatibilityMatrix.getInstance();

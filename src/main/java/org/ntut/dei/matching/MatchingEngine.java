@@ -6,20 +6,18 @@ import org.ntut.dei.models.User;
 
 public class MatchingEngine {
     private MatchStrategy matchingStrategy;
+    private List<User> candidates;
 
-    public MatchingEngine() {
+    public MatchingEngine(List<User> candidates) {
+        this.candidates = candidates;
         this.matchingStrategy = new DefaultMatchStrategy();
-    }
-
-    public MatchingEngine(MatchStrategy matchingStrategy) {
-        this.matchingStrategy = matchingStrategy;
     }
 
     public void setMatchStrategy(MatchStrategy matchingStrategy) {
         this.matchingStrategy = matchingStrategy;
     }
 
-    public List<User> match(User userProfile, List<User> candidates) {
+    public List<User> match(User userProfile) {
         return matchingStrategy.match(userProfile, candidates);
     }
 }
