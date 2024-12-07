@@ -36,6 +36,10 @@ public class UserProfile {
         return genderIdentity;
     }
 
+    public GenderIdentityEnum getGenderIdentityEnum() {
+        return genderIdentity.getGenderIdentityEnum();
+    }
+
     public SexualOrientation getSexualOrientation() {
         return sexualOrientation;
     }

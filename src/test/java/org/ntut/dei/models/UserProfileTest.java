@@ -57,7 +57,8 @@ public class UserProfileTest {
         List<GenderIdentity> defaultSexualOrientation = List.of(new GenderIdentity(GenderIdentityEnum.FEMALE));
         preferenceProfileBuilder = new PreferenceProfileBuilder();
         PreferenceProfile preferenceProfile = preferenceProfileBuilder
-                .setPreferedGenderIdentity(defaultSexualOrientation).setPreferedInterests(userProfile.getInterests())
+                .setPreferedGenderIdentity(defaultSexualOrientation)
+                .setPreferedInterests(userProfile.getInterests())
                 .build();
         PreferenceProfile userProfilePreferenceProfile = userProfile.getPreferenceProfile();
         assertNotNull(userProfilePreferenceProfile);

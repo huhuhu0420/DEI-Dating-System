@@ -19,13 +19,35 @@ public class PreferenceProfileBuilder {
         return this;
     }
 
+    public PreferenceProfileBuilder setPreferedGenderIdentityWithEnum(List<GenderIdentityEnum> preferedGenderIdentity) {
+        for (GenderIdentityEnum genderIdentityEnum : preferedGenderIdentity) {
+            this.preferedGenderIdentity.add(new GenderIdentity(genderIdentityEnum));
+        }
+        return this;
+    }
+
+    public PreferenceProfileBuilder addPreferenceGenderIdentity(GenderIdentityEnum genderIdentityEnum) {
+        this.preferedGenderIdentity.add(new GenderIdentity(genderIdentityEnum));
+        return this;
+    }
+
+    public PreferenceProfileBuilder addPreferenceGenderIdentityWithEnum(GenderIdentityEnum genderIdentityEnum,
+            String customGenderIdentity) {
+        GenderIdentity genderIdentity = new GenderIdentity(genderIdentityEnum);
+        genderIdentity.setCustomGenderIdentity(customGenderIdentity);
+        if (genderIdentityEnum == GenderIdentityEnum.CUSTOM) {
+            this.preferedGenderIdentity.add(genderIdentity);
+        }
+        return this;
+    }
+
     public PreferenceProfileBuilder setPreferedInterests(List<String> preferedInterests) {
         this.preferedInterests = preferedInterests;
         return this;
     }
 
-    public PreferenceProfileBuilder setAgeRange(AgeRange ageRange) {
-        this.ageRange = ageRange;
+    public PreferenceProfileBuilder setAgeRange(int min, int max) {
+        this.ageRange = new AgeRange(min, max);
         return this;
     }
 

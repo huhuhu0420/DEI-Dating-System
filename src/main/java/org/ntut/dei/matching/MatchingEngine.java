@@ -2,7 +2,7 @@ package org.ntut.dei.matching;
 
 import java.util.List;
 
-import org.ntut.dei.models.UserProfile;
+import org.ntut.dei.models.User;
 
 public class MatchingEngine {
     private MatchStrategy matchingStrategy;
@@ -19,7 +19,7 @@ public class MatchingEngine {
         this.matchingStrategy = matchingStrategy;
     }
 
-    public List<UserProfile> match(UserProfile userProfile, List<UserProfile> candidates) {
+    public List<User> match(User userProfile, List<User> candidates) {
         return matchingStrategy.match(userProfile, candidates);
     }
 }

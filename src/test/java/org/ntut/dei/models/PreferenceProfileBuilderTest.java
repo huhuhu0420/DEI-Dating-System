@@ -16,7 +16,7 @@ public class PreferenceProfileBuilderTest {
         PreferenceProfile preferenceProfile = preferenceProfileBuilder
                 .setPreferedGenderIdentity(genderIdentities)
                 .setPreferedInterests(interests)
-                .setAgeRange(new AgeRange(10, 20))
+                .setAgeRange(10, 20)
                 .build();
 
         assertEquals(genderIdentities, preferenceProfile.getPreferedGenderIdentity());

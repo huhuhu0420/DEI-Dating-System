@@ -26,7 +26,9 @@ public class GenderIdentity {
     }
 
     public void setCustomGenderIdentity(String genderIdentity) {
-        this.genderIdentity = genderIdentity;
+        if (genderIdentityEnum == GenderIdentityEnum.CUSTOM) {
+            this.genderIdentity = genderIdentity;
+        }
     }
 
 }

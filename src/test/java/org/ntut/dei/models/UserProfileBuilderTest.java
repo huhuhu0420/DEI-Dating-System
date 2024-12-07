@@ -14,7 +14,7 @@ public class UserProfileBuilderTest {
         UserProfile userProfile = userProfileBuilder
                 .setName("testName")
                 .setAge(20)
-                .setGenderIdentity(new GenderIdentity(GenderIdentityEnum.MALE))
+                .setGenderIdentity(GenderIdentityEnum.MALE)
                 .setSexualOrientation(SexualOrientation.HETEROSEXUAL)
                 .setBio("testBio")
                 .setInterests(interests)
@@ -45,11 +45,10 @@ public class UserProfileBuilderTest {
     public void testCustomIdentity() {
         UserProfileBuilder userProfileBuilder = new UserProfileBuilder();
         List<String> interests = List.of("testInterest", "testInterest2");
-        GenderIdentity customIdentity = new GenderIdentity(GenderIdentityEnum.CUSTOM, "testCustomIdentity");
         UserProfile userProfile = userProfileBuilder
                 .setName("testName")
                 .setAge(20)
-                .setGenderIdentity(customIdentity)
+                .setGenderIdentity(GenderIdentityEnum.CUSTOM, "testCustomIdentity")
                 .setSexualOrientation(SexualOrientation.HETEROSEXUAL)
                 .setBio("testBio")
                 .setInterests(interests)

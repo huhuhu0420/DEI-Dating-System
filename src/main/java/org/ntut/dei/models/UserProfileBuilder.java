@@ -29,8 +29,16 @@ public class UserProfileBuilder {
         return this;
     }
 
-    public UserProfileBuilder setGenderIdentity(GenderIdentity genderIdentity) {
-        this.genderIdentity = genderIdentity;
+    public UserProfileBuilder setGenderIdentity(GenderIdentityEnum genderIdentity) {
+        this.genderIdentity = new GenderIdentity(genderIdentity);
+        return this;
+    }
+
+    public UserProfileBuilder setGenderIdentity(GenderIdentityEnum genderIdentity, String customGenderIdentity) {
+        this.genderIdentity = new GenderIdentity(genderIdentity);
+        if (genderIdentity == GenderIdentityEnum.CUSTOM) {
+            this.genderIdentity.setCustomGenderIdentity(customGenderIdentity);
+        }
         return this;
     }
 
