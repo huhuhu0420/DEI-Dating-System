@@ -23,7 +23,7 @@ unit_tests:
 
 jacoco_coverage:
   stage: test
-  image: maven:3.8.5-jdk-11
+  image: maven:3.8.7-jdk-18
   script:
     - mvn -Pjacoco test jacoco:report
   artifacts:
