@@ -14,7 +14,7 @@ public class UserProfileBuilderTest {
         UserProfile userProfile = userProfileBuilder
                 .setName("testName")
                 .setAge(20)
-                .setGenderIdentity(GenderIdentity.MALE)
+                .setGenderIdentity(new GenderIdentity(GenderIdentityEnum.MALE))
                 .setSexualOrientation(SexualOrientation.HETEROSEXUAL)
                 .setBio("testBio")
                 .setInterests(interests)
@@ -22,7 +22,7 @@ public class UserProfileBuilderTest {
 
         assertEquals("testName", userProfile.getName());
         assertEquals(20, userProfile.getAge());
-        assertEquals(GenderIdentity.MALE, userProfile.getGenderIdentity());
+        assertEquals(GenderIdentityEnum.MALE, userProfile.getGenderIdentity().getGenderIdentityEnum());
         assertEquals(SexualOrientation.HETEROSEXUAL, userProfile.getSexualOrientation());
         assertEquals("testBio", userProfile.getBio());
         assertEquals(interests, userProfile.getInterests());
@@ -35,7 +35,7 @@ public class UserProfileBuilderTest {
 
         assertEquals("", userProfile.getName());
         assertEquals(0, userProfile.getAge());
-        assertEquals(GenderIdentity.OTHER, userProfile.getGenderIdentity());
+        assertEquals(GenderIdentityEnum.OTHER, userProfile.getGenderIdentity().getGenderIdentityEnum());
         assertEquals(SexualOrientation.OTHER, userProfile.getSexualOrientation());
         assertEquals("", userProfile.getBio());
         assertEquals(null, userProfile.getInterests());
@@ -45,8 +45,7 @@ public class UserProfileBuilderTest {
     public void testCustomIdentity() {
         UserProfileBuilder userProfileBuilder = new UserProfileBuilder();
         List<String> interests = List.of("testInterest", "testInterest2");
-        GenderIdentity customIdentity = GenderIdentity.CUSTOM;
-        customIdentity.setCustomeDisplayName("testCustomIdentity");
+        GenderIdentity customIdentity = new GenderIdentity(GenderIdentityEnum.CUSTOM, "testCustomIdentity");
         UserProfile userProfile = userProfileBuilder
                 .setName("testName")
                 .setAge(20)
@@ -58,8 +57,8 @@ public class UserProfileBuilderTest {
 
         assertEquals("testName", userProfile.getName());
         assertEquals(20, userProfile.getAge());
-        assertEquals(GenderIdentity.CUSTOM, userProfile.getGenderIdentity());
-        assertEquals("testCustomIdentity", userProfile.getGenderIdentity().getDisplayName());
+        assertEquals(GenderIdentityEnum.CUSTOM, userProfile.getGenderIdentity().getGenderIdentityEnum());
+        assertEquals("testCustomIdentity", userProfile.getGenderIdentity().getGenderIdentity());
         assertEquals(SexualOrientation.HETEROSEXUAL, userProfile.getSexualOrientation());
         assertEquals("testBio", userProfile.getBio());
         assertEquals(interests, userProfile.getInterests());

@@ -1,10 +1,12 @@
 package org.ntut.dei.utils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.ntut.dei.models.GenderIdentityEnum;
 import org.ntut.dei.models.GenderIdentity;
 import org.ntut.dei.models.SexualOrientation;
 
@@ -27,7 +29,9 @@ public class DefaultCompatibilityMatrix {
     private void initializeDefaultMappings() {
         defaultMappings.put(SexualOrientation.HETEROSEXUAL, this::getOppositeGender);
         defaultMappings.put(SexualOrientation.HOMOSEXUAL, this::getSameGender);
-        defaultMappings.put(SexualOrientation.BISEXUAL, gender -> List.of(GenderIdentity.MALE, GenderIdentity.FEMALE));
+        defaultMappings.put(SexualOrientation.BISEXUAL,
+                gender -> List.of(new GenderIdentity(GenderIdentityEnum.MALE),
+                        new GenderIdentity(GenderIdentityEnum.FEMALE)));
         defaultMappings.put(SexualOrientation.PANSEXUAL, gender -> this.getAllGenderIdentities());
         defaultMappings.put(SexualOrientation.ASEXUAL, gender -> this.getAllGenderIdentities());
         defaultMappings.put(SexualOrientation.DEMISEXUAL, gender -> this.getAllGenderIdentities());
@@ -45,20 +49,20 @@ public class DefaultCompatibilityMatrix {
     }
 
     private List<GenderIdentity> getOppositeGender(GenderIdentity genderIdentity) {
-        if (genderIdentity == GenderIdentity.MALE) {
-            return List.of(GenderIdentity.FEMALE);
-        } else if (genderIdentity == GenderIdentity.FEMALE) {
-            return List.of(GenderIdentity.FEMALE);
+        if (genderIdentity.getGenderIdentityEnum() == GenderIdentityEnum.MALE) {
+            return List.of(new GenderIdentity(GenderIdentityEnum.FEMALE));
+        } else if (genderIdentity.getGenderIdentityEnum() == GenderIdentityEnum.FEMALE) {
+            return List.of(new GenderIdentity(GenderIdentityEnum.MALE));
         } else {
             return getAllGenderIdentitiesExcluding(genderIdentity);
         }
     }
 
     private List<GenderIdentity> getSameGender(GenderIdentity genderIdentity) {
-        if (genderIdentity == GenderIdentity.MALE) {
-            return List.of(GenderIdentity.MALE);
-        } else if (genderIdentity == GenderIdentity.FEMALE) {
-            return List.of(GenderIdentity.FEMALE);
+        if (genderIdentity.getGenderIdentityEnum() == GenderIdentityEnum.MALE) {
+            return List.of(new GenderIdentity(GenderIdentityEnum.MALE));
+        } else if (genderIdentity.getGenderIdentityEnum() == GenderIdentityEnum.FEMALE) {
+            return List.of(new GenderIdentity(GenderIdentityEnum.FEMALE));
         } else {
             return List.of(genderIdentity);
         }
@@ -71,7 +75,11 @@ public class DefaultCompatibilityMatrix {
     }
 
     private List<GenderIdentity> getAllGenderIdentities() {
-        return List.of(GenderIdentity.values());
+        List<GenderIdentity> allGenderIdentities = new ArrayList<GenderIdentity>();
+        for (GenderIdentityEnum genderIdentity : GenderIdentityEnum.values()) {
+            allGenderIdentities.add(new GenderIdentity(genderIdentity));
+        }
+        return allGenderIdentities;
     }
 
 }

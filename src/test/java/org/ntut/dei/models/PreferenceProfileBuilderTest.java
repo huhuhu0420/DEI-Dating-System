@@ -12,7 +12,7 @@ public class PreferenceProfileBuilderTest {
     public void testPreferenceProfileBuilder() {
         PreferenceProfileBuilder preferenceProfileBuilder = new PreferenceProfileBuilder();
         List<String> interests = List.of("testInterest", "testInterest2");
-        List<GenderIdentity> genderIdentities = List.of(GenderIdentity.MALE);
+        List<GenderIdentity> genderIdentities = List.of(new GenderIdentity(GenderIdentityEnum.MALE));
         PreferenceProfile preferenceProfile = preferenceProfileBuilder
                 .setPreferedGenderIdentity(genderIdentities)
                 .setPreferedInterests(interests)

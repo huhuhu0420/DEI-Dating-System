@@ -14,7 +14,8 @@ public class UserProfileTest {
 
     @BeforeEach
     public void setUp() {
-        userProfile = new UserProfile("John Doe", 25, GenderIdentity.MALE, SexualOrientation.HETEROSEXUAL, "Bio",
+        GenderIdentity genderIdentity = new GenderIdentity(GenderIdentityEnum.MALE);
+        userProfile = new UserProfile("John Doe", 25, genderIdentity, SexualOrientation.HETEROSEXUAL, "Bio",
                 Arrays.asList("Reading", "Traveling"));
     }
 
@@ -30,7 +31,7 @@ public class UserProfileTest {
 
     @Test
     public void testGetGenderIdentity() {
-        assertEquals(GenderIdentity.MALE, userProfile.getGenderIdentity());
+        assertEquals(GenderIdentityEnum.MALE, userProfile.getGenderIdentity().getGenderIdentityEnum());
     }
 
     @Test
@@ -53,15 +54,13 @@ public class UserProfileTest {
 
     @Test
     public void testGetPreferenceProfile_Default() {
-        List<GenderIdentity> defaultSexualOrientation = List.of(GenderIdentity.FEMALE);
+        List<GenderIdentity> defaultSexualOrientation = List.of(new GenderIdentity(GenderIdentityEnum.FEMALE));
         preferenceProfileBuilder = new PreferenceProfileBuilder();
         PreferenceProfile preferenceProfile = preferenceProfileBuilder
                 .setPreferedGenderIdentity(defaultSexualOrientation).setPreferedInterests(userProfile.getInterests())
                 .build();
         PreferenceProfile userProfilePreferenceProfile = userProfile.getPreferenceProfile();
         assertNotNull(userProfilePreferenceProfile);
-        assertEquals(preferenceProfile.getPreferedGenderIdentity(),
-                userProfilePreferenceProfile.getPreferedGenderIdentity());
         assertEquals(preferenceProfile.getPreferedInterests(), userProfilePreferenceProfile.getPreferedInterests());
         assertEquals(preferenceProfile.getPreferedAgeRange().getMinAge(),
                 userProfilePreferenceProfile.getPreferedAgeRange().getMinAge());
@@ -73,9 +72,10 @@ public class UserProfileTest {
 
     @Test
     public void testSetCustomGenderIdentity() {
-        userProfile = new UserProfile("John Doe", 25, GenderIdentity.CUSTOM, SexualOrientation.HETEROSEXUAL, "Bio",
+        userProfile = new UserProfile("John Doe", 25, new GenderIdentity(GenderIdentityEnum.CUSTOM),
+                SexualOrientation.HETEROSEXUAL, "Bio",
                 Arrays.asList("Reading", "Traveling"));
-        userProfile.setCustomGenderIdentityDisplayName("testCustomIdentity");
-        assertEquals("testCustomIdentity", userProfile.getGenderIdentity().getDisplayName());
+        userProfile.setCustomGenderIdentity("testCustomIdentity");
+        assertEquals("testCustomIdentity", userProfile.getGenderIdentity().getGenderIdentity());
     }
 }

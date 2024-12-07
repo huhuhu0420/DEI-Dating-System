@@ -48,6 +48,10 @@ public class UserProfile {
         return interests;
     }
 
+    public void setGenderIdentity(GenderIdentity genderIdentity) {
+        this.genderIdentity = genderIdentity;
+    }
+
     public PreferenceProfile getPreferenceProfile() {
         if (preferenceProfile == null) {
             // If the user has not set a preference profile, use the default compatibility
@@ -68,9 +72,9 @@ public class UserProfile {
         this.preferenceProfile = preferenceProfile;
     }
 
-    public void setCustomGenderIdentityDisplayName(String customDisplayName) {
-        if (genderIdentity == GenderIdentity.CUSTOM) {
-            genderIdentity.setCustomeDisplayName(customDisplayName);
+    public void setCustomGenderIdentity(String customDisplayName) {
+        if (genderIdentity.getGenderIdentityEnum() == GenderIdentityEnum.CUSTOM) {
+            genderIdentity.setCustomGenderIdentity(customDisplayName);
         } else {
             throw new UnsupportedOperationException("Cannot set custom display name for non-custom identity");
         }
