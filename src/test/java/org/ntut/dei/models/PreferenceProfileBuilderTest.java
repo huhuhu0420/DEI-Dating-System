@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +12,7 @@ public class PreferenceProfileBuilderTest {
     public void testPreferenceProfileBuilder() {
         PreferenceProfileBuilder preferenceProfileBuilder = new PreferenceProfileBuilder();
         List<String> interests = List.of("testInterest", "testInterest2");
-        Set<GenderIdentity> genderIdentities = Set.of(GenderIdentity.MALE);
+        List<GenderIdentity> genderIdentities = List.of(GenderIdentity.MALE);
         PreferenceProfile preferenceProfile = preferenceProfileBuilder
                 .setPreferedGenderIdentity(genderIdentities)
                 .setPreferedInterests(interests)
@@ -31,7 +30,7 @@ public class PreferenceProfileBuilderTest {
         PreferenceProfileBuilder preferenceProfileBuilder = new PreferenceProfileBuilder();
         PreferenceProfile preferenceProfile = preferenceProfileBuilder.build();
 
-        assertEquals(Set.of(), preferenceProfile.getPreferedGenderIdentity());
+        assertEquals(List.of(), preferenceProfile.getPreferedGenderIdentity());
         assertEquals(new ArrayList<>(), preferenceProfile.getPreferedInterests());
         assertEquals(0, preferenceProfile.getPreferedAgeRange().getMinAge());
         assertEquals(100, preferenceProfile.getPreferedAgeRange().getMaxAge());

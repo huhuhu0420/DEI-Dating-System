@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -54,7 +53,7 @@ public class UserProfileTest {
 
     @Test
     public void testGetPreferenceProfile_Default() {
-        Set<GenderIdentity> defaultSexualOrientation = Set.of(GenderIdentity.FEMALE);
+        List<GenderIdentity> defaultSexualOrientation = List.of(GenderIdentity.FEMALE);
         preferenceProfileBuilder = new PreferenceProfileBuilder();
         PreferenceProfile preferenceProfile = preferenceProfileBuilder
                 .setPreferedGenderIdentity(defaultSexualOrientation).setPreferedInterests(userProfile.getInterests())

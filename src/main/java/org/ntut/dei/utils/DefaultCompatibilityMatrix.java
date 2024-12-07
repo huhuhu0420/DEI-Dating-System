@@ -1,8 +1,8 @@
 package org.ntut.dei.utils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.function.Function;
 
 import org.ntut.dei.models.GenderIdentity;
@@ -10,7 +10,7 @@ import org.ntut.dei.models.SexualOrientation;
 
 public class DefaultCompatibilityMatrix {
     private static DefaultCompatibilityMatrix instance;
-    private Map<SexualOrientation, Function<GenderIdentity, Set<GenderIdentity>>> defaultMappings;
+    private Map<SexualOrientation, Function<GenderIdentity, List<GenderIdentity>>> defaultMappings;
 
     private DefaultCompatibilityMatrix() {
         defaultMappings = new HashMap<>();
@@ -27,7 +27,7 @@ public class DefaultCompatibilityMatrix {
     private void initializeDefaultMappings() {
         defaultMappings.put(SexualOrientation.HETEROSEXUAL, this::getOppositeGender);
         defaultMappings.put(SexualOrientation.HOMOSEXUAL, this::getSameGender);
-        defaultMappings.put(SexualOrientation.BISEXUAL, gender -> Set.of(GenderIdentity.MALE, GenderIdentity.FEMALE));
+        defaultMappings.put(SexualOrientation.BISEXUAL, gender -> List.of(GenderIdentity.MALE, GenderIdentity.FEMALE));
         defaultMappings.put(SexualOrientation.PANSEXUAL, gender -> this.getAllGenderIdentities());
         defaultMappings.put(SexualOrientation.ASEXUAL, gender -> this.getAllGenderIdentities());
         defaultMappings.put(SexualOrientation.DEMISEXUAL, gender -> this.getAllGenderIdentities());
@@ -35,43 +35,43 @@ public class DefaultCompatibilityMatrix {
         defaultMappings.put(SexualOrientation.OTHER, gender -> this.getAllGenderIdentities());
     }
 
-    public Set<GenderIdentity> getDefaultPreferencedGenderIdentities(SexualOrientation sexualOrientation,
+    public List<GenderIdentity> getDefaultPreferencedGenderIdentities(SexualOrientation sexualOrientation,
             GenderIdentity genderIdentity) {
-        Function<GenderIdentity, Set<GenderIdentity>> mapping = defaultMappings.get(sexualOrientation);
+        Function<GenderIdentity, List<GenderIdentity>> mapping = defaultMappings.get(sexualOrientation);
         if (mapping == null) {
-            return Set.of();
+            return List.of();
         }
         return mapping.apply(genderIdentity);
     }
 
-    private Set<GenderIdentity> getOppositeGender(GenderIdentity genderIdentity) {
+    private List<GenderIdentity> getOppositeGender(GenderIdentity genderIdentity) {
         if (genderIdentity == GenderIdentity.MALE) {
-            return Set.of(GenderIdentity.FEMALE);
+            return List.of(GenderIdentity.FEMALE);
         } else if (genderIdentity == GenderIdentity.FEMALE) {
-            return Set.of(GenderIdentity.FEMALE);
+            return List.of(GenderIdentity.FEMALE);
         } else {
             return getAllGenderIdentitiesExcluding(genderIdentity);
         }
     }
 
-    private Set<GenderIdentity> getSameGender(GenderIdentity genderIdentity) {
+    private List<GenderIdentity> getSameGender(GenderIdentity genderIdentity) {
         if (genderIdentity == GenderIdentity.MALE) {
-            return Set.of(GenderIdentity.MALE);
+            return List.of(GenderIdentity.MALE);
         } else if (genderIdentity == GenderIdentity.FEMALE) {
-            return Set.of(GenderIdentity.FEMALE);
+            return List.of(GenderIdentity.FEMALE);
         } else {
-            return Set.of(genderIdentity);
+            return List.of(genderIdentity);
         }
     }
 
-    private Set<GenderIdentity> getAllGenderIdentitiesExcluding(GenderIdentity genderIdentity) {
-        Set<GenderIdentity> allGenderIdentities = getAllGenderIdentities();
+    private List<GenderIdentity> getAllGenderIdentitiesExcluding(GenderIdentity genderIdentity) {
+        List<GenderIdentity> allGenderIdentities = getAllGenderIdentities();
         allGenderIdentities.remove(genderIdentity);
-        return Set.copyOf(allGenderIdentities);
+        return List.copyOf(allGenderIdentities);
     }
 
-    private Set<GenderIdentity> getAllGenderIdentities() {
-        return Set.of(GenderIdentity.values());
+    private List<GenderIdentity> getAllGenderIdentities() {
+        return List.of(GenderIdentity.values());
     }
 
 }

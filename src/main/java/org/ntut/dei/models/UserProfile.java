@@ -1,7 +1,6 @@
 package org.ntut.dei.models;
 
 import java.util.List;
-import java.util.Set;
 
 import org.ntut.dei.utils.DefaultCompatibilityMatrix;
 
@@ -54,7 +53,7 @@ public class UserProfile {
             // If the user has not set a preference profile, use the default compatibility
             // matrix
             DefaultCompatibilityMatrix compatibilityMatrix = DefaultCompatibilityMatrix.getInstance();
-            Set<GenderIdentity> defaultSexualOrientation = compatibilityMatrix
+            List<GenderIdentity> defaultSexualOrientation = compatibilityMatrix
                     .getDefaultPreferencedGenderIdentities(sexualOrientation, genderIdentity);
             PreferenceProfileBuilder preferenceProfileBuilder = new PreferenceProfileBuilder();
             preferenceProfile = preferenceProfileBuilder.setPreferedGenderIdentity(defaultSexualOrientation)
