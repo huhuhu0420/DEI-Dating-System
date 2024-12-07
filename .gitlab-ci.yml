@@ -12,7 +12,7 @@ cache:
 # Test stage
 unit_tests:
   stage: test
-  image: maven:3.8.7-openjdk-18
+  image: maven:3.9.9-eclipse-temurin-23
   script:
     - mvn clean test jacoco:report
   artifacts:
@@ -23,7 +23,7 @@ unit_tests:
 
 jacoco_coverage:
   stage: test
-  image: maven:3.8.5-jdk-11
+  image: maven:3.9.9-eclipse-temurin-23
   script:
     - mvn -Pjacoco test jacoco:report
   artifacts:
