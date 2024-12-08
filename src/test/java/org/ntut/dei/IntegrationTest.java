@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.ntut.dei.matching.BiDirectionalStrategy;
 import org.ntut.dei.matching.DefaultMatchStrategy;
 import org.ntut.dei.matching.MatchingEngine;
+import org.ntut.dei.models.BasicUser;
 import org.ntut.dei.models.GenderIdentityEnum;
 import org.ntut.dei.models.PreferenceProfile;
 import org.ntut.dei.models.PreferenceProfileBuilder;
@@ -34,7 +35,7 @@ public class IntegrationTest {
                                 .setPreferedInterests(List.of("Music", "Movies"))
                                 .build();
                 alexProfile.setPreferenceProfile(alexPreference);
-                User alex = new User(alexProfile);
+                User alex = new BasicUser(alexProfile);
 
                 UserProfile aliceProfile = new UserProfileBuilder()
                                 .setName("Alice")
@@ -48,7 +49,7 @@ public class IntegrationTest {
                                 .setPreferedInterests(List.of("Music", "Movies"))
                                 .build();
                 aliceProfile.setPreferenceProfile(alicePreference);
-                User alice = new User(aliceProfile);
+                User alice = new BasicUser(aliceProfile);
 
                 UserProfile bobProfile = new UserProfileBuilder()
                                 .setName("Bob")
@@ -60,7 +61,7 @@ public class IntegrationTest {
                                 .addPreferenceGenderIdentityWithEnum(GenderIdentityEnum.CUSTOM, "Airplane")
                                 .build();
                 bobProfile.setPreferenceProfile(bobPreference);
-                User bob = new User(bobProfile);
+                User bob = new BasicUser(bobProfile);
 
                 List<User> users = List.of(alex, alice, bob);
 

@@ -17,7 +17,7 @@ public class MatchingEngine {
         this.matchingStrategy = matchingStrategy;
     }
 
-    public List<User> match(User userProfile) {
-        return matchingStrategy.match(userProfile, candidates);
+    public List<User> match(User user) {
+        return matchingStrategy.match(user, candidates);
     }
 }

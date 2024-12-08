@@ -1,10 +1,13 @@
 package org.ntut.dei.matching;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.ntut.dei.models.BasicUser;
 import org.ntut.dei.models.GenderIdentityEnum;
 import org.ntut.dei.models.SexualOrientation;
 import org.ntut.dei.models.User;
@@ -28,7 +31,7 @@ public class DefaultMatchStrategyTest {
                 .setGenderIdentity(GenderIdentityEnum.MALE)
                 .setSexualOrientation(SexualOrientation.HETEROSEXUAL)
                 .build();
-        user = new User(user1);
+        user = new BasicUser(user1);
         candidates.add(user);
 
         UserProfile user2 = new UserProfileBuilder()
@@ -37,14 +40,14 @@ public class DefaultMatchStrategyTest {
                 .setGenderIdentity(GenderIdentityEnum.FEMALE)
                 .setSexualOrientation(SexualOrientation.OTHER)
                 .build();
-        candidates.add(new User(user2));
+        candidates.add(new BasicUser(user2));
 
         UserProfile user3 = new UserProfileBuilder()
                 .setName("user3")
                 .setAge(20)
                 .setGenderIdentity(GenderIdentityEnum.CUSTOM, "custom")
                 .build();
-        candidates.add(new User(user3));
+        candidates.add(new BasicUser(user3));
     }
 
     @Test
