@@ -1,6 +1,7 @@
 package org.ntut.dei;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -8,12 +9,12 @@ import org.junit.jupiter.api.Test;
 import org.ntut.dei.matching.BiDirectionalStrategy;
 import org.ntut.dei.matching.DefaultMatchStrategy;
 import org.ntut.dei.matching.MatchingEngine;
-import org.ntut.dei.models.BasicUser;
 import org.ntut.dei.models.GenderIdentityEnum;
 import org.ntut.dei.models.PreferenceProfile;
 import org.ntut.dei.models.PreferenceProfileBuilder;
 import org.ntut.dei.models.SexualOrientation;
 import org.ntut.dei.models.User;
+import org.ntut.dei.models.UserFactory;
 import org.ntut.dei.models.UserProfile;
 import org.ntut.dei.models.UserProfileBuilder;
 
@@ -35,7 +36,7 @@ public class IntegrationTest {
                                 .setPreferedInterests(List.of("Music", "Movies"))
                                 .build();
                 alexProfile.setPreferenceProfile(alexPreference);
-                User alex = new BasicUser(alexProfile);
+                User alex = UserFactory.createUser(alexProfile, false);
 
                 UserProfile aliceProfile = new UserProfileBuilder()
                                 .setName("Alice")
@@ -49,7 +50,7 @@ public class IntegrationTest {
                                 .setPreferedInterests(List.of("Music", "Movies"))
                                 .build();
                 aliceProfile.setPreferenceProfile(alicePreference);
-                User alice = new BasicUser(aliceProfile);
+                User alice = UserFactory.createUser(aliceProfile, true);
 
                 UserProfile bobProfile = new UserProfileBuilder()
                                 .setName("Bob")
@@ -61,7 +62,7 @@ public class IntegrationTest {
                                 .addPreferenceGenderIdentityWithEnum(GenderIdentityEnum.CUSTOM, "Airplane")
                                 .build();
                 bobProfile.setPreferenceProfile(bobPreference);
-                User bob = new BasicUser(bobProfile);
+                User bob = UserFactory.createUser(bobProfile, false);
 
                 List<User> users = List.of(alex, alice, bob);
 
@@ -73,6 +74,7 @@ public class IntegrationTest {
                 engine.setMatchStrategy(new DefaultMatchStrategy());
                 matches = engine.match(alex);
                 assertEquals(2, matches.size());
+                assertTrue(matches.get(0).isPremium());
 
         }
 }
