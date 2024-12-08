@@ -9,6 +9,11 @@ public class PremiumUser implements User {
         this.userProfile = userProfile;
     }
 
+    public PremiumUser(UserProfile userProfile) {
+        this.username = userProfile.getName();
+        this.userProfile = userProfile;
+    }
+
     @Override
     public String getUsername() {
         return username;
