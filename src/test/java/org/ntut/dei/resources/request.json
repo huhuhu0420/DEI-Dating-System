@@ -1,0 +1,1239 @@
+[
+    {
+      "name": "Alex Johnson",
+      "age": 25,
+      "genderIdentity": {
+        "genderIdentityEnum": "NON_BINARY"
+      },
+      "sexualOrientation": "BISEXUAL",
+      "bio": "Loves hiking and photography.",
+      "interests": ["Hiking", "Photography"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Reading", "Cooking"],
+      "preferedMinAge": 22,
+      "preferedMaxAge": 28
+    },
+    {
+      "name": "Emily Davis",
+      "age": 32,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "HOMOSEXUAL",
+      "bio": "Avid gardener and book lover.",
+      "interests": ["Gardening", "Reading"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "NON_BINARY"
+        }
+      ],
+      "preferedInterests": ["Yoga", "Traveling"],
+      "preferedMinAge": 30,
+      "preferedMaxAge": 40
+    },
+    {
+      "name": "Michael Lee",
+      "age": 28,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Tech enthusiast and gamer.",
+      "interests": ["Coding", "Gaming"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Music", "Fitness"],
+      "preferedMinAge": 24,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Samantha Green",
+      "age": 22,
+      "genderIdentity": {
+        "genderIdentityEnum": "GENDER_FLUID"
+      },
+      "sexualOrientation": "PANSEXUAL",
+      "bio": "Passionate about art and dance.",
+      "interests": ["Art", "Dance"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "MALE"
+        },
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Photography", "Traveling"],
+      "preferedMinAge": 20,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "Daniel Martinez",
+      "age": 35,
+      "genderIdentity": {
+        "genderIdentityEnum": "CUSTOM",
+        "customGenderIdentity": "Attack Helicoptoer"
+      },
+      "sexualOrientation": "QUEER",
+      "bio": "Enjoys writing and cycling.",
+      "interests": ["Writing", "Cycling"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "AGENDER"
+        }
+      ],
+      "preferedInterests": ["Cooking", "Gaming"],
+      "preferedMinAge": 28,
+      "preferedMaxAge": 38
+    },
+    {
+      "name": "Olivia Brown",
+      "age": 27,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "ASEXUAL",
+      "bio": "Loves music festivals and painting.",
+      "interests": ["Music Festivals", "Painting"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "NON_BINARY"
+        }
+      ],
+      "preferedInterests": ["Reading", "Traveling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Ethan Wilson",
+      "age": 29,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Fitness trainer and nutrition enthusiast.",
+      "interests": ["Fitness", "Nutrition"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Cooking", "Traveling"],
+      "preferedMinAge": 24,
+      "preferedMaxAge": 32
+    },
+    {
+      "name": "Grace Kim",
+      "age": 31,
+      "genderIdentity": {
+        "genderIdentityEnum": "AGENDER"
+      },
+      "sexualOrientation": "BISEXUAL",
+      "bio": "Passionate about environmental conservation.",
+      "interests": ["Environmentalism", "Hiking"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "MALE"
+        },
+        {
+          "genderIdentityEnum": "NON_BINARY"
+        }
+      ],
+      "preferedInterests": ["Photography", "Reading"],
+      "preferedMinAge": 29,
+      "preferedMaxAge": 40
+    },
+    {
+      "name": "Liam Anderson",
+      "age": 24,
+      "genderIdentity": {
+        "genderIdentityEnum": "GENDERQUEER"
+      },
+      "sexualOrientation": "PANSEXUAL",
+      "bio": "Aspiring musician and songwriter.",
+      "interests": ["Music", "Songwriting"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Traveling", "Cooking"],
+      "preferedMinAge": 22,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "Sophia Thompson",
+      "age": 26,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "HOMOSEXUAL",
+      "bio": "Loves yoga and meditation.",
+      "interests": ["Yoga", "Meditation"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "MALE"
+        }
+      ],
+      "preferedInterests": ["Fitness", "Reading"],
+      "preferedMinAge": 23,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "Noah Harris",
+      "age": 33,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Enjoys cooking and traveling the world.",
+      "interests": ["Cooking", "Traveling"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Photography", "Fitness"],
+      "preferedMinAge": 28,
+      "preferedMaxAge": 40
+    },
+    {
+      "name": "Mia Clark",
+      "age": 21,
+      "genderIdentity": {
+        "genderIdentityEnum": "CUSTOM",
+        "customGenderIdentity": "Celestial Being"
+      },
+      "sexualOrientation": "OTHER",
+      "bio": "Loves stargazing and astronomy.",
+      "interests": ["Astronomy", "Stargazing"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "AGENDER"
+        }
+      ],
+      "preferedInterests": ["Reading", "Music"],
+      "preferedMinAge": 18,
+      "preferedMaxAge": 25
+    },
+    {
+      "name": "Benjamin Lewis",
+      "age": 38,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "DEMISEXUAL",
+      "bio": "Passionate about woodworking and carpentry.",
+      "interests": ["Woodworking", "Carpentry"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Gardening", "Reading"],
+      "preferedMinAge": 30,
+      "preferedMaxAge": 45
+    },
+    {
+      "name": "Isabella Walker",
+      "age": 29,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "BISEXUAL",
+      "bio": "Enjoys painting and exploring new cuisines.",
+      "interests": ["Painting", "Cooking"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "NON_BINARY"
+        }
+      ],
+      "preferedInterests": ["Traveling", "Photography"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "James Martinez",
+      "age": 27,
+      "genderIdentity": {
+        "genderIdentityEnum": "GENDER_FLUID"
+      },
+      "sexualOrientation": "QUEER",
+      "bio": "Avid reader and coffee enthusiast.",
+      "interests": ["Reading", "Coffee Tasting"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        },
+        {
+          "genderIdentityEnum": "MALE"
+        }
+      ],
+      "preferedInterests": ["Writing", "Cycling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "Charlotte Robinson",
+      "age": 23,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "PANSEXUAL",
+      "bio": "Loves dancing and theater.",
+      "interests": ["Dancing", "Theater"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "GENDERQUEER"
+        }
+      ],
+      "preferedInterests": ["Art", "Music"],
+      "preferedMinAge": 20,
+      "preferedMaxAge": 28
+    },
+    {
+      "name": "William Clark",
+      "age": 34,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Enjoys cycling and technology.",
+      "interests": ["Cycling", "Technology"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Gaming", "Reading"],
+      "preferedMinAge": 32,
+      "preferedMaxAge": 40
+    },
+    {
+      "name": "Amelia Lewis",
+      "age": 28,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "ASEXUAL",
+      "bio": "Passionate about animal rights and volunteering.",
+      "interests": ["Animal Rights", "Volunteering"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "MALE"
+        }
+      ],
+      "preferedInterests": ["Reading", "Hiking"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "Lucas Young",
+      "age": 30,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Tech developer and marathon runner.",
+      "interests": ["Coding", "Running"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Fitness", "Traveling"],
+      "preferedMinAge": 28,
+      "preferedMaxAge": 38
+    },
+    {
+      "name": "Harper King",
+      "age": 24,
+      "genderIdentity": {
+        "genderIdentityEnum": "NON_BINARY"
+      },
+      "sexualOrientation": "BISEXUAL",
+      "bio": "Loves graphic design and video editing.",
+      "interests": ["Graphic Design", "Video Editing"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "AGENDER"
+        }
+      ],
+      "preferedInterests": ["Art", "Gaming"],
+      "preferedMinAge": 22,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "Ella Hernandez",
+      "age": 26,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "QUEER",
+      "bio": "Enjoys hiking and nature photography.",
+      "interests": ["Hiking", "Photography"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "MALE"
+        }
+      ],
+      "preferedInterests": ["Traveling", "Reading"],
+      "preferedMinAge": 23,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "Logan Scott",
+      "age": 29,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Fitness enthusiast and personal trainer.",
+      "interests": ["Fitness", "Personal Training"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Cooking", "Cycling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Ava Walker",
+      "age": 31,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "PANSEXUAL",
+      "bio": "Loves writing and creative arts.",
+      "interests": ["Writing", "Creative Arts"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "NON_BINARY"
+        }
+      ],
+      "preferedInterests": ["Reading", "Traveling"],
+      "preferedMinAge": 28,
+      "preferedMaxAge": 40
+    },
+    {
+      "name": "Jacob Martinez",
+      "age": 27,
+      "genderIdentity": {
+        "genderIdentityEnum": "GENDERQUEER"
+      },
+      "sexualOrientation": "BISEXUAL",
+      "bio": "Passionate about music and live performances.",
+      "interests": ["Music", "Live Performances"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Dancing", "Traveling"],
+      "preferedMinAge": 24,
+      "preferedMaxAge": 32
+    },
+    {
+      "name": "Mason Perez",
+      "age": 22,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Enjoys gaming and technology trends.",
+      "interests": ["Gaming", "Technology"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Coding", "Fitness"],
+      "preferedMinAge": 20,
+      "preferedMaxAge": 28
+    },
+    {
+      "name": "Sophia Ramirez",
+      "age": 35,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "HOMOSEXUAL",
+      "bio": "Loves cooking and culinary arts.",
+      "interests": ["Cooking", "Culinary Arts"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "MALE"
+        }
+      ],
+      "preferedInterests": ["Traveling", "Reading"],
+      "preferedMinAge": 30,
+      "preferedMaxAge": 42
+    },
+    {
+      "name": "Oliver Lewis",
+      "age": 28,
+      "genderIdentity": {
+        "genderIdentityEnum": "AGENDER"
+      },
+      "sexualOrientation": "DEMISEXUAL",
+      "bio": "Passionate about environmental sustainability.",
+      "interests": ["Environmentalism", "Sustainability"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Gardening", "Cycling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Isabella Clark",
+      "age": 24,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "BISEXUAL",
+      "bio": "Enjoys painting and attending art exhibitions.",
+      "interests": ["Painting", "Art Exhibitions"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "NON_BINARY"
+        }
+      ],
+      "preferedInterests": ["Photography", "Traveling"],
+      "preferedMinAge": 22,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "Ethan Walker",
+      "age": 31,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Tech entrepreneur and startup founder.",
+      "interests": ["Entrepreneurship", "Technology"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Fitness", "Reading"],
+      "preferedMinAge": 28,
+      "preferedMaxAge": 40
+    },
+    {
+      "name": "Mia Young",
+      "age": 26,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "PANSEXUAL",
+      "bio": "Loves yoga and holistic wellness.",
+      "interests": ["Yoga", "Holistic Wellness"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "MALE"
+        }
+      ],
+      "preferedInterests": ["Meditation", "Reading"],
+      "preferedMinAge": 23,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "Liam Hernandez",
+      "age": 29,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Fitness coach and nutrition expert.",
+      "interests": ["Fitness Coaching", "Nutrition"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Cooking", "Traveling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Charlotte Lopez",
+      "age": 23,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "QUEER",
+      "bio": "Enjoys dancing and performing arts.",
+      "interests": ["Dancing", "Performing Arts"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "NON_BINARY"
+        }
+      ],
+      "preferedInterests": ["Music", "Traveling"],
+      "preferedMinAge": 20,
+      "preferedMaxAge": 28
+    },
+    {
+      "name": "Benjamin Hill",
+      "age": 34,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Loves cycling and outdoor adventures.",
+      "interests": ["Cycling", "Outdoor Adventures"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Hiking", "Photography"],
+      "preferedMinAge": 30,
+      "preferedMaxAge": 42
+    },
+    {
+      "name": "Amelia Martinez",
+      "age": 27,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "BISEXUAL",
+      "bio": "Passionate about cooking and baking.",
+      "interests": ["Cooking", "Baking"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "AGENDER"
+        }
+      ],
+      "preferedInterests": ["Reading", "Traveling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Oliver Garcia",
+      "age": 30,
+      "genderIdentity": {
+        "genderIdentityEnum": "AGENDER"
+      },
+      "sexualOrientation": "DEMISEXUAL",
+      "bio": "Enjoys writing and blogging.",
+      "interests": ["Writing", "Blogging"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Reading", "Traveling"],
+      "preferedMinAge": 28,
+      "preferedMaxAge": 40
+    },
+    {
+      "name": "Sophia Wilson",
+      "age": 25,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "PANSEXUAL",
+      "bio": "Loves photography and graphic design.",
+      "interests": ["Photography", "Graphic Design"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "NON_BINARY"
+        }
+      ],
+      "preferedInterests": ["Art", "Traveling"],
+      "preferedMinAge": 22,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "James Anderson",
+      "age": 28,
+      "genderIdentity": {
+        "genderIdentityEnum": "GENDER_FLUID"
+      },
+      "sexualOrientation": "QUEER",
+      "bio": "Fitness enthusiast and personal trainer.",
+      "interests": ["Fitness", "Personal Training"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Cooking", "Cycling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Mason Thompson",
+      "age": 22,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Enjoys gaming and technology.",
+      "interests": ["Gaming", "Technology"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Coding", "Fitness"],
+      "preferedMinAge": 20,
+      "preferedMaxAge": 28
+    },
+    {
+      "name": "Isabella Harris",
+      "age": 35,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "HOMOSEXUAL",
+      "bio": "Loves culinary arts and experimenting with recipes.",
+      "interests": ["Culinary Arts", "Cooking"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "MALE"
+        }
+      ],
+      "preferedInterests": ["Traveling", "Reading"],
+      "preferedMinAge": 30,
+      "preferedMaxAge": 42
+    },
+    {
+      "name": "Lucas Robinson",
+      "age": 28,
+      "genderIdentity": {
+        "genderIdentityEnum": "AGENDER"
+      },
+      "sexualOrientation": "DEMISEXUAL",
+      "bio": "Passionate about sustainability and eco-friendly living.",
+      "interests": ["Sustainability", "Eco-friendly Living"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Gardening", "Cycling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Ava Martinez",
+      "age": 24,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "BISEXUAL",
+      "bio": "Enjoys attending art exhibitions and painting.",
+      "interests": ["Art Exhibitions", "Painting"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "NON_BINARY"
+        }
+      ],
+      "preferedInterests": ["Photography", "Traveling"],
+      "preferedMinAge": 22,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "Ethan Clark",
+      "age": 31,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Tech entrepreneur and software developer.",
+      "interests": ["Entrepreneurship", "Software Development"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Fitness", "Reading"],
+      "preferedMinAge": 28,
+      "preferedMaxAge": 40
+    },
+    {
+      "name": "Mia Young",
+      "age": 26,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "PANSEXUAL",
+      "bio": "Loves yoga and holistic wellness practices.",
+      "interests": ["Yoga", "Holistic Wellness"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "MALE"
+        }
+      ],
+      "preferedInterests": ["Meditation", "Reading"],
+      "preferedMinAge": 23,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "Liam Hernandez",
+      "age": 29,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Fitness coach and nutrition expert.",
+      "interests": ["Fitness Coaching", "Nutrition"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Cooking", "Traveling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Charlotte Lopez",
+      "age": 23,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "QUEER",
+      "bio": "Enjoys dancing and performing arts.",
+      "interests": ["Dancing", "Performing Arts"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "NON_BINARY"
+        }
+      ],
+      "preferedInterests": ["Music", "Traveling"],
+      "preferedMinAge": 20,
+      "preferedMaxAge": 28
+    },
+    {
+      "name": "Benjamin Hill",
+      "age": 34,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Loves cycling and outdoor adventures.",
+      "interests": ["Cycling", "Outdoor Adventures"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Hiking", "Photography"],
+      "preferedMinAge": 30,
+      "preferedMaxAge": 42
+    },
+    {
+      "name": "Amelia Martinez",
+      "age": 27,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "BISEXUAL",
+      "bio": "Passionate about cooking and baking.",
+      "interests": ["Cooking", "Baking"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "AGENDER"
+        }
+      ],
+      "preferedInterests": ["Reading", "Traveling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Oliver Garcia",
+      "age": 30,
+      "genderIdentity": {
+        "genderIdentityEnum": "AGENDER"
+      },
+      "sexualOrientation": "DEMISEXUAL",
+      "bio": "Enjoys writing and blogging.",
+      "interests": ["Writing", "Blogging"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Reading", "Traveling"],
+      "preferedMinAge": 28,
+      "preferedMaxAge": 40
+    },
+    {
+      "name": "Sophia Wilson",
+      "age": 25,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "PANSEXUAL",
+      "bio": "Loves photography and graphic design.",
+      "interests": ["Photography", "Graphic Design"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "NON_BINARY"
+        }
+      ],
+      "preferedInterests": ["Art", "Traveling"],
+      "preferedMinAge": 22,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "James Anderson",
+      "age": 28,
+      "genderIdentity": {
+        "genderIdentityEnum": "GENDER_FLUID"
+      },
+      "sexualOrientation": "QUEER",
+      "bio": "Fitness enthusiast and personal trainer.",
+      "interests": ["Fitness", "Personal Training"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Cooking", "Cycling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Mason Thompson",
+      "age": 22,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Enjoys gaming and technology.",
+      "interests": ["Gaming", "Technology"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Coding", "Fitness"],
+      "preferedMinAge": 20,
+      "preferedMaxAge": 28
+    },
+    {
+      "name": "Isabella Harris",
+      "age": 35,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "HOMOSEXUAL",
+      "bio": "Loves culinary arts and experimenting with recipes.",
+      "interests": ["Culinary Arts", "Cooking"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "MALE"
+        }
+      ],
+      "preferedInterests": ["Traveling", "Reading"],
+      "preferedMinAge": 30,
+      "preferedMaxAge": 42
+    },
+    {
+      "name": "Lucas Robinson",
+      "age": 28,
+      "genderIdentity": {
+        "genderIdentityEnum": "AGENDER"
+      },
+      "sexualOrientation": "DEMISEXUAL",
+      "bio": "Passionate about sustainability and eco-friendly living.",
+      "interests": ["Sustainability", "Eco-friendly Living"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Gardening", "Cycling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Ava Martinez",
+      "age": 24,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "BISEXUAL",
+      "bio": "Enjoys attending art exhibitions and painting.",
+      "interests": ["Art Exhibitions", "Painting"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "NON_BINARY"
+        }
+      ],
+      "preferedInterests": ["Photography", "Traveling"],
+      "preferedMinAge": 22,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "Ethan Clark",
+      "age": 31,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Tech entrepreneur and software developer.",
+      "interests": ["Entrepreneurship", "Software Development"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Fitness", "Reading"],
+      "preferedMinAge": 28,
+      "preferedMaxAge": 40
+    },
+    {
+      "name": "Mia Young",
+      "age": 26,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "PANSEXUAL",
+      "bio": "Loves yoga and holistic wellness practices.",
+      "interests": ["Yoga", "Holistic Wellness"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "MALE"
+        }
+      ],
+      "preferedInterests": ["Meditation", "Reading"],
+      "preferedMinAge": 23,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "Liam Hernandez",
+      "age": 29,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Fitness coach and nutrition expert.",
+      "interests": ["Fitness Coaching", "Nutrition"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Cooking", "Traveling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Charlotte Lopez",
+      "age": 23,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "QUEER",
+      "bio": "Enjoys dancing and performing arts.",
+      "interests": ["Dancing", "Performing Arts"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "NON_BINARY"
+        }
+      ],
+      "preferedInterests": ["Music", "Traveling"],
+      "preferedMinAge": 20,
+      "preferedMaxAge": 28
+    },
+    {
+      "name": "Benjamin Hill",
+      "age": 34,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Loves cycling and outdoor adventures.",
+      "interests": ["Cycling", "Outdoor Adventures"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Hiking", "Photography"],
+      "preferedMinAge": 30,
+      "preferedMaxAge": 42
+    },
+    {
+      "name": "Amelia Martinez",
+      "age": 27,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "BISEXUAL",
+      "bio": "Passionate about cooking and baking.",
+      "interests": ["Cooking", "Baking"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "AGENDER"
+        }
+      ],
+      "preferedInterests": ["Reading", "Traveling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Oliver Garcia",
+      "age": 30,
+      "genderIdentity": {
+        "genderIdentityEnum": "AGENDER"
+      },
+      "sexualOrientation": "DEMISEXUAL",
+      "bio": "Enjoys writing and blogging.",
+      "interests": ["Writing", "Blogging"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Reading", "Traveling"],
+      "preferedMinAge": 28,
+      "preferedMaxAge": 40
+    },
+    {
+      "name": "Sophia Wilson",
+      "age": 25,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "PANSEXUAL",
+      "bio": "Loves photography and graphic design.",
+      "interests": ["Photography", "Graphic Design"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "NON_BINARY"
+        }
+      ],
+      "preferedInterests": ["Art", "Traveling"],
+      "preferedMinAge": 22,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "James Anderson",
+      "age": 28,
+      "genderIdentity": {
+        "genderIdentityEnum": "GENDER_FLUID"
+      },
+      "sexualOrientation": "QUEER",
+      "bio": "Fitness enthusiast and personal trainer.",
+      "interests": ["Fitness", "Personal Training"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Cooking", "Cycling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Mason Thompson",
+      "age": 22,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Enjoys gaming and technology.",
+      "interests": ["Gaming", "Technology"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Coding", "Fitness"],
+      "preferedMinAge": 20,
+      "preferedMaxAge": 28
+    },
+    {
+      "name": "Isabella Harris",
+      "age": 35,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "HOMOSEXUAL",
+      "bio": "Loves culinary arts and experimenting with recipes.",
+      "interests": ["Culinary Arts", "Cooking"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "MALE"
+        }
+      ],
+      "preferedInterests": ["Traveling", "Reading"],
+      "preferedMinAge": 30,
+      "preferedMaxAge": 42
+    },
+    {
+      "name": "Lucas Robinson",
+      "age": 28,
+      "genderIdentity": {
+        "genderIdentityEnum": "AGENDER"
+      },
+      "sexualOrientation": "DEMISEXUAL",
+      "bio": "Passionate about sustainability and eco-friendly living.",
+      "interests": ["Sustainability", "Eco-friendly Living"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Gardening", "Cycling"],
+      "preferedMinAge": 25,
+      "preferedMaxAge": 35
+    },
+    {
+      "name": "Ava Martinez",
+      "age": 24,
+      "genderIdentity": {
+        "genderIdentityEnum": "FEMALE"
+      },
+      "sexualOrientation": "BISEXUAL",
+      "bio": "Enjoys attending art exhibitions and painting.",
+      "interests": ["Art Exhibitions", "Painting"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "NON_BINARY"
+        }
+      ],
+      "preferedInterests": ["Photography", "Traveling"],
+      "preferedMinAge": 22,
+      "preferedMaxAge": 30
+    },
+    {
+      "name": "Ethan Clark",
+      "age": 31,
+      "genderIdentity": {
+        "genderIdentityEnum": "MALE"
+      },
+      "sexualOrientation": "HETEROSEXUAL",
+      "bio": "Tech entrepreneur and software developer.",
+      "interests": ["Entrepreneurship", "Software Development"],
+      "preferedGenderIdentity": [
+        {
+          "genderIdentityEnum": "FEMALE"
+        }
+      ],
+      "preferedInterests": ["Fitness", "Reading"],
+      "preferedMinAge": 28,
+      "preferedMaxAge": 40
+    }
+  ]
+  
+  
