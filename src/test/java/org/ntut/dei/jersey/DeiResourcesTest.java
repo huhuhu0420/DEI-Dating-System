@@ -29,7 +29,7 @@ class MatchResourceTest extends JerseyTest {
         userRequest.setGenderIdentity(new GenderIdentity(GenderIdentityEnum.FEMALE));
 
         // Send a POST request to the match endpoint
-        Response response = target("/api/match").request().post(null);
+        Response response = target("/api/match").request().post(jakarta.ws.rs.client.Entity.json(userRequest));
 
         // Assert the HTTP response status
         assertEquals(200, response.getStatus(), "Expected HTTP status 200");

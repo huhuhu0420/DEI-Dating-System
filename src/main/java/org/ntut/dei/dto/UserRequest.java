@@ -10,11 +10,11 @@ import org.ntut.dei.models.SexualOrientation;
 
 import java.util.List;
 
-@JsonInclude(JsonInclude.Include.NON_NULL) // Exclude null fields from JSON
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserRequest {
 
     @JsonProperty("name")
-    @NotNull // Validation annotation to enforce presence
+    @NotNull
     private String name;
 
     @JsonProperty("age")
@@ -34,17 +34,20 @@ public class UserRequest {
     @JsonProperty("interests")
     private List<String> interests;
 
-    @JsonProperty("preferenceGenderIdentity")
-    private List<GenderIdentity> preferenceGenderIdentity;
+    @JsonProperty("preferedGenderIdentity")
+    private List<GenderIdentity> preferedGenderIdentity;
 
-    @JsonProperty("preferenceInterests")
-    private List<String> preferenceInterests;
+    @JsonProperty("preferedInterests")
+    private List<String> preferedInterests;
 
-    @JsonProperty("preferenceMinAge")
-    private int preferenceMinAge;
+    @JsonProperty("preferedMinAge")
+    private int preferedMinAge;
 
-    @JsonProperty("preferenceMaxAge")
-    private int preferenceMaxAge;
+    @JsonProperty("preferedMaxAge")
+    private int preferedMaxAge;
+
+    @JsonProperty("matchStrategy")
+    private String matchStrategy;
 
     public UserRequest() {
     }
@@ -97,35 +100,43 @@ public class UserRequest {
         this.interests = interests;
     }
 
-    public List<GenderIdentity> getPreferenceGenderIdentity() {
-        return preferenceGenderIdentity;
+    public List<GenderIdentity> getPreferedGenderIdentity() {
+        return preferedGenderIdentity;
     }
 
-    public void setPreferenceGenderIdentity(List<GenderIdentity> preferenceGenderIdentity) {
-        this.preferenceGenderIdentity = preferenceGenderIdentity;
+    public void setPreferedGenderIdentity(List<GenderIdentity> preferenceGenderIdentity) {
+        this.preferedGenderIdentity = preferenceGenderIdentity;
     }
 
-    public List<String> getPreferenceInterests() {
-        return preferenceInterests;
+    public List<String> getPreferedInterests() {
+        return preferedInterests;
     }
 
-    public void setPreferenceInterests(List<String> preferenceInterests) {
-        this.preferenceInterests = preferenceInterests;
+    public void setPreferedInterests(List<String> preferenceInterests) {
+        this.preferedInterests = preferenceInterests;
     }
 
-    public int getPreferenceMinAge() {
-        return preferenceMinAge;
+    public int getPreferedMinAge() {
+        return preferedMinAge;
     }
 
-    public void setPreferenceMinAge(int preferenceMinAge) {
-        this.preferenceMinAge = preferenceMinAge;
+    public void setPreferedMinAge(int preferenceMinAge) {
+        this.preferedMinAge = preferenceMinAge;
     }
 
-    public int getPreferenceMaxAge() {
-        return preferenceMaxAge;
+    public int getPreferedMaxAge() {
+        return preferedMaxAge;
     }
 
-    public void setPreferenceMaxAge(int preferenceMaxAge) {
-        this.preferenceMaxAge = preferenceMaxAge;
+    public void setPreferedMaxAge(int preferenceMaxAge) {
+        this.preferedMaxAge = preferenceMaxAge;
+    }
+
+    public String getMatchStrategy() {
+        return matchStrategy;
+    }
+
+    public void setMatchStrategy(String matchStrategy) {
+        this.matchStrategy = matchStrategy;
     }
 }
