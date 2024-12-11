@@ -1,22 +1,39 @@
 package org.ntut.dei.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserFactory {
+    private static List<User> users = new ArrayList<>();
+
     private UserFactory() {
     }
 
     public static User createUser(String username, UserProfile userProfile, boolean isPremium) {
+        User user;
         if (isPremium) {
-            return new PremiumUser(username, userProfile);
+            user = new PremiumUser(username, userProfile);
         } else {
-            return new BasicUser(username, userProfile);
+            user = new BasicUser(username, userProfile);
         }
+
+        users.add(user);
+        return user;
     }
 
     public static User createUser(UserProfile userProfile, boolean isPremium) {
+        User user;
         if (isPremium) {
-            return new PremiumUser(userProfile);
+            user = new PremiumUser(userProfile);
         } else {
-            return new BasicUser(userProfile);
+            user = new BasicUser(userProfile);
         }
+
+        users.add(user);
+        return user;
+    }
+
+    public static List<User> getUsers() {
+        return users;
     }
 }

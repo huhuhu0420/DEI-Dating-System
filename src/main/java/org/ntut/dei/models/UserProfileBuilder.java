@@ -29,8 +29,13 @@ public class UserProfileBuilder {
         return this;
     }
 
-    public UserProfileBuilder setGenderIdentity(GenderIdentityEnum genderIdentity) {
+    public UserProfileBuilder setGenderIdentityWithEnum(GenderIdentityEnum genderIdentity) {
         this.genderIdentity = new GenderIdentity(genderIdentity);
+        return this;
+    }
+
+    public UserProfileBuilder setGenderIdentity(GenderIdentity genderIdentity) {
+        this.genderIdentity = genderIdentity;
         return this;
     }
 

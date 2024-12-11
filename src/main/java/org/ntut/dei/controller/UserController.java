@@ -21,8 +21,7 @@ public class UserController {
 
         userProfileBuilder.setName(userRequest.getName());
         userProfileBuilder.setAge(userRequest.getAge());
-        userProfileBuilder.setGenderIdentity(userRequest.getGenderIdentity().getGenderIdentityEnum(),
-                userRequest.getGenderIdentity().getGenderIdentity());
+        userProfileBuilder.setGenderIdentity(userRequest.getGenderIdentity());
         if (userRequest.getSexualOrientation() != null) {
             userProfileBuilder.setSexualOrientation(userRequest.getSexualOrientation());
         }
@@ -64,4 +63,5 @@ public class UserController {
                 .map(User::getDescription)
                 .collect(Collectors.toList());
     }
+
 }

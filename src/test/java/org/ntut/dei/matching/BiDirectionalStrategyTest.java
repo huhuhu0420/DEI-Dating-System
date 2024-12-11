@@ -28,7 +28,7 @@ public class BiDirectionalStrategyTest {
         UserProfile user1 = new UserProfileBuilder()
                 .setName("user1")
                 .setAge(20)
-                .setGenderIdentity(GenderIdentityEnum.MALE)
+                .setGenderIdentityWithEnum(GenderIdentityEnum.MALE)
                 .setSexualOrientation(SexualOrientation.HETEROSEXUAL)
                 .build();
         user = new BasicUser(user1);
@@ -37,7 +37,7 @@ public class BiDirectionalStrategyTest {
         UserProfile user2 = new UserProfileBuilder()
                 .setName("user2")
                 .setAge(20)
-                .setGenderIdentity(GenderIdentityEnum.FEMALE)
+                .setGenderIdentityWithEnum(GenderIdentityEnum.FEMALE)
                 .setSexualOrientation(SexualOrientation.HOMOSEXUAL)
                 .build();
         candidates.add(new BasicUser(user2));

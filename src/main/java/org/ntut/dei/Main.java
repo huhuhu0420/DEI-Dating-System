@@ -20,7 +20,7 @@ public class Main {
                 UserProfile alexProfile = new UserProfileBuilder()
                                 .setName("Alex")
                                 .setAge(20)
-                                .setGenderIdentity(GenderIdentityEnum.MALE)
+                                .setGenderIdentityWithEnum(GenderIdentityEnum.MALE)
                                 .setSexualOrientation(SexualOrientation.HETEROSEXUAL)
                                 .setInterests(List.of("Music"))
                                 .build();
@@ -50,7 +50,7 @@ public class Main {
                 UserProfile bobProfile = new UserProfileBuilder()
                                 .setName("Bob")
                                 .setAge(25)
-                                .setGenderIdentity(GenderIdentityEnum.FEMALE)
+                                .setGenderIdentityWithEnum(GenderIdentityEnum.FEMALE)
                                 .build();
                 PreferenceProfile bobPreference = new PreferenceProfileBuilder()
                                 .setAgeRange(20, 30)
