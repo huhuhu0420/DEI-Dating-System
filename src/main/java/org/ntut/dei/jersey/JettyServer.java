@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 public class JettyServer {
     private static final Logger logger = LoggerFactory.getLogger(JettyServer.class);
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String args[]) throws Exception {
         logger.info("Starting Jetty server...");
         Server server = new Server(8080);
 
