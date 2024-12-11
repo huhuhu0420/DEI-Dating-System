@@ -1,6 +1,5 @@
 package org.ntut.dei.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,6 +15,26 @@ import org.ntut.dei.models.UserProfileBuilder;
 
 public class UserController {
     public List<String> match(UserRequest userRequest) {
+        User user = createUser(userRequest);
+        List<User> users = UserFactory.getUsers();
+
+        String matchStrategy = userRequest.getMatchStrategy();
+        MatchingEngine matchingEngine = new MatchingEngine(users);
+
+        if (matchStrategy != null) {
+            if (matchStrategy.equals("custom")) {
+                matchingEngine.setMatchStrategy(new BiDirectionalStrategy());
+            }
+        }
+
+        List<User> matches = matchingEngine.match(user);
+
+        return matches.stream()
+                .map(User::getDescription)
+                .collect(Collectors.toList());
+    }
+
+    public User createUser(UserRequest userRequest) {
         UserProfileBuilder userProfileBuilder = new UserProfileBuilder();
         PreferenceProfileBuilder preferenceProfileBuilder = new PreferenceProfileBuilder();
 
@@ -45,23 +64,8 @@ public class UserController {
         PreferenceProfile preferenceProfile = preferenceProfileBuilder.build();
         userProfile.setPreferenceProfile(preferenceProfile);
 
-        User user = UserFactory.createUser(userProfile, false);
-        List<User> users = new ArrayList<>();
-
-        String matchStrategy = userRequest.getMatchStrategy();
-        MatchingEngine matchingEngine = new MatchingEngine(users);
-
-        if (matchStrategy != null) {
-            if (matchStrategy.equals("custom")) {
-                matchingEngine.setMatchStrategy(new BiDirectionalStrategy());
-            }
-        }
-
-        List<User> matches = matchingEngine.match(user);
-
-        return matches.stream()
-                .map(User::getDescription)
-                .collect(Collectors.toList());
+        User user = UserFactory.createUser(userRequest.getName(), userProfile, false);
+        return user;
     }
 
 }

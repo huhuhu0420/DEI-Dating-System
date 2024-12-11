@@ -36,4 +36,8 @@ public class UserFactory {
     public static List<User> getUsers() {
         return users;
     }
+
+    public static void clearUsers() {
+        users.clear();
+    }
 }

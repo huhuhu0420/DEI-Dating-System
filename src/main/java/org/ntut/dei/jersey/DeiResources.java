@@ -30,4 +30,13 @@ public class DeiResources {
         response = new UserController().match(userRequest);
         return Response.ok(response).build();
     }
+
+    @POST
+    @Path("/user")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createUser(@Valid UserRequest userRequest) {
+        logger.info("creating user...");
+        new UserController().createUser(userRequest);
+        return Response.ok().build();
+    }
 }
