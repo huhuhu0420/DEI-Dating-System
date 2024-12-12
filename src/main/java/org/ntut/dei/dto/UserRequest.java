@@ -4,12 +4,18 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import org.ntut.dei.models.GenderIdentity;
 import org.ntut.dei.models.SexualOrientation;
 
 import java.util.List;
 
+@NoArgsConstructor
+@Getter
+@Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserRequest {
 
@@ -48,95 +54,4 @@ public class UserRequest {
 
     @JsonProperty("matchStrategy")
     private String matchStrategy;
-
-    public UserRequest() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public GenderIdentity getGenderIdentity() {
-        return genderIdentity;
-    }
-
-    public void setGenderIdentity(GenderIdentity genderIdentity) {
-        this.genderIdentity = genderIdentity;
-    }
-
-    public SexualOrientation getSexualOrientation() {
-        return sexualOrientation;
-    }
-
-    public void setSexualOrientation(SexualOrientation sexualOrientation) {
-        this.sexualOrientation = sexualOrientation;
-    }
-
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
-    }
-
-    public List<String> getInterests() {
-        return interests;
-    }
-
-    public void setInterests(List<String> interests) {
-        this.interests = interests;
-    }
-
-    public List<GenderIdentity> getPreferedGenderIdentity() {
-        return preferedGenderIdentity;
-    }
-
-    public void setPreferedGenderIdentity(List<GenderIdentity> preferenceGenderIdentity) {
-        this.preferedGenderIdentity = preferenceGenderIdentity;
-    }
-
-    public List<String> getPreferedInterests() {
-        return preferedInterests;
-    }
-
-    public void setPreferedInterests(List<String> preferenceInterests) {
-        this.preferedInterests = preferenceInterests;
-    }
-
-    public int getPreferedMinAge() {
-        return preferedMinAge;
-    }
-
-    public void setPreferedMinAge(int preferenceMinAge) {
-        this.preferedMinAge = preferenceMinAge;
-    }
-
-    public int getPreferedMaxAge() {
-        return preferedMaxAge;
-    }
-
-    public void setPreferedMaxAge(int preferenceMaxAge) {
-        this.preferedMaxAge = preferenceMaxAge;
-    }
-
-    public String getMatchStrategy() {
-        return matchStrategy;
-    }
-
-    public void setMatchStrategy(String matchStrategy) {
-        this.matchStrategy = matchStrategy;
-    }
 }

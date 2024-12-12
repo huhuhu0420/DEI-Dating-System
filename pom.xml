@@ -1,16 +1,40 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <!-- Project Coordinates -->
     <groupId>org.ntut</groupId>
     <artifactId>dei</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <!-- Properties for version management and project settings -->
     <properties>
+        <!-- Java Compiler Settings -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        
+        <!-- Dependency Versions -->
         <junit.version>5.11.3</junit.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <lombok.version>1.18.32</lombok.version>
+        <jersey.version>3.1.2</jersey.version>
+        <grizzly.version>4.0.2</grizzly.version>
+        <hibernate.validator.version>7.0.4.Final</hibernate.validator.version>
+        <jakarta.el.version>4.0.2</jakarta.el.version>
+        <slf4j.version>2.0.9</slf4j.version>
+        <logback.version>1.4.11</logback.version>
+        <checkstyle.version>8.10</checkstyle.version>
+        <checkstyle.rules.version>1.1.0</checkstyle.rules.version>
+        <maven.checkstyle.plugin.version>3.0.0</maven.checkstyle.plugin.version>
+        <jacoco.version>0.8.12</jacoco.version>
+        <coveralls.version>4.3.0</coveralls.version>
+        <maven.javadoc.plugin.version>3.0.0</maven.javadoc.plugin.version>
     </properties>
+
+    <!-- Project Dependencies -->
     <dependencies>
+        <!-- JUnit 5 for Testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -23,7 +47,8 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- Jetty Dependencies -->
+
+        <!-- Jetty Server Dependencies -->
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
@@ -34,131 +59,200 @@
             <artifactId>jetty-server</artifactId>
             <version>11.0.15</version>
         </dependency>
+
         <!-- Jersey Dependencies -->
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-jetty-http</artifactId>
-            <version>3.1.2</version>
+            <version>${jersey.version}</version>
         </dependency>
         <dependency>
-        <groupId>org.glassfish.jersey.containers</groupId>
+            <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet</artifactId>
-            <version>3.1.2</version>
+            <version>${jersey.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-server</artifactId>
-            <version>3.1.2</version>
+            <version>${jersey.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.inject</groupId>
             <artifactId>jersey-hk2</artifactId>
-            <version>3.1.2</version>
+            <version>${jersey.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.grizzly</groupId>
             <artifactId>grizzly-http-server</artifactId>
-            <version>4.0.2</version>
+            <version>${grizzly.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.test-framework.providers</groupId>
             <artifactId>jersey-test-framework-provider-inmemory</artifactId>
-            <version>3.1.2</version>
+            <version>${jersey.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-jackson</artifactId>
-            <version>3.0.0</version> 
+            <version>3.1.2</version> <!-- Updated to match jersey.version -->
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.ext</groupId>
             <artifactId>jersey-bean-validation</artifactId>
-            <version>3.0.0</version> 
+            <version>3.1.2</version> <!-- Updated to match jersey.version -->
         </dependency>
 
         <!-- Hibernate Validator -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>7.0.4.Final</version> <!-- Use the latest compatible version -->
+            <version>${hibernate.validator.version}</version>
         </dependency>
 
         <!-- Jakarta Expression Language (Required by Hibernate Validator) -->
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>jakarta.el</artifactId>
-            <version>4.0.2</version> <!-- Latest stable version -->
+            <version>${jakarta.el.version}</version>
         </dependency>
 
-
-        <!-- SLF4J API -->
+        <!-- SLF4J API for Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>2.0.9</version>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <!-- Logback Classic for Logging Implementation -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.4.11</version>
+            <version>${logback.version}</version>
+        </dependency>
+
+        <!-- Lombok for Boilerplate Code Reduction -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope> <!-- Lombok is provided at compile-time -->
         </dependency>
     </dependencies>
+
+    <!-- Build Configuration -->
     <build>
         <pluginManagement>
             <plugins>
+                <!-- Maven Compiler Plugin with Lombok Annotation Processing -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.13.0</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${lombok.version}</version>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+
+                <!-- Maven Checkstyle Plugin -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>${maven.checkstyle.plugin.version}</version>
                     <dependencies>
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>8.10</version>
+                            <version>${checkstyle.version}</version>
                         </dependency>
                         <dependency>
                             <groupId>com.github.ngeor</groupId>
                             <artifactId>checkstyle-rules</artifactId>
-                            <version>1.1.0</version>
+                            <version>${checkstyle.rules.version}</version>
                         </dependency>
                     </dependencies>
                     <configuration>
                         <configLocation>com/github/ngeor/checkstyle.xml</configLocation>
                         <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${lombok.version}</version>
+                            </path>
+                        </annotationProcessorPaths>
                     </configuration>
+                </plugin>
+
+                <!-- JaCoCo Maven Plugin for Code Coverage -->
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco.version}</version>
+                </plugin>
+
+                <!-- Maven Javadoc Plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven.javadoc.plugin.version}</version>
+                </plugin>
+
+                <!-- Coveralls Maven Plugin -->
+                <plugin>
+                    <groupId>org.eluder.coveralls</groupId>
+                    <artifactId>coveralls-maven-plugin</artifactId>
+                    <version>${coveralls.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
+
         <plugins>
+            <!-- Maven Compiler Plugin (inherits configuration from pluginManagement) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+            <!-- Maven Checkstyle Plugin (inherits configuration from pluginManagement) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
             </plugin>
 
-            <!--
-                You can run jacoco in the default profile with:
-                mvn jacoco:prepare-agent test jacoco:report
-            -->
+            <!-- JaCoCo Maven Plugin (inherits configuration from pluginManagement) -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.12</version>
             </plugin>
         </plugins>
     </build>
+
+    <!-- Reporting Configuration -->
     <reporting>
         <plugins>
+            <!-- Maven Javadoc Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>${maven.javadoc.plugin.version}</version>
             </plugin>
+
+            <!-- Maven Checkstyle Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven.checkstyle.plugin.version}</version>
                 <configuration>
                     <configLocation>com/github/ngeor/checkstyle.xml</configLocation>
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
@@ -167,12 +261,9 @@
         </plugins>
     </reporting>
 
+    <!-- Maven Profiles for Specialized Builds -->
     <profiles>
-        <!--
-        This profile enables jacoco when unit tests are run.
-        You can run it with mvn -P jacoco test.
-        It also activates itself on Travis.
-        -->
+        <!-- JaCoCo Profile for Code Coverage -->
         <profile>
             <id>jacoco</id>
             <activation>
@@ -206,11 +297,7 @@
             </build>
         </profile>
 
-        <!--
-        For the Travis profile:
-        - we want to break the build on any checkstyle violation.
-        - we want to be able to publish coverage report to coveralls.
-        -->
+        <!-- Travis CI Profile for Continuous Integration -->
         <profile>
             <id>travis</id>
             <activation>
@@ -220,6 +307,7 @@
             </activation>
             <build>
                 <plugins>
+                    <!-- Checkstyle Execution for Travis CI -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -233,10 +321,12 @@
                             </execution>
                         </executions>
                     </plugin>
+
+                    <!-- Coveralls Plugin for Travis CI -->
                     <plugin>
                         <groupId>org.eluder.coveralls</groupId>
                         <artifactId>coveralls-maven-plugin</artifactId>
-                        <version>4.3.0</version>
+                        <version>${coveralls.version}</version>
                     </plugin>
                 </plugins>
             </build>
