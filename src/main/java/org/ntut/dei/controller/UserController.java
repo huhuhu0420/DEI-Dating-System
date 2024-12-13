@@ -76,6 +76,7 @@ public class UserController {
         userProfile.setPreferenceProfile(preferenceProfile);
 
         User user = UserFactory.createUser(userRequest.getName(), userProfile, false);
+        UserFactory.addUser(user);
         return user;
     }
 

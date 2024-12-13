@@ -29,7 +29,6 @@ public class UserFactory {
             user = new BasicUser(userProfile);
         }
 
-        users.add(user);
         return user;
     }
 
@@ -39,5 +38,9 @@ public class UserFactory {
 
     public static void clearUsers() {
         users.clear();
+    }
+
+    public static void addUser(User user) {
+        users.add(user);
     }
 }
