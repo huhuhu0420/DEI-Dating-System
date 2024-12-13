@@ -9,7 +9,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler("send_users.log"),  # Log messages to a file
+        # logging.FileHandler("send_users.log"),  # Log messages to a file
         logging.StreamHandler()  # Also log messages to the console
     ]
 )

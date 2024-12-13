@@ -17,7 +17,6 @@ public class UserFactory {
             user = new BasicUser(username, userProfile);
         }
 
-        users.add(user);
         return user;
     }
 
