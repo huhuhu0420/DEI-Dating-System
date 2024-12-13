@@ -45,90 +45,99 @@
         // MatchModal component remains the same
         const MatchModal = ({ matches, onClose }) => {
             const getGenderIdentity = (match) => {
-                const genderIdentity = match.genderIdentity;
+                if (!match.genderIdentity) return 'Not specified';
                 
-                if (!genderIdentity) return 'Not specified';
-                
-                if (genderIdentity.genderIdentityEnum === 'CUSTOM') {
-                    return genderIdentity.customGenderIdentity || 'Custom';
+                if (match.genderIdentity.genderIdentityEnum === 'CUSTOM') {
+                    return match.genderIdentity.customGenderIdentity || 'Custom';
                 }
                 
-                return GenderIdentityEnum[genderIdentity.genderIdentityEnum] || genderIdentity.genderIdentityEnum;
+                return GenderIdentityEnum[match.genderIdentity.genderIdentityEnum] || match.genderIdentity.genderIdentityEnum;
             };
+
             return (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-6 px-8 rounded-t-xl">
+                <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-full flex flex-col">
+                        <div className="bg-gradient-to-r from-purple-600 via-purple-500 to-indigo-600 text-white py-4 px-6 flex-shrink-0 rounded-t-2xl">
                             <h2 className="text-2xl font-bold text-center">Your Matches</h2>
+                            <p className="text-center text-purple-100 text-sm">Find your perfect connection</p>
                         </div>
                         
-                        {matches.length === 0 ? (
-                            <div className="p-8 text-center">
-                                <p className="text-gray-600 text-xl">No matches found. Try adjusting your preferences.</p>
-                            </div>
-                        ) : (
-                            <div className="p-8 space-y-6">
-                                {matches.map((match, index) => (
-                                    <div 
-                                        key={index} 
-                                        className="bg-purple-50 rounded-lg p-6 border border-purple-200 hover:shadow-md transition duration-300"
-                                    >
-                                        <div className="flex justify-between items-center mb-4">
-                                            <h3 className="text-xl font-semibold text-purple-800">{match.name}</h3>
-                                            <span className="text-gray-600">Age: {match.age}</span>
-                                        </div>
-                                        
-                                        <div className="grid md:grid-cols-2 gap-4">
-                                            <div>
-                                                <p className="font-medium text-gray-700">Gender Identity:</p>
-                                                <p className="text-gray-600">
-                                                    {getGenderIdentity(match)}
-                                                </p>
-                                            </div>
-                                            
-                                            <div>
-                                                <p className="font-medium text-gray-700">Sexual Orientation:</p>
-                                                <p className="text-gray-600">{SexualOrientation[match.sexualOrientation] || match.sexualOrientation}</p>
-                                            </div>
-                                        </div>
-                                        
-                                        {match.bio && (
-                                            <div className="mt-4">
-                                                <p className="font-medium text-gray-700">Bio:</p>
-                                                <p className="text-gray-600 italic">{match.bio}</p>
-                                            </div>
-                                        )}
-                                        
-                                        {match.interests && match.interests.length > 0 && (
-                                            <div className="mt-4">
-                                                <p className="font-medium text-gray-700">Interests:</p>
-                                                <div className="flex flex-wrap gap-2 mt-2">
-                                                    {match.interests.map((interest, i) => (
-                                                        <span 
-                                                            key={i} 
-                                                            className="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-sm"
-                                                        >
-                                                            {interest}
-                                                        </span>
-                                                    ))}
+                        <div className="flex-1 overflow-y-auto">
+                            {matches.length === 0 ? (
+                                <div className="p-8 text-center">
+                                    <div className="text-6xl mb-4">💜</div>
+                                    <p className="text-gray-600 text-xl">No matches found yet.</p>
+                                    <p className="text-gray-500 mt-2">Try adjusting your preferences to find more potential matches.</p>
+                                </div>
+                            ) : (
+                                <div className="p-4 space-y-4">
+                                    {matches.map((match, index) => (
+                                        <div 
+                                            key={index} 
+                                            className={`rounded-xl p-4 ${
+                                                match.premium 
+                                                    ? 'bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200' 
+                                                    : 'bg-white border border-gray-200'
+                                            }`}
+                                        >
+                                            <div className="flex items-start justify-between mb-2">
+                                                <div>
+                                                    <div className="flex items-center gap-2">
+                                                        <h3 className="text-lg font-semibold text-purple-800">{match.name}</h3>
+                                                        {match.premium && (
+                                                            <span className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-xs px-2 py-0.5 rounded-full font-medium flex items-center">
+                                                                <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                                </svg>
+                                                                Premium
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                    <span className="text-gray-500 text-sm">Age: {match.age}</span>
                                                 </div>
                                             </div>
-                                        )}
-                                        
-                                        {match.premium && (
-                                            <div className="mt-4 text-yellow-600 font-medium">
-                                                <i className="fas fa-star mr-2"></i>Premium Profile
+                                            
+                                            <div className="grid grid-cols-2 gap-3 mb-3">
+                                                <div>
+                                                    <p className="text-sm font-medium text-purple-800">Gender Identity</p>
+                                                    <p className="text-sm text-gray-600">{getGenderIdentity(match)}</p>
+                                                </div>
+                                                
+                                                <div>
+                                                    <p className="text-sm font-medium text-purple-800">Sexual Orientation</p>
+                                                    <p className="text-sm text-gray-600">{SexualOrientation[match.sexualOrientation] || match.sexualOrientation}</p>
+                                                </div>
                                             </div>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                        
-                        <div className="p-6 bg-gray-100 rounded-b-xl">
+                                            
+                                            {match.interests && match.interests.length > 0 && (
+                                                <div>
+                                                    <p className="text-sm font-medium text-purple-800 mb-1">Interests</p>
+                                                    <div className="flex flex-wrap gap-1">
+                                                        {match.interests.map((interest, i) => (
+                                                            <span 
+                                                                key={i} 
+                                                                className={`px-2 py-0.5 rounded-full text-xs ${
+                                                                    match.premium 
+                                                                        ? 'bg-purple-100 text-purple-700' 
+                                                                        : 'bg-gray-100 text-gray-700'
+                                                                }`}
+                                                            >
+                                                                {interest}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="p-4 bg-gray-50 border-t border-gray-100 flex-shrink-0 rounded-b-2xl">
                             <button 
                                 onClick={onClose}
-                                className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition duration-300"
+                                className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-2 rounded-xl hover:opacity-90 transition duration-300 font-medium"
                             >
                                 Close Matches
                             </button>
