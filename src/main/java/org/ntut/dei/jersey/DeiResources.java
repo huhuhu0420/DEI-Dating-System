@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.ntut.dei.controller.UserController;
-import org.ntut.dei.dto.UserRequest;
+import org.ntut.dei.dto.UserData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,9 +24,9 @@ public class DeiResources {
     @Path("/match")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response match(@Valid UserRequest userRequest) {
+    public Response match(@Valid UserData userRequest) {
         logger.info("matching users...");
-        List<String> response = new ArrayList<>();
+        List<UserData> response = new ArrayList<>();
         response = new UserController().match(userRequest);
         return Response.ok(response).build();
     }
@@ -34,7 +34,7 @@ public class DeiResources {
     @POST
     @Path("/user")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createUser(@Valid UserRequest userRequest) {
+    public Response createUser(@Valid UserData userRequest) {
         logger.info("creating user...");
         new UserController().createUser(userRequest);
         return Response.ok().build();

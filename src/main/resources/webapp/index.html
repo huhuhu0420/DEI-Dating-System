@@ -17,7 +17,7 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        // Gender Identity Enum with Custom Option
+        // Previous enums remain the same
         const GenderIdentityEnum = {
             MALE: 'Male',
             FEMALE: 'Female',
@@ -31,10 +31,9 @@
             CUSTOM: 'Custom'
         };
 
-        // Sexual Orientation Enum
         const SexualOrientation = {
             HETEROSEXUAL: 'Heterosexual',
-            HOMOSEXUAL: 'Homosexual', 
+            HOMOSEXUAL: 'Homosexual',
             BISEXUAL: 'Bisexual',
             PANSEXUAL: 'Pansexual',
             ASEXUAL: 'Asexual',
@@ -43,13 +42,109 @@
             OTHER: 'Other'
         };
 
+        // MatchModal component remains the same
+        const MatchModal = ({ matches, onClose }) => {
+            const getGenderIdentity = (match) => {
+                const genderIdentity = match.genderIdentity;
+                
+                if (!genderIdentity) return 'Not specified';
+                
+                if (genderIdentity.genderIdentityEnum === 'CUSTOM') {
+                    return genderIdentity.customGenderIdentity || 'Custom';
+                }
+                
+                return GenderIdentityEnum[genderIdentity.genderIdentityEnum] || genderIdentity.genderIdentityEnum;
+            };
+            return (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-6 px-8 rounded-t-xl">
+                            <h2 className="text-2xl font-bold text-center">Your Matches</h2>
+                        </div>
+                        
+                        {matches.length === 0 ? (
+                            <div className="p-8 text-center">
+                                <p className="text-gray-600 text-xl">No matches found. Try adjusting your preferences.</p>
+                            </div>
+                        ) : (
+                            <div className="p-8 space-y-6">
+                                {matches.map((match, index) => (
+                                    <div 
+                                        key={index} 
+                                        className="bg-purple-50 rounded-lg p-6 border border-purple-200 hover:shadow-md transition duration-300"
+                                    >
+                                        <div className="flex justify-between items-center mb-4">
+                                            <h3 className="text-xl font-semibold text-purple-800">{match.name}</h3>
+                                            <span className="text-gray-600">Age: {match.age}</span>
+                                        </div>
+                                        
+                                        <div className="grid md:grid-cols-2 gap-4">
+                                            <div>
+                                                <p className="font-medium text-gray-700">Gender Identity:</p>
+                                                <p className="text-gray-600">
+                                                    {getGenderIdentity(match)}
+                                                </p>
+                                            </div>
+                                            
+                                            <div>
+                                                <p className="font-medium text-gray-700">Sexual Orientation:</p>
+                                                <p className="text-gray-600">{SexualOrientation[match.sexualOrientation] || match.sexualOrientation}</p>
+                                            </div>
+                                        </div>
+                                        
+                                        {match.bio && (
+                                            <div className="mt-4">
+                                                <p className="font-medium text-gray-700">Bio:</p>
+                                                <p className="text-gray-600 italic">{match.bio}</p>
+                                            </div>
+                                        )}
+                                        
+                                        {match.interests && match.interests.length > 0 && (
+                                            <div className="mt-4">
+                                                <p className="font-medium text-gray-700">Interests:</p>
+                                                <div className="flex flex-wrap gap-2 mt-2">
+                                                    {match.interests.map((interest, i) => (
+                                                        <span 
+                                                            key={i} 
+                                                            className="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-sm"
+                                                        >
+                                                            {interest}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
+                                        
+                                        {match.premium && (
+                                            <div className="mt-4 text-yellow-600 font-medium">
+                                                <i className="fas fa-star mr-2"></i>Premium Profile
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                        
+                        <div className="p-6 bg-gray-100 rounded-b-xl">
+                            <button 
+                                onClick={onClose}
+                                className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition duration-300"
+                            >
+                                Close Matches
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
         const App = () => {
             const [profile, setProfile] = React.useState({
                 name: '',
                 age: '',
                 genderIdentity: '',
                 customGenderIdentity: '',
-                sexualOrientation: '',
+                sexualOrientation: '', // Added sexual orientation
                 bio: '',
                 interests: [],
                 customInterest: '',
@@ -71,12 +166,13 @@
                 }));
             };
 
+            // Previous handlers remain the same...
             const handleGenderIdentityChange = (e) => {
                 const value = e.target.value;
                 setProfile(prev => ({
                     ...prev,
                     genderIdentity: value,
-                    customGenderIdentity: value === 'CUSTOM' ? '' : prev.customGenderIdentity
+                    customGenderIdentity: value === 'CUSTOM' ? '' : ''
                 }));
             };
 
@@ -84,7 +180,7 @@
                 if (profile.customInterest.trim()) {
                     setProfile(prev => ({
                         ...prev,
-                        interests: [...prev.interests, prev.customInterest.trim()],
+                        interests: [...prev.interests, profile.customInterest.trim()],
                         customInterest: ''
                     }));
                 }
@@ -111,7 +207,7 @@
                 if (profile.customPreferedInterest.trim()) {
                     setProfile(prev => ({
                         ...prev,
-                        preferedInterests: [...prev.preferedInterests, prev.customPreferedInterest.trim()],
+                        preferedInterests: [...prev.preferedInterests, profile.customPreferedInterest.trim()],
                         customPreferedInterest: ''
                     }));
                 }
@@ -127,14 +223,23 @@
             const handleSubmit = async (e) => {
                 e.preventDefault();
                 
-                // Prepare final profile data
                 const finalProfile = {
                     ...profile,
-                    genderIdentity: profile.genderIdentity === 'CUSTOM' 
-                        ? profile.customGenderIdentity 
-                        : profile.genderIdentity
                 };
-
+                if (profile.genderIdentity === 'CUSTOM') {
+                    finalProfile.genderIdentity = {
+                        genderIdentityEnum: 'CUSTOM',
+                        customGenderIdentity: profile.customGenderIdentity
+                    };
+                } else if (profile.genderIdentity) {
+                    finalProfile.genderIdentity = {
+                        genderIdentityEnum: profile.genderIdentity
+                    };
+                }
+                delete finalProfile.customGenderIdentity;
+                delete finalProfile.customInterest;
+                delete finalProfile.customPreferedInterest;
+                
                 try {
                     const response = await fetch('/api/match', {
                         method: 'POST',
@@ -193,34 +298,52 @@
                                 </div>
                             </div>
 
-                            {/* Gender Identity */}
-                            <div>
-                                <label className="block text-gray-700 font-semibold mb-2">Gender Identity</label>
-                                <select 
-                                    name="genderIdentity"
-                                    value={profile.genderIdentity}
-                                    onChange={handleGenderIdentityChange}
-                                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-                                    required
-                                >
-                                    <option value="">Select Gender Identity</option>
-                                    {Object.entries(GenderIdentityEnum).map(([key, value]) => (
-                                        <option key={key} value={key}>{value}</option>
-                                    ))}
-                                </select>
-                                {profile.genderIdentity === 'CUSTOM' && (
-                                    <input 
-                                        type="text" 
-                                        name="customGenderIdentity"
-                                        value={profile.customGenderIdentity}
-                                        onChange={handleInputChange}
-                                        placeholder="Enter your custom gender identity"
-                                        className="mt-2 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                            {/* Gender Identity and Sexual Orientation */}
+                            <div className="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-gray-700 font-semibold mb-2">Gender Identity</label>
+                                    <select 
+                                        name="genderIdentity"
+                                        value={profile.genderIdentity}
+                                        onChange={handleGenderIdentityChange}
+                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                                         required
-                                    />
-                                )}
+                                    >
+                                        <option value="">Select Gender Identity</option>
+                                        {Object.entries(GenderIdentityEnum).map(([key, value]) => (
+                                            <option key={key} value={key}>{value}</option>
+                                        ))}
+                                    </select>
+                                    {profile.genderIdentity === 'CUSTOM' && (
+                                        <input 
+                                            type="text" 
+                                            name="customGenderIdentity"
+                                            value={profile.customGenderIdentity}
+                                            onChange={handleInputChange}
+                                            placeholder="Enter your custom gender identity"
+                                            className="mt-2 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                            required
+                                        />
+                                    )}
+                                </div>
+                                <div>
+                                    <label className="block text-gray-700 font-semibold mb-2">Sexual Orientation</label>
+                                    <select 
+                                        name="sexualOrientation"
+                                        value={profile.sexualOrientation}
+                                        onChange={handleInputChange}
+                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                        required
+                                    >
+                                        <option value="">Select Sexual Orientation</option>
+                                        {Object.entries(SexualOrientation).map(([key, value]) => (
+                                            <option key={key} value={key}>{value}</option>
+                                        ))}
+                                    </select>
+                                </div>
                             </div>
 
+                            {/* Rest of the form remains the same */}
                             {/* Interests Section */}
                             <div>
                                 <label className="block text-gray-700 font-semibold mb-2">Your Interests</label>
@@ -356,13 +479,12 @@
                             </button>
                         </form>
                     </div>
+                    {showModal && <MatchModal matches={matches} onClose={() => setShowModal(false)} />}
                 </div>
+            );
+        };
 
-
-            )};
-
-            ReactDOM.render(<App />, document.getElementById('root'));
+        ReactDOM.render(<App />, document.getElementById('root'));
     </script>
 </body>
 </html>
-        

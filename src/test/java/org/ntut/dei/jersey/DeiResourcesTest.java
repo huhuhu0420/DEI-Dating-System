@@ -8,7 +8,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.ntut.dei.dto.UserRequest;
+import org.ntut.dei.dto.UserData;
 import org.ntut.dei.models.GenderIdentity;
 import org.ntut.dei.models.GenderIdentityEnum;
 import org.ntut.dei.models.User;
@@ -32,7 +32,7 @@ class MatchResourceTest extends JerseyTest {
 
     @Test
     void testMatch() {
-        UserRequest userRequest = new UserRequest();
+        UserData userRequest = new UserData();
         userRequest.setName("Alice");
         userRequest.setAge(25);
         userRequest.setGenderIdentity(new GenderIdentity(GenderIdentityEnum.FEMALE));
@@ -52,7 +52,7 @@ class MatchResourceTest extends JerseyTest {
 
     @Test
     void testCreateUser() {
-        UserRequest userRequest = new UserRequest();
+        UserData userRequest = new UserData();
         userRequest.setName("Alice");
         userRequest.setAge(25);
         userRequest.setGenderIdentity(new GenderIdentity(GenderIdentityEnum.FEMALE));

@@ -3,7 +3,7 @@ package org.ntut.dei.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.ntut.dei.dto.UserRequest;
+import org.ntut.dei.dto.UserData;
 import org.ntut.dei.matching.BiDirectionalStrategy;
 import org.ntut.dei.matching.MatchingEngine;
 import org.ntut.dei.models.PreferenceProfile;
@@ -14,7 +14,7 @@ import org.ntut.dei.models.UserProfile;
 import org.ntut.dei.models.UserProfileBuilder;
 
 public class UserController {
-    public List<String> match(UserRequest userRequest) {
+    public List<UserData> match(UserData userRequest) {
         User user = createUser(userRequest);
         List<User> users = UserFactory.getUsers();
 
@@ -29,12 +29,23 @@ public class UserController {
 
         List<User> matches = matchingEngine.match(user);
 
-        return matches.stream()
-                .map(User::getDescription)
-                .collect(Collectors.toList());
+        // sort with user.isPremium() first, then by user.getUsername()
+        matches.sort((u1, u2) -> {
+            if (u1.isPremium() && !u2.isPremium()) {
+                return -1;
+            } else if (!u1.isPremium() && u2.isPremium()) {
+                return 1;
+            } else {
+                return u1.getUsername().compareTo(u2.getUsername());
+            }
+        });
+
+        List<UserData> matchedUsers = matches.stream().map(UserData::fromUser).collect(Collectors.toList());
+
+        return matchedUsers;
     }
 
-    public User createUser(UserRequest userRequest) {
+    public User createUser(UserData userRequest) {
         UserProfileBuilder userProfileBuilder = new UserProfileBuilder();
         PreferenceProfileBuilder preferenceProfileBuilder = new PreferenceProfileBuilder();
 
