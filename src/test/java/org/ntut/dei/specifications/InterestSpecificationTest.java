@@ -3,7 +3,6 @@ package org.ntut.dei.specifications;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,8 +28,8 @@ public class InterestSpecificationTest {
     }
 
     @Test
-    public void testIsSatisfiedBy_withEmptyInterests() {
-        List<String> interests = Collections.emptyList();
+    public void testIsSatisfiedBy_withDifferInterest() {
+        List<String> interests = Arrays.asList("hiking", "swimming");
         InterestSpecification specification = new InterestSpecification(interests);
 
         assertFalse(specification.isSatisfiedBy(userProfile));

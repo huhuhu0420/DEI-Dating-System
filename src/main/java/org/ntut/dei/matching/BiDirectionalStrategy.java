@@ -37,15 +37,17 @@ public class BiDirectionalStrategy implements MatchStrategy {
     private Specification<UserProfile> buildSpecificationFromPreferences(UserProfile userProfile) {
         PreferenceProfile preferences = userProfile.getPreferenceProfile();
 
-        Specification<UserProfile> spec = new IdentitySpecification(preferences.getPreferedGenderIdentity());
+        Specification<UserProfile> identitySpec = new IdentitySpecification(preferences.getPreferedGenderIdentity());
 
         int minAge = preferences.getPreferedAgeRange().getMinAge();
         int maxAge = preferences.getPreferedAgeRange().getMaxAge();
-        spec.and(new AgeRangeSpecification(minAge, maxAge));
+        Specification<UserProfile> ageSpec = new AgeRangeSpecification(minAge, maxAge);
 
-        spec.and(new InterestSpecification(preferences.getPreferedInterests()));
+        List<String> interests = preferences.getPreferedInterests();
+        Specification<UserProfile> interestSpec = new InterestSpecification(interests);
+
+        Specification<UserProfile> spec = identitySpec.and(ageSpec).and(interestSpec);
 
         return spec;
-
     }
 }

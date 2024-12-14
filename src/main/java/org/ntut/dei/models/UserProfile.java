@@ -57,7 +57,7 @@ public class UserProfile {
     }
 
     public PreferenceProfile getPreferenceProfile() {
-        if (preferenceProfile == null || preferenceProfile.getPreferedGenderIdentity().isEmpty()) {
+        if (preferenceProfile == null) {
             // If the user has not set a preference profile, use the default compatibility
             // matrix
             DefaultCompatibilityMatrix compatibilityMatrix = DefaultCompatibilityMatrix.getInstance();
@@ -66,6 +66,12 @@ public class UserProfile {
             PreferenceProfileBuilder preferenceProfileBuilder = new PreferenceProfileBuilder();
             preferenceProfile = preferenceProfileBuilder.setPreferedGenderIdentity(defaultSexualOrientation)
                     .setPreferedInterests(interests).build();
+            return preferenceProfile;
+        } else if (preferenceProfile.getPreferedGenderIdentity().isEmpty()) {
+            // If the user has set a preference profile but has not set any preferred
+            preferenceProfile.setPreferedGenderIdentity(
+                    DefaultCompatibilityMatrix.getInstance().getDefaultPreferencedGenderIdentities(sexualOrientation,
+                            genderIdentity));
             return preferenceProfile;
         } else {
             return preferenceProfile;

@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.ntut.dei.dto.UserData;
 import org.ntut.dei.models.GenderIdentity;
 import org.ntut.dei.models.GenderIdentityEnum;
+import org.ntut.dei.models.PreferenceProfile;
+import org.ntut.dei.models.PreferenceProfileBuilder;
 import org.ntut.dei.models.SexualOrientation;
 import org.ntut.dei.models.User;
 import org.ntut.dei.models.UserFactory;
@@ -20,7 +22,7 @@ import org.ntut.dei.models.UserProfileBuilder;
 import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.Response;
 
-class MatchResourceTest extends JerseyTest {
+class DeiResourceTest extends JerseyTest {
 
     @Override
     protected Application configure() {
@@ -40,10 +42,14 @@ class MatchResourceTest extends JerseyTest {
         userRequest.setAge(25);
         userRequest.setGenderIdentity(new GenderIdentity(GenderIdentityEnum.FEMALE));
         userRequest.setSexualOrientation(SexualOrientation.HETEROSEXUAL);
+        userRequest.setPreferedMinAge(20);
+        userRequest.setPreferedMaxAge(30);
 
-        UserProfile userProfile = new UserProfileBuilder().setName("Bob").setAge(25)
+        UserProfile userProfile = new UserProfileBuilder().setName("Bob").setAge(40)
                 .setGenderIdentity(new GenderIdentity(GenderIdentityEnum.MALE))
                 .setSexualOrientation(SexualOrientation.HETEROSEXUAL).build();
+        PreferenceProfile preferenceProfile = new PreferenceProfileBuilder().setAgeRange(20, 30).build();
+        userProfile.setPreferenceProfile(preferenceProfile);
         UserFactory.addUser(UserFactory.createUser(userProfile, false));
 
         // Send a POST request to the match endpoint
@@ -56,7 +62,7 @@ class MatchResourceTest extends JerseyTest {
         @SuppressWarnings("unchecked")
         List<String> responseBody = response.readEntity(List.class);
         System.err.println(responseBody);
-        assertEquals(1, responseBody.size(), "Expected an empty response list");
+        assertEquals(0, responseBody.size(), "Expected an empty response list");
     }
 
     @Test

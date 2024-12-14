@@ -25,4 +25,8 @@ public class PreferenceProfile {
     public AgeRange getPreferedAgeRange() {
         return preferedAgeRange;
     }
+
+    public void setPreferedGenderIdentity(List<GenderIdentity> preferedGenderIdentity) {
+        this.preferedGenderIdentity = preferedGenderIdentity;
+    }
 }

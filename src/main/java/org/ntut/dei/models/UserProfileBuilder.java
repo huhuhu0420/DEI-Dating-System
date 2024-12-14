@@ -1,5 +1,6 @@
 package org.ntut.dei.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserProfileBuilder {
@@ -16,7 +17,7 @@ public class UserProfileBuilder {
         this.genderIdentity = new GenderIdentity(GenderIdentityEnum.OTHER);
         this.sexualOrientation = SexualOrientation.OTHER;
         this.bio = "";
-        this.interests = null;
+        this.interests = new ArrayList<>();
     }
 
     public UserProfileBuilder setName(String name) {
@@ -58,6 +59,9 @@ public class UserProfileBuilder {
     }
 
     public UserProfileBuilder setInterests(List<String> interests) {
+        if (interests == null) {
+            return this;
+        }
         this.interests = interests;
         return this;
     }

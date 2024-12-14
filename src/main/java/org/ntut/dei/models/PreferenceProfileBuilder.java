@@ -42,6 +42,9 @@ public class PreferenceProfileBuilder {
     }
 
     public PreferenceProfileBuilder setPreferedInterests(List<String> preferedInterests) {
+        if (preferedInterests == null) {
+            return this;
+        }
         this.preferedInterests = preferedInterests;
         return this;
     }
