@@ -1,24 +1,11 @@
 package org.ntut.dei.models;
 
-public class User {
-    String username;
-    UserProfile userProfile;
+public interface User {
+    public String getUsername();
 
-    public User(String username, UserProfile userProfile) {
-        this.username = username;
-        this.userProfile = userProfile;
-    }
+    public UserProfile getUserProfile();
 
-    public User(UserProfile userProfile) {
-        this.userProfile = userProfile;
-        this.username = userProfile.getName();
-    }
+    public String getDescription();
 
-    public String getUsername() {
-        return username;
-    }
-
-    public UserProfile getUserProfile() {
-        return userProfile;
-    }
+    public boolean isPremium();
 }

@@ -14,7 +14,7 @@ public class UserProfileBuilderTest {
         UserProfile userProfile = userProfileBuilder
                 .setName("testName")
                 .setAge(20)
-                .setGenderIdentity(GenderIdentityEnum.MALE)
+                .setGenderIdentityWithEnum(GenderIdentityEnum.MALE)
                 .setSexualOrientation(SexualOrientation.HETEROSEXUAL)
                 .setBio("testBio")
                 .setInterests(interests)

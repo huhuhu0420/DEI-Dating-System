@@ -9,7 +9,7 @@ public class UserTest {
     public void testUser() {
         UserProfileBuilder userProfileBuilder = new UserProfileBuilder();
         UserProfile userProfile = userProfileBuilder.build();
-        User user = new User("testUsername", userProfile);
+        User user = new BasicUser("testUsername", userProfile);
 
         assertEquals("testUsername", user.getUsername());
         assertEquals(userProfile, user.getUserProfile());

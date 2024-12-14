@@ -4,6 +4,9 @@ public class GenderIdentity {
     private String genderIdentity;
     private GenderIdentityEnum genderIdentityEnum;
 
+    public GenderIdentity() {
+    }
+
     public GenderIdentity(GenderIdentityEnum genderIdentity) {
         this.genderIdentityEnum = genderIdentity;
         this.genderIdentity = genderIdentity.getDisplayName();

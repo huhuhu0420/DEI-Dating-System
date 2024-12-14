@@ -15,16 +15,14 @@ public class DefaultMatchStrategy implements MatchStrategy {
     public List<User> match(User user, List<User> candidates) {
         Specification<UserProfile> spec = buildSpecificationFromPreferences(user.getUserProfile());
         List<User> matches = new ArrayList<User>();
-
         for (User candidate : candidates) {
-            if (user.equals(candidate)) {
+            if (candidate.equals(user)) {
                 continue;
             }
             if (spec.isSatisfiedBy(candidate.getUserProfile())) {
                 matches.add(candidate);
             }
         }
-
         return matches;
     }
 

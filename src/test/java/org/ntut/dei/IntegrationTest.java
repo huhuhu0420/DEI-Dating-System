@@ -1,6 +1,7 @@
 package org.ntut.dei;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.ntut.dei.models.PreferenceProfile;
 import org.ntut.dei.models.PreferenceProfileBuilder;
 import org.ntut.dei.models.SexualOrientation;
 import org.ntut.dei.models.User;
+import org.ntut.dei.models.UserFactory;
 import org.ntut.dei.models.UserProfile;
 import org.ntut.dei.models.UserProfileBuilder;
 
@@ -23,7 +25,7 @@ public class IntegrationTest {
                 UserProfile alexProfile = new UserProfileBuilder()
                                 .setName("Alex")
                                 .setAge(20)
-                                .setGenderIdentity(GenderIdentityEnum.MALE)
+                                .setGenderIdentityWithEnum(GenderIdentityEnum.MALE)
                                 .setSexualOrientation(SexualOrientation.HETEROSEXUAL)
                                 .setInterests(List.of("Music"))
                                 .build();
@@ -34,7 +36,7 @@ public class IntegrationTest {
                                 .setPreferedInterests(List.of("Music", "Movies"))
                                 .build();
                 alexProfile.setPreferenceProfile(alexPreference);
-                User alex = new User(alexProfile);
+                User alex = UserFactory.createUser(alexProfile, false);
 
                 UserProfile aliceProfile = new UserProfileBuilder()
                                 .setName("Alice")
@@ -48,19 +50,19 @@ public class IntegrationTest {
                                 .setPreferedInterests(List.of("Music", "Movies"))
                                 .build();
                 aliceProfile.setPreferenceProfile(alicePreference);
-                User alice = new User(aliceProfile);
+                User alice = UserFactory.createUser(aliceProfile, true);
 
                 UserProfile bobProfile = new UserProfileBuilder()
                                 .setName("Bob")
                                 .setAge(25)
-                                .setGenderIdentity(GenderIdentityEnum.FEMALE)
+                                .setGenderIdentityWithEnum(GenderIdentityEnum.FEMALE)
                                 .build();
                 PreferenceProfile bobPreference = new PreferenceProfileBuilder()
                                 .setAgeRange(20, 30)
                                 .addPreferenceGenderIdentityWithEnum(GenderIdentityEnum.CUSTOM, "Airplane")
                                 .build();
                 bobProfile.setPreferenceProfile(bobPreference);
-                User bob = new User(bobProfile);
+                User bob = UserFactory.createUser(bobProfile, false);
 
                 List<User> users = List.of(alex, alice, bob);
 
@@ -72,6 +74,7 @@ public class IntegrationTest {
                 engine.setMatchStrategy(new DefaultMatchStrategy());
                 matches = engine.match(alex);
                 assertEquals(2, matches.size());
+                assertTrue(matches.get(0).isPremium());
 
         }
 }
