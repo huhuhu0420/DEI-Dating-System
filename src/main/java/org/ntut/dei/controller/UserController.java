@@ -25,15 +25,14 @@ public class UserController {
 
         List<User> matches = matchingEngine.match(user);
 
-        // sort with user.isPremium() first, then by user.getUsername()
+        // sort with user.isPremium()
         matches.sort((u1, u2) -> {
             if (u1.isPremium() && !u2.isPremium()) {
                 return -1;
             } else if (!u1.isPremium() && u2.isPremium()) {
                 return 1;
-            } else {
-                return u1.getUsername().compareTo(u2.getUsername());
             }
+            return 0;
         });
 
         List<UserData> matchedUsers = matches.stream().map(UserData::fromUser).collect(Collectors.toList());
