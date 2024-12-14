@@ -47,11 +47,7 @@
             const getGenderIdentity = (match) => {
                 if (!match.genderIdentity) return 'Not specified';
                 
-                if (match.genderIdentity.genderIdentityEnum === 'CUSTOM') {
-                    return match.genderIdentity.customGenderIdentity || 'Custom';
-                }
-                
-                return GenderIdentityEnum[match.genderIdentity.genderIdentityEnum] || match.genderIdentity.genderIdentityEnum;
+                return match.genderIdentity.genderIdentity;
             };
 
             return (
@@ -158,6 +154,7 @@
                 interests: [],
                 customInterest: '',
                 preferedGenderIdentity: [],
+                customPreferedGenderIdentities: {},
                 preferedInterests: [],
                 customPreferedInterest: '',
                 preferedMinAge: '',
@@ -207,8 +204,22 @@
                 setProfile(prev => ({
                     ...prev,
                     preferedGenderIdentity: checked 
-                        ? [...prev.preferedGenderIdentity, { genderIdentityEnum: value }]
+                        ? [...prev.preferedGenderIdentity, { 
+                            genderIdentityEnum: value,
+                            ...(value === 'CUSTOM' ? { customGenderIdentity: '' } : {})
+                        }]
                         : prev.preferedGenderIdentity.filter(item => item.genderIdentityEnum !== value)
+                }));
+            };
+
+            const handleCustomPreferedGenderChange = (customValue, genderIdentityIndex) => {
+                setProfile(prev => ({
+                    ...prev,
+                    preferedGenderIdentity: prev.preferedGenderIdentity.map((item, index) => 
+                        index === genderIdentityIndex && item.genderIdentityEnum === 'CUSTOM'
+                            ? { ...item, customGenderIdentity: customValue }
+                            : item
+                    )
                 }));
             };
 
@@ -248,6 +259,7 @@
                 delete finalProfile.customGenderIdentity;
                 delete finalProfile.customInterest;
                 delete finalProfile.customPreferedInterest;
+                delete finalProfile.customPreferedGenderIdentities;
                 
                 try {
                     const response = await fetch('/api/match', {
@@ -397,18 +409,40 @@
                                 <label className="block text-gray-700 font-semibold mb-2">Preferred Gender Identities</label>
                                 <div className="grid md:grid-cols-3 gap-2">
                                     {Object.entries(GenderIdentityEnum).map(([key, value]) => (
-                                        <div key={key} className="flex items-center">
-                                            <input 
-                                                type="checkbox" 
-                                                id={`prefered-${key}`}
-                                                value={key}
-                                                checked={profile.preferedGenderIdentity.some(
-                                                    item => item.genderIdentityEnum === key
-                                                )}
-                                                onChange={handlePreferedGenderChange}
-                                                className="mr-2 text-purple-600 focus:ring-purple-500"
-                                            />
-                                            <label htmlFor={`prefered-${key}`}>{value}</label>
+                                        <div key={key} className="flex flex-col">
+                                            <div className="flex items-center">
+                                                <input 
+                                                    type="checkbox" 
+                                                    id={`prefered-${key}`}
+                                                    value={key}
+                                                    checked={profile.preferedGenderIdentity.some(
+                                                        item => item.genderIdentityEnum === key
+                                                    )}
+                                                    onChange={handlePreferedGenderChange}
+                                                    className="mr-2 text-purple-600 focus:ring-purple-500"
+                                                />
+                                                <label htmlFor={`prefered-${key}`}>{value}</label>
+                                            </div>
+                                            {key === 'CUSTOM' && profile.preferedGenderIdentity.some(
+                                                item => item.genderIdentityEnum === 'CUSTOM'
+                                            ) && (
+                                                <div className="mt-2 ml-6">
+                                                    {profile.preferedGenderIdentity
+                                                        .map((item, index) => item.genderIdentityEnum === 'CUSTOM' ? index : null)
+                                                        .filter(index => index !== null)
+                                                        .map(index => (
+                                                            <input
+                                                                key={index}
+                                                                type="text"
+                                                                value={profile.preferedGenderIdentity[index].customGenderIdentity || ''}
+                                                                onChange={(e) => handleCustomPreferedGenderChange(e.target.value, index)}
+                                                                placeholder="Enter custom gender identity"
+                                                                className="w-full px-3 py-1 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 mb-2"
+                                                            />
+                                                        ))
+                                                    }
+                                                </div>
+                                            )}
                                         </div>
                                     ))}
                                 </div>
