@@ -9,8 +9,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import org.ntut.dei.models.GenderIdentity;
+import org.ntut.dei.models.PreferenceProfile;
+import org.ntut.dei.models.PreferenceProfileBuilder;
 import org.ntut.dei.models.SexualOrientation;
 import org.ntut.dei.models.User;
+import org.ntut.dei.models.UserFactory;
+import org.ntut.dei.models.UserProfile;
+import org.ntut.dei.models.UserProfileBuilder;
 
 import java.util.List;
 
@@ -74,5 +79,41 @@ public class UserData {
         userData.setPreferedMaxAge(user.getUserProfile().getPreferenceProfile().getPreferedAgeRange().getMaxAge());
         userData.setPremium(user.isPremium());
         return userData;
+    }
+
+    // toUser method
+    public User toUser() {
+        UserProfileBuilder userProfileBuilder = new UserProfileBuilder();
+        PreferenceProfileBuilder preferenceProfileBuilder = new PreferenceProfileBuilder();
+
+        userProfileBuilder.setName(name);
+        userProfileBuilder.setAge(age);
+        userProfileBuilder.setGenderIdentity(genderIdentity);
+        if (sexualOrientation != null) {
+            userProfileBuilder.setSexualOrientation(sexualOrientation);
+        }
+        if (bio != null) {
+            userProfileBuilder.setBio(bio);
+        }
+        if (interests != null) {
+            userProfileBuilder.setInterests(interests);
+        }
+        if (preferedGenderIdentity != null) {
+            preferenceProfileBuilder.setPreferedGenderIdentity(preferedGenderIdentity);
+        }
+        if (preferedMinAge != 0) {
+            preferenceProfileBuilder.setAgeRange(preferedMinAge, preferedMaxAge);
+        }
+        if (preferedInterests != null) {
+            preferenceProfileBuilder.setPreferedInterests(preferedInterests);
+        }
+
+        UserProfile userProfile = userProfileBuilder.build();
+        PreferenceProfile preferenceProfile = preferenceProfileBuilder.build();
+        userProfile.setPreferenceProfile(preferenceProfile);
+
+        User user = UserFactory.createUser(name, userProfile, premium);
+
+        return user;
     }
 }
