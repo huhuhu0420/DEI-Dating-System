@@ -14,8 +14,11 @@ public class InterestSpecification extends AbstractSpecification<UserProfile> {
     @Override
     public boolean isSatisfiedBy(UserProfile candidate) {
         List<String> candidateInterests = candidate.getInterests();
-        for (String interest : interests) {
-            if (candidateInterests.contains(interest)) {
+        if (interests.isEmpty()) {
+            return true;
+        }
+        for (String candidateInterest : candidateInterests) {
+            if (interests.contains(candidateInterest)) {
                 return true;
             }
         }
