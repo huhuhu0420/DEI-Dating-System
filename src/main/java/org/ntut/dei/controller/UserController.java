@@ -15,7 +15,7 @@ import org.ntut.dei.models.UserProfileBuilder;
 
 public class UserController {
     public List<UserData> match(UserData userRequest) {
-        User user = createUser(userRequest);
+        User user = requestToUser(userRequest);
         List<User> users = UserFactory.getUsers();
 
         String matchStrategy = userRequest.getMatchStrategy();
@@ -45,7 +45,7 @@ public class UserController {
         return matchedUsers;
     }
 
-    public User createUser(UserData userRequest) {
+    private User requestToUser(UserData userRequest) {
         UserProfileBuilder userProfileBuilder = new UserProfileBuilder();
         PreferenceProfileBuilder preferenceProfileBuilder = new PreferenceProfileBuilder();
 
@@ -76,6 +76,13 @@ public class UserController {
         userProfile.setPreferenceProfile(preferenceProfile);
 
         User user = UserFactory.createUser(userRequest.getName(), userProfile, false);
+
+        return user;
+
+    }
+
+    public User createUser(UserData userRequest) {
+        User user = requestToUser(userRequest);
         UserFactory.addUser(user);
         return user;
     }

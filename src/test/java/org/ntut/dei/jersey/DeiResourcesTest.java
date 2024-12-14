@@ -11,8 +11,11 @@ import org.junit.jupiter.api.Test;
 import org.ntut.dei.dto.UserData;
 import org.ntut.dei.models.GenderIdentity;
 import org.ntut.dei.models.GenderIdentityEnum;
+import org.ntut.dei.models.SexualOrientation;
 import org.ntut.dei.models.User;
 import org.ntut.dei.models.UserFactory;
+import org.ntut.dei.models.UserProfile;
+import org.ntut.dei.models.UserProfileBuilder;
 
 import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.Response;
@@ -21,7 +24,7 @@ class MatchResourceTest extends JerseyTest {
 
     @Override
     protected Application configure() {
-        return new ResourceConfig(DeiResources.class); // Replace with your resource
+        return new ResourceConfig(DeiResources.class);
     }
 
     @BeforeEach
@@ -36,6 +39,12 @@ class MatchResourceTest extends JerseyTest {
         userRequest.setName("Alice");
         userRequest.setAge(25);
         userRequest.setGenderIdentity(new GenderIdentity(GenderIdentityEnum.FEMALE));
+        userRequest.setSexualOrientation(SexualOrientation.HETEROSEXUAL);
+
+        UserProfile userProfile = new UserProfileBuilder().setName("Bob").setAge(25)
+                .setGenderIdentity(new GenderIdentity(GenderIdentityEnum.MALE))
+                .setSexualOrientation(SexualOrientation.HETEROSEXUAL).build();
+        UserFactory.addUser(UserFactory.createUser(userProfile, false));
 
         // Send a POST request to the match endpoint
         Response response = target("/api/match").request().post(jakarta.ws.rs.client.Entity.json(userRequest));
@@ -47,7 +56,7 @@ class MatchResourceTest extends JerseyTest {
         @SuppressWarnings("unchecked")
         List<String> responseBody = response.readEntity(List.class);
         System.err.println(responseBody);
-        assertEquals(0, responseBody.size(), "Expected an empty response list");
+        assertEquals(1, responseBody.size(), "Expected an empty response list");
     }
 
     @Test
