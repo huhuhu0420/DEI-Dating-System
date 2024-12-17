@@ -17,10 +17,8 @@ public class UserController {
         String matchStrategy = userRequest.getMatchStrategy();
         MatchingEngine matchingEngine = new MatchingEngine(users);
 
-        if (matchStrategy != null) {
-            if (matchStrategy.equals("custom")) {
-                matchingEngine.setMatchStrategy(new BiDirectionalStrategy());
-            }
+        if (matchStrategy.equals("bidirectional")) {
+            matchingEngine.setMatchStrategy(new BiDirectionalStrategy());
         }
 
         List<User> matches = matchingEngine.match(user);
