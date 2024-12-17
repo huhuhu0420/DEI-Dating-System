@@ -21,6 +21,9 @@ public class GenderIdentity {
     }
 
     public String getGenderIdentity() {
+        if (genderIdentity == null) {
+            return genderIdentityEnum.getDisplayName();
+        }
         return genderIdentity;
     }
 
