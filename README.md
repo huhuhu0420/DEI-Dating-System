@@ -32,7 +32,66 @@ Key Features:
 
 ## Technique
 
+* Jersey: RESTful Web Services
+* Jetty: HTTP Server
+* SLF4J: Logging
+* React, Tailwind CSS: Frontend
+
 ## Design Patterns Summary & Storyboard
+
+### Builder Pattern
+
+Since the user profile in the DEI Dating System can be complex and contain multiple attributes, we use the Builder Pattern to create user profiles in a step-by-step manner. The builder pattern allows us to construct user profiles with different attributes and configurations, making it easy to create profiles with varying levels of detail.
+
+```java
+UserProfile alexProfile = new UserProfileBuilder()
+                                .setName("Alex")
+                                .setAge(20)
+                                .setGenderIdentityWithEnum(GenderIdentityEnum.MALE)
+                                .setSexualOrientation(SexualOrientation.HETEROSEXUAL)
+                                .setInterests(List.of("Music"))
+                                .build();
+```
+
+### Factory Method Pattern
+
+The Factory Method Pattern is used to create instances of different types of users in the DEI Dating System. For example, we have different types of users such as basic users and premium users. By using the Factory Method Pattern, we can define a factory class that creates instances of these user types based on the user's role.
+
+```java
+UserFactory factory = new UserFactory();
+UserProfile alexProfile = new UserProfileBuilder().build();
+User basicUser = factory.createUser(alexProfile, false);
+User premiumUser = factory.createUser(alexProfile, true);
+```
+
+### Specification Pattern
+
+In the DEI Dating System, users can specify their preferences for potential matches, including age range, interests, and other criteria. With the Specification Pattern, we can create a set of specifications that represent different preferences. These specifications can be combined using logical operators such as AND, OR to create more complex criteria. 
+
+For example, a user may specify that they are looking for matches who are interested in hiking and are within a certain age range. We can create such specifications like below:
+
+```java
+Specification<UserProfile> interestSpec = new InterestSpecification("hiking");
+Specification<UserProfile> ageSpec = new AgeRangeSpecification(25, 35);
+Specification<UserProfile> combinedSpec = interestSpec.and(ageSpec);
+```
+![img.png](images/specification.png)
+
+### Strategy Pattern
+
+The matching algorithm is a crucial component of the DEI Dating System. By using the Strategy Pattern, we can define multiple algorithms for matching users based on different criteria. For instance, we have default matching algorithm and bi-directional matching algorithm. The system can switch between these algorithms at runtime, allowing users to choose the one that best suits their preferences.
+
+![img.png](images/Strategy.png)
+
+### MVC Architecture
+
+Implement UserController to handle user requests from jersey and interact with the model.
+
+### DTO Pattern
+
+The Data Transfer Object (DTO) Pattern is used to transfer data between the client and server in a structured and efficient manner. In the DEI Dating System, we define DTO classes to represent user profiles, preferences, and other data. These DTOs are serialized and deserialized to facilitate communication between the frontend and backend components.
+
+reference: [Patterns of Enterprise Application Architecture](https://martinfowler.com/eaaCatalog/dataTransferObject.html)
 
 ## Design Patterns in Our Code
 
