@@ -92,7 +92,8 @@
     ],
     "preferedInterests": ["Cooking", "Gaming"],
     "preferedMinAge": 28,
-    "preferedMaxAge": 38
+    "preferedMaxAge": 38,
+    "premium": true
   },
   {
     "name": "Olivia Brown",
@@ -248,7 +249,8 @@
     "name": "Isabella Walker",
     "age": 29,
     "genderIdentity": {
-      "genderIdentityEnum": "FEMALE"
+      "genderIdentityEnum": "CUSTOM",
+      "customGenderIdentity": "Zebra"
     },
     "sexualOrientation": "BISEXUAL",
     "bio": "Enjoys painting and exploring new cuisines.",
@@ -306,16 +308,11 @@
     "name": "William Clark",
     "age": 34,
     "genderIdentity": {
-      "genderIdentityEnum": "MALE"
+      "genderIdentityEnum": "CUSTOM",
+      "customGenderIdentity": "Linux Kernel"
     },
     "sexualOrientation": "HETEROSEXUAL",
     "bio": "Enjoys cycling and technology.",
-    "interests": ["Cycling", "Technology"],
-    "preferedGenderIdentity": [
-      {
-        "genderIdentityEnum": "FEMALE"
-      }
-    ],
     "preferedInterests": ["Gaming", "Reading"],
     "preferedMinAge": 32,
     "preferedMaxAge": 40
@@ -328,7 +325,6 @@
     },
     "sexualOrientation": "ASEXUAL",
     "bio": "Passionate about animal rights and volunteering.",
-    "interests": ["Animal Rights", "Volunteering"],
     "preferedGenderIdentity": [
       {
         "genderIdentityEnum": "MALE"
@@ -365,7 +361,6 @@
     },
     "sexualOrientation": "BISEXUAL",
     "bio": "Loves graphic design and video editing.",
-    "interests": ["Graphic Design", "Video Editing"],
     "preferedGenderIdentity": [
       {
         "genderIdentityEnum": "AGENDER"
@@ -437,7 +432,6 @@
     },
     "sexualOrientation": "BISEXUAL",
     "bio": "Passionate about music and live performances.",
-    "interests": ["Music", "Live Performances"],
     "preferedGenderIdentity": [
       {
         "genderIdentityEnum": "FEMALE"
@@ -461,7 +455,6 @@
         "genderIdentityEnum": "FEMALE"
       }
     ],
-    "preferedInterests": ["Coding", "Fitness"],
     "preferedMinAge": 20,
     "preferedMaxAge": 28
   },
@@ -497,7 +490,6 @@
         "genderIdentityEnum": "FEMALE"
       }
     ],
-    "preferedInterests": ["Gardening", "Cycling"],
     "preferedMinAge": 25,
     "preferedMaxAge": 35
   },
@@ -551,7 +543,6 @@
         "genderIdentityEnum": "MALE"
       }
     ],
-    "preferedInterests": ["Meditation", "Reading"],
     "preferedMinAge": 23,
     "preferedMaxAge": 30,
     "premium": true
@@ -565,11 +556,6 @@
     "sexualOrientation": "HETEROSEXUAL",
     "bio": "Fitness coach and nutrition expert.",
     "interests": ["Fitness Coaching", "Nutrition"],
-    "preferedGenderIdentity": [
-      {
-        "genderIdentityEnum": "FEMALE"
-      }
-    ],
     "preferedInterests": ["Cooking", "Traveling"],
     "preferedMinAge": 25,
     "preferedMaxAge": 35
@@ -582,12 +568,6 @@
     },
     "sexualOrientation": "QUEER",
     "bio": "Enjoys dancing and performing arts.",
-    "interests": ["Dancing", "Performing Arts"],
-    "preferedGenderIdentity": [
-      {
-        "genderIdentityEnum": "NON_BINARY"
-      }
-    ],
     "preferedInterests": ["Music", "Traveling"],
     "preferedMinAge": 20,
     "preferedMaxAge": 28,
@@ -620,12 +600,6 @@
     "sexualOrientation": "BISEXUAL",
     "bio": "Passionate about cooking and baking.",
     "interests": ["Cooking", "Baking"],
-    "preferedGenderIdentity": [
-      {
-        "genderIdentityEnum": "AGENDER"
-      }
-    ],
-    "preferedInterests": ["Reading", "Traveling"],
     "preferedMinAge": 25,
     "preferedMaxAge": 35,
     "premium": true
@@ -730,12 +704,6 @@
     "sexualOrientation": "DEMISEXUAL",
     "bio": "Passionate about sustainability and eco-friendly living.",
     "interests": ["Sustainability", "Eco-friendly Living"],
-    "preferedGenderIdentity": [
-      {
-        "genderIdentityEnum": "FEMALE"
-      }
-    ],
-    "preferedInterests": ["Gardening", "Cycling"],
     "preferedMinAge": 25,
     "preferedMaxAge": 35
   },
