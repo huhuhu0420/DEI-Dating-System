@@ -32,12 +32,46 @@ Key Features:
 
 ## Technique
 
-* Jersey: RESTful Web Services
-* Jetty: HTTP Server
-* SLF4J: Logging
-* React, Tailwind CSS: Frontend
+- Jersey: RESTful Web Services
+- Jetty: HTTP Server
+- SLF4J: Logging
+- React, Tailwind CSS: Frontend
 
 ## Design Patterns Summary & Storyboard
+
+### Singleton Pattern
+
+There are various of gender identities and sexual orientations in the DEI Dating System, and we need to handle complex relationships between them. We use the Singleton Pattern to initialize the default relationships between gender identities and sexual orientations. This ensures that there is only one instance of the relationship manager throughout the application.
+
+```java
+public enum GenderIdentityEnum {
+    MALE("Male"),
+    FEMALE("Female"),
+    NON_BINARY("Non-binary"),
+    GENDERQUEER("Genderqueer"),
+    AGENDER("Agender"),
+    TRANSGENDER("Transgender"),
+    GENDER_FLUID("Gender fluid"),
+    TWO_SPIRIT("Two-spirit"),
+    OTHER("Other"),
+    CUSTOM("");
+}
+```
+
+```java
+public enum SexualOrientation {
+    HETEROSEXUAL,
+    HOMOSEXUAL,
+    BISEXUAL,
+    PANSEXUAL,
+    ASEXUAL,
+    DEMISEXUAL,
+    QUEER,
+    OTHER,
+}
+```
+
+![img.png](images/singleton.png)
 
 ### Builder Pattern
 
@@ -66,7 +100,7 @@ User premiumUser = factory.createUser(alexProfile, true);
 
 ### Specification Pattern
 
-In the DEI Dating System, users can specify their preferences for potential matches, including age range, interests, and other criteria. With the Specification Pattern, we can create a set of specifications that represent different preferences. These specifications can be combined using logical operators such as AND, OR to create more complex criteria. 
+In the DEI Dating System, users can specify their preferences for potential matches, including age range, interests, and other criteria. With the Specification Pattern, we can create a set of specifications that represent different preferences. These specifications can be combined using logical operators such as AND, OR to create more complex criteria.
 
 For example, a user may specify that they are looking for matches who are interested in hiking and are within a certain age range. We can create such specifications like below:
 
@@ -75,6 +109,7 @@ Specification<UserProfile> interestSpec = new InterestSpecification("hiking");
 Specification<UserProfile> ageSpec = new AgeRangeSpecification(25, 35);
 Specification<UserProfile> combinedSpec = interestSpec.and(ageSpec);
 ```
+
 ![img.png](images/specification.png)
 
 ### Strategy Pattern
