@@ -5,7 +5,7 @@ import java.util.List;
 import org.ntut.dei.models.GenderIdentity;
 import org.ntut.dei.models.UserProfile;
 
-public class IdentitySpecification extends AbstractSpecification<UserProfile> {
+public class IdentitySpecification implements Specification<UserProfile> {
     private List<GenderIdentity> preferedGenderIdentities;
 
     public IdentitySpecification(List<GenderIdentity> preferedGenderIdentities) {

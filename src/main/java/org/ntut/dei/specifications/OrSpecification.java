@@ -1,6 +1,6 @@
 package org.ntut.dei.specifications;
 
-public class OrSpecification<T> extends AbstractSpecification<T> {
+public class OrSpecification<T> implements Specification<T> {
     private Specification<T> leftSpecification;
     private Specification<T> rightSpecification;
 
