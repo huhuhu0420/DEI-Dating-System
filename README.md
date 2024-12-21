@@ -54,7 +54,7 @@ public enum GenderIdentityEnum {
     GENDER_FLUID("Gender fluid"),
     TWO_SPIRIT("Two-spirit"),
     OTHER("Other"),
-    CUSTOM("");
+    CUSTOM("Custom");
 }
 ```
 
@@ -97,6 +97,8 @@ UserProfile alexProfile = new UserProfileBuilder().build();
 User basicUser = factory.createUser(alexProfile, false);
 User premiumUser = factory.createUser(alexProfile, true);
 ```
+
+![img.png](images/factory.png)
 
 ### Specification Pattern
 
