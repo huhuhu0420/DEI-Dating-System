@@ -2,7 +2,7 @@ package org.ntut.dei.specifications;
 
 import org.ntut.dei.models.UserProfile;
 
-public class AgeRangeSpecification extends AbstractSpecification<UserProfile> {
+public class AgeRangeSpecification implements Specification<UserProfile> {
     private int minAge;
     private int maxAge;
 

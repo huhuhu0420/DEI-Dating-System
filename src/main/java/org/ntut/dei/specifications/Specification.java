@@ -3,10 +3,11 @@ package org.ntut.dei.specifications;
 public interface Specification<T> {
     boolean isSatisfiedBy(T candidate);
 
-    Specification<T> and(Specification<T> other);
+    default Specification<T> and(Specification<T> other) {
+        return new AndSpecification<>(this, other);
+    }
 
-    Specification<T> or(Specification<T> other);
-
-    Specification<T> not();
-
+    default Specification<T> or(Specification<T> other) {
+        return new OrSpecification<>(this, other);
+    }
 }
