@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.ntut.dei.models.UserProfile;
 
-public class InterestSpecification extends AbstractSpecification<UserProfile> {
+public class InterestSpecification implements Specification<UserProfile> {
     private List<String> interests;
 
     public InterestSpecification(List<String> interests) {

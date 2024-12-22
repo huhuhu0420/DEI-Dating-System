@@ -15,7 +15,7 @@ logging.basicConfig(
 )
 
 # Path to the JSON file containing user profiles
-json_file_path = 'request.json'
+json_file_path = os.path.join(os.path.dirname(__file__), 'request.json')
 
 # Check if the JSON file exists
 if not os.path.exists(json_file_path):
