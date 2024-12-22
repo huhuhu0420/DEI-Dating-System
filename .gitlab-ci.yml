@@ -44,11 +44,18 @@ e2e_tests:
   stage: e2e
   image: docker:20.10.16
   services:
-    - docker:20.10.16-dind
+    - name: docker:20.10.16-dind
+      alias: docker
+      command: ["--tls=false"]
   variables:
+  variables:
+    DOCKER_HOST: "tcp://docker:2375"
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_DRIVER: overlay2
     PYTHON_VERSION: "3.9"
     NEWMAN_VERSION: "5.3.2"
   before_script:
+    - until docker info; do echo "Waiting for docker to be ready..."; sleep 1; done
     # Install required tools
     - apk add --no-cache python3 py3-pip docker-compose nodejs npm
     # Install Newman (Postman CLI)
