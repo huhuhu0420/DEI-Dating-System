@@ -11,8 +11,8 @@ import jakarta.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ntut.dei.controller.UserController;
 import org.ntut.dei.dto.UserData;
+import org.ntut.dei.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +27,7 @@ public class DeiResources {
     public Response match(@Valid UserData userRequest) {
         logger.info("matching users...");
         List<UserData> response = new ArrayList<>();
-        response = new UserController().match(userRequest);
+        response = new UserService().match(userRequest);
         return Response.ok(response).build();
     }
 
@@ -36,7 +36,7 @@ public class DeiResources {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createUser(@Valid UserData userRequest) {
         logger.info("creating user...");
-        new UserController().createUser(userRequest);
+        new UserService().createUser(userRequest);
         return Response.ok().build();
     }
 }

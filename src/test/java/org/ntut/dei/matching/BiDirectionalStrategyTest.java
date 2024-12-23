@@ -13,6 +13,7 @@ import org.ntut.dei.models.SexualOrientation;
 import org.ntut.dei.models.User;
 import org.ntut.dei.models.UserProfile;
 import org.ntut.dei.models.UserProfileBuilder;
+import org.ntut.dei.specifications.SpecificationBuilder;
 
 public class BiDirectionalStrategyTest {
 
@@ -52,7 +53,8 @@ public class BiDirectionalStrategyTest {
 
     @Test
     public void testMatch() {
-        List<User> matches = matchStrategy.match(user, candidates);
+        SpecificationBuilder specificationBuilder = new SpecificationBuilder();
+        List<User> matches = matchStrategy.match(user, candidates, specificationBuilder);
         assertEquals(0, matches.size());
     }
 }

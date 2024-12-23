@@ -17,6 +17,7 @@ import org.ntut.dei.models.User;
 import org.ntut.dei.models.UserFactory;
 import org.ntut.dei.models.UserProfile;
 import org.ntut.dei.models.UserProfileBuilder;
+import org.ntut.dei.specifications.SpecificationBuilder;
 
 public class IntegrationTest {
         @Test
@@ -67,13 +68,15 @@ public class IntegrationTest {
 
                 List<User> users = List.of(alex, alice, bob);
 
+                SpecificationBuilder specificationBuilder = new SpecificationBuilder();
+
                 MatchingEngine engine = new MatchingEngine(users);
                 engine.setMatchStrategy(new BiDirectionalStrategy());
-                List<User> matches = engine.match(alex);
+                List<User> matches = engine.match(alex, specificationBuilder);
                 assertEquals(1, matches.size());
 
                 engine.setMatchStrategy(new DefaultMatchStrategy());
-                matches = engine.match(alex);
+                matches = engine.match(alex, specificationBuilder);
                 assertEquals(2, matches.size());
                 assertTrue(matches.get(0).isPremium());
 
