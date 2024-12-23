@@ -9,6 +9,8 @@ import org.ntut.dei.matching.BiDirectionalStrategy;
 import org.ntut.dei.matching.MatchingEngine;
 import org.ntut.dei.models.User;
 import org.ntut.dei.models.UserFactory;
+import org.ntut.dei.specifications.Specification;
+import org.ntut.dei.specifications.SpecificationBuilder;
 
 public class UserService {
     public List<UserData> match(UserData userRequest) {
@@ -22,7 +24,9 @@ public class UserService {
             matchingEngine.setMatchStrategy(new BiDirectionalStrategy());
         }
 
-        List<User> matches = matchingEngine.match(user);
+        SpecificationBuilder specificationBuilder = new SpecificationBuilder();
+
+        List<User> matches = matchingEngine.match(user, specificationBuilder);
 
         // sort with user.isPremium()
         matches.sort((u1, u2) -> {
