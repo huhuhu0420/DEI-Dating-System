@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.ntut.dei.dto.UserData;
+import org.ntut.dei.dto.UserMapper;
 import org.ntut.dei.matching.BiDirectionalStrategy;
 import org.ntut.dei.matching.MatchingEngine;
 import org.ntut.dei.models.User;
@@ -11,7 +12,7 @@ import org.ntut.dei.models.UserFactory;
 
 public class UserController {
     public List<UserData> match(UserData userRequest) {
-        User user = userRequest.toUser();
+        User user = UserMapper.toEntity(userRequest);
         List<User> users = UserFactory.getUsers();
 
         String matchStrategy = userRequest.getMatchStrategy();
@@ -33,13 +34,13 @@ public class UserController {
             return 0;
         });
 
-        List<UserData> matchedUsers = matches.stream().map(UserData::fromUser).collect(Collectors.toList());
+        List<UserData> matchedUsers = matches.stream().map(UserMapper::toDTO).collect(Collectors.toList());
 
         return matchedUsers;
     }
 
     public User createUser(UserData userRequest) {
-        User user = userRequest.toUser();
+        User user = UserMapper.toEntity(userRequest);
         UserFactory.addUser(user);
         return user;
     }
