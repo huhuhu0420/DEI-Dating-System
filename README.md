@@ -8,6 +8,12 @@ Team members:
 - 112598061 許喬睿
 - 110590001 郭丞軒
 
+## Disclaimer
+
+1. The original intention of this project is to promote inclusivity and diversity. We sincerely apologize if any content is perceived as inappropriate or offensive, as this was never our intent.
+
+2. This project should integrate with Database, but I'm too lazy to do that... so there might be some weird functions in the code.
+
 ## Problem Statement
 
 Traditional dating applications often fail to accommodate the diverse spectrum of sexual orientations and gender identities, leaving many users unable to find suitable matches or fully express their authentic selves. This lack of inclusivity creates a barrier to meaningful connections and equitable participation in online dating platforms.
@@ -43,6 +49,8 @@ Key Features:
 
 There are various of gender identities and sexual orientations in the DEI Dating System, and we need to handle complex relationships between them. We use the Singleton Pattern to initialize the default relationships between gender identities and sexual orientations. This ensures that there is only one instance of the relationship manager throughout the application.
 
+Intricate relationships:
+
 ```java
 public enum GenderIdentityEnum {
     MALE("Male"),
@@ -71,6 +79,23 @@ public enum SexualOrientation {
 }
 ```
 
+Default mappings:
+
+```java
+    private void initializeDefaultMappings() {
+        defaultMappings.put(SexualOrientation.HETEROSEXUAL, this::getOppositeGender);
+        defaultMappings.put(SexualOrientation.HOMOSEXUAL, this::getSameGender);
+        defaultMappings.put(SexualOrientation.BISEXUAL,
+                gender -> List.of(new GenderIdentity(GenderIdentityEnum.MALE),
+                        new GenderIdentity(GenderIdentityEnum.FEMALE)));
+        defaultMappings.put(SexualOrientation.PANSEXUAL, gender -> this.getAllGenderIdentities());
+        defaultMappings.put(SexualOrientation.ASEXUAL, gender -> this.getAllGenderIdentities());
+        defaultMappings.put(SexualOrientation.DEMISEXUAL, gender -> this.getAllGenderIdentities());
+        defaultMappings.put(SexualOrientation.QUEER, gender -> this.getAllGenderIdentities());
+        defaultMappings.put(SexualOrientation.OTHER, gender -> this.getAllGenderIdentities());
+    }
+```
+
 ![img.png](images/singleton.png)
 
 ### Builder Pattern
@@ -86,6 +111,8 @@ UserProfile alexProfile = new UserProfileBuilder()
                                 .setInterests(List.of("Music"))
                                 .build();
 ```
+
+![img.png](images/builder.png)
 
 ### Factory Method Pattern
 
@@ -124,11 +151,22 @@ The matching algorithm is a crucial component of the DEI Dating System. By using
 
 Implement UserController to handle user requests from jersey and interact with the model.
 
+![img.png](images/mvc.png)
+
 ### DTO Pattern
 
 The Data Transfer Object (DTO) Pattern is used to transfer data between the client and server in a structured and efficient manner. In the DEI Dating System, we define DTO classes to represent user profiles, preferences, and other data. These DTOs are serialized and deserialized to facilitate communication between the frontend and backend components.
 
+![img.png](images/dto.png)
+
 reference: [Patterns of Enterprise Application Architecture](https://martinfowler.com/eaaCatalog/dataTransferObject.html)
+
+### Summary
+
+![img.png](images/summary.png)
+
+![img.png](images/story1.png)
+![img.png](images/story2.png)
 
 ## Design Patterns in Our Code
 
