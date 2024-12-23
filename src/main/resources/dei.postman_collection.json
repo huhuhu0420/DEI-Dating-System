@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "4e1d191c-634e-4b53-b281-ac148d3e75bc",
+		"name": "dei",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23531552"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check response length\", function () {",
+							"     var responseData = pm.response.json();",
+							"     // Ensure the response is an array",
+							"    pm.expect(responseData).to.be.an('array');",
+							"    ",
+							"    // Check if the length equals the expected value",
+							"    const expectedLength = 7; // Replace this with your expected length",
+							"    pm.expect(responseData.length, `List length should be ${expectedLength}`).to.equal(expectedLength);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"jon\",\"age\":\"30\",\"genderIdentity\":{\"genderIdentityEnum\":\"MALE\"},\"sexualOrientation\":\"HETEROSEXUAL\",\"bio\":\"\",\"interests\":[],\"preferedGenderIdentity\":[{\"genderIdentityEnum\":\"MALE\"},{\"genderIdentityEnum\":\"FEMALE\"}],\"preferedInterests\":[],\"preferedMinAge\":\"20\",\"preferedMaxAge\":\"25\",\"matchStrategy\":\"default\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/match",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"match"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"check response length\", function () {",
+							"     var responseData = pm.response.json();",
+							"     // Ensure the response is an array",
+							"    pm.expect(responseData).to.be.an('array');",
+							"    ",
+							"    // Check if the length equals the expected value",
+							"    const expectedLength = 3; // Replace this with your expected length",
+							"    pm.expect(responseData.length, `List length should be ${expectedLength}`).to.equal(expectedLength);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"alice\",\"age\":\"25\",\"genderIdentity\":{\"genderIdentityEnum\":\"FEMALE\"},\"sexualOrientation\":\"BISEXUAL\",\"bio\":\"\",\"interests\":[\"Cooking\"],\"preferedGenderIdentity\":[],\"preferedInterests\":[],\"preferedMinAge\":\"\",\"preferedMaxAge\":\"\",\"matchStrategy\":\"bidirectional\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/match",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"match"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8080",
+			"type": "default"
+		}
+	]
+}
