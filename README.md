@@ -170,10 +170,10 @@ reference: [Patterns of Enterprise Application Architecture](https://martinfowle
 
 ## Design Patterns in Our Code
 
-1. Builder
-2. Decorator
-3. Specification
-4. Strategy
-5. Observer
-6. Singleton
-7. Factory Method
+1. Singleton Pattern
+2. Builder Pattern
+3. Factory Method Pattern
+4. Specification Pattern
+5. Strategy Pattern
+6. MVC Architecture
+7. DTO Pattern
