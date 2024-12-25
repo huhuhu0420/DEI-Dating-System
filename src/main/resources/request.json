@@ -27,11 +27,6 @@
     "sexualOrientation": "HOMOSEXUAL",
     "bio": "Avid gardener and book lover.",
     "interests": ["Gardening", "Reading"],
-    "preferedGenderIdentity": [
-      {
-        "genderIdentityEnum": "NON_BINARY"
-      }
-    ],
     "preferedInterests": ["Yoga", "Traveling"],
     "preferedMinAge": 30,
     "preferedMaxAge": 40
@@ -45,11 +40,6 @@
     "sexualOrientation": "HETEROSEXUAL",
     "bio": "Tech enthusiast and gamer.",
     "interests": ["Coding", "Gaming"],
-    "preferedGenderIdentity": [
-      {
-        "genderIdentityEnum": "FEMALE"
-      }
-    ],
     "preferedInterests": ["Music", "Fitness"],
     "preferedMinAge": 24,
     "preferedMaxAge": 35
@@ -122,11 +112,6 @@
     "sexualOrientation": "HETEROSEXUAL",
     "bio": "Fitness trainer and nutrition enthusiast.",
     "interests": ["Fitness", "Nutrition"],
-    "preferedGenderIdentity": [
-      {
-        "genderIdentityEnum": "FEMALE"
-      }
-    ],
     "preferedInterests": ["Cooking", "Traveling"],
     "preferedMinAge": 24,
     "preferedMaxAge": 32
@@ -260,7 +245,6 @@
         "genderIdentityEnum": "NON_BINARY"
       }
     ],
-    "preferedInterests": ["Traveling", "Photography"],
     "preferedMinAge": 25,
     "preferedMaxAge": 35
   },
@@ -299,7 +283,6 @@
         "genderIdentityEnum": "GENDERQUEER"
       }
     ],
-    "preferedInterests": ["Art", "Music"],
     "preferedMinAge": 20,
     "preferedMaxAge": 28,
     "premium": true
@@ -330,7 +313,7 @@
         "genderIdentityEnum": "MALE"
       }
     ],
-    "preferedInterests": ["Reading", "Hiking"],
+    "preferedInterests": [],
     "preferedMinAge": 25,
     "preferedMaxAge": 30,
     "premium": true
@@ -349,7 +332,6 @@
         "genderIdentityEnum": "FEMALE"
       }
     ],
-    "preferedInterests": ["Fitness", "Traveling"],
     "preferedMinAge": 28,
     "preferedMaxAge": 38
   },
@@ -472,7 +454,6 @@
         "genderIdentityEnum": "MALE"
       }
     ],
-    "preferedInterests": ["Traveling", "Reading"],
     "preferedMinAge": 30,
     "preferedMaxAge": 42
   },
@@ -587,7 +568,6 @@
         "genderIdentityEnum": "FEMALE"
       }
     ],
-    "preferedInterests": ["Hiking", "Photography"],
     "preferedMinAge": 30,
     "preferedMaxAge": 42
   },
@@ -618,7 +598,6 @@
         "genderIdentityEnum": "FEMALE"
       }
     ],
-    "preferedInterests": ["Reading", "Traveling"],
     "preferedMinAge": 28,
     "preferedMaxAge": 40
   },
@@ -655,7 +634,6 @@
         "genderIdentityEnum": "FEMALE"
       }
     ],
-    "preferedInterests": ["Cooking", "Cycling"],
     "preferedMinAge": 25,
     "preferedMaxAge": 35
   },
@@ -721,7 +699,6 @@
         "genderIdentityEnum": "NON_BINARY"
       }
     ],
-    "preferedInterests": ["Photography", "Traveling"],
     "preferedMinAge": 22,
     "preferedMaxAge": 30
   },
@@ -739,7 +716,6 @@
         "genderIdentityEnum": "FEMALE"
       }
     ],
-    "preferedInterests": ["Fitness", "Reading"],
     "preferedMinAge": 28,
     "preferedMaxAge": 40
   }

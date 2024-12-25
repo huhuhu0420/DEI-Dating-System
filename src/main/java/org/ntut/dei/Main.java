@@ -10,6 +10,7 @@ import org.ntut.dei.models.User;
 import org.ntut.dei.models.UserFactory;
 import org.ntut.dei.models.UserProfile;
 import org.ntut.dei.models.UserProfileBuilder;
+import org.ntut.dei.specifications.SpecificationBuilder;
 import org.ntut.dei.models.GenderIdentityEnum;
 import org.ntut.dei.models.SexualOrientation;
 import org.ntut.dei.models.PreferenceProfileBuilder;
@@ -63,7 +64,8 @@ public class Main {
 
                 MatchingEngine engine = new MatchingEngine(users);
                 engine.setMatchStrategy(new BiDirectionalStrategy());
-                List<User> matches = engine.match(alex);
+                SpecificationBuilder specificationBuilder = new SpecificationBuilder();
+                List<User> matches = engine.match(alex, specificationBuilder);
 
                 System.out.println("Matches for Alex using BiDirectionalStrategy:");
                 for (User match : matches) {
@@ -71,7 +73,7 @@ public class Main {
                 }
 
                 engine.setMatchStrategy(new DefaultMatchStrategy());
-                matches = engine.match(alex);
+                matches = engine.match(alex, specificationBuilder);
 
                 System.out.println("Matches for Alex using DefaultMatchStrategy:");
                 for (User match : matches) {
