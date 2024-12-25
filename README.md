@@ -62,7 +62,7 @@ public enum GenderIdentityEnum {
     GENDER_FLUID("Gender fluid"),
     TWO_SPIRIT("Two-spirit"),
     OTHER("Other"),
-    CUSTOM("Custom");
+    CUSTOM("Custom")
 }
 ```
 
@@ -177,3 +177,216 @@ reference: [Patterns of Enterprise Application Architecture](https://martinfowle
 5. Strategy Pattern
 6. MVC Architecture
 7. DTO Pattern
+
+## Sequence Diagram
+
+### Create user
+
+```mermaid
+sequenceDiagram
+    participant DeiResources
+    participant UserService
+    participant UserMapper
+    participant UserProfileBuilder
+    participant GenderIdentity
+    participant PreferenceProfileBuilder
+    participant AgeRange
+    participant UserProfile
+    participant PreferenceProfile
+    participant UserFactory
+    participant PremiumUser
+    participant BasicUser
+
+    DeiResources->>UserService: createUser(userRequest)
+    activate UserService
+    UserService->>UserMapper: toEntity(userData)
+    activate UserMapper
+    UserMapper-->>UserService: returns User entity
+    deactivate UserMapper
+
+    UserService->>UserProfileBuilder: new()
+    activate UserProfileBuilder
+    UserProfileBuilder->>GenderIdentity: new(genderIdentity)
+    activate GenderIdentity
+    GenderIdentity-->>UserProfileBuilder: returns GenderIdentity
+    deactivate GenderIdentity
+
+    UserProfileBuilder-->>UserService: returns UserProfileBuilder
+    deactivate UserProfileBuilder
+
+    UserService->>PreferenceProfileBuilder: new()
+    activate PreferenceProfileBuilder
+    PreferenceProfileBuilder->>AgeRange: new(minAge, maxAge)
+    activate AgeRange
+    AgeRange-->>PreferenceProfileBuilder: returns AgeRange
+    deactivate AgeRange
+
+    PreferenceProfileBuilder->>PreferenceProfileBuilder: setAgeRange(min, max)
+    PreferenceProfileBuilder->>AgeRange: new(minAge, maxAge)
+    activate AgeRange
+    AgeRange-->>PreferenceProfileBuilder: returns AgeRange
+    deactivate AgeRange
+
+    PreferenceProfileBuilder-->>UserService: returns PreferenceProfileBuilder
+    deactivate PreferenceProfileBuilder
+
+    UserService->>UserProfileBuilder: build()
+    activate UserProfileBuilder
+    UserProfileBuilder->>UserProfile: new(name, age, genderIdentity, ...)
+    activate UserProfile
+    UserProfile-->>UserProfileBuilder: returns UserProfile
+    deactivate UserProfile
+    UserProfileBuilder-->>UserService: returns UserProfile
+    deactivate UserProfileBuilder
+
+    UserService->>PreferenceProfileBuilder: build()
+    activate PreferenceProfileBuilder
+    PreferenceProfileBuilder->>PreferenceProfile: new(preferredGenderIdentity, interests, ageRange)
+    activate PreferenceProfile
+    PreferenceProfile-->>PreferenceProfileBuilder: returns PreferenceProfile
+    deactivate PreferenceProfile
+    PreferenceProfileBuilder-->>UserService: returns PreferenceProfile
+    deactivate PreferenceProfileBuilder
+
+    UserService->>UserFactory: createUser(username, userProfile, isPremium)
+    activate UserFactory
+    alt isPremium == true
+        UserFactory->>PremiumUser: new(username, userProfile)
+        activate PremiumUser
+        PremiumUser-->>UserFactory: returns PremiumUser
+        deactivate PremiumUser
+    else
+        UserFactory->>BasicUser: new(username, userProfile)
+        activate BasicUser
+        BasicUser-->>UserFactory: returns BasicUser
+        deactivate BasicUser
+    end
+    UserFactory-->>UserService: returns User
+    deactivate UserFactory
+
+    UserService->>UserFactory: addUser(user)
+    deactivate UserService
+
+    Note over DeiResources,UserService: Flow of creating a new user and adding it to the system
+```
+
+### Match users
+
+```mermaid
+sequenceDiagram
+    participant DeiResources
+    participant UserService
+    participant UserMapper
+    participant UserProfileBuilder
+    participant GenderIdentity
+    participant PreferenceProfileBuilder
+    participant AgeRange
+    participant UserProfile
+    participant PreferenceProfile
+    participant UserFactory
+    participant PremiumUser
+    participant BasicUser
+    participant MatchingEngine
+    participant MatchStrategy
+    participant LambdaComparator
+    participant userMapperToDTO as "UserMapper::toDTO"
+    participant userData as "UserData"
+
+    Note left of DeiResources: DeiResources.match(userRequest)
+    DeiResources->>UserService: match(userRequest)
+    activate UserService
+
+    Note over UserService: 1) Convert DTO to <br/> User entity
+    UserService->>UserMapper: toEntity(userRequest)
+    activate UserMapper
+    UserMapper-->>UserService: returns User
+    deactivate UserMapper
+
+    Note over UserService: 2) (Optional) Build profiles <br/> (UserProfile/PreferenceProfile)
+    UserService->>UserProfileBuilder: new()
+    activate UserProfileBuilder
+    UserProfileBuilder->>GenderIdentity: new(genderIdentity)
+    activate GenderIdentity
+    GenderIdentity-->>UserProfileBuilder: returns GenderIdentity
+    deactivate GenderIdentity
+    UserProfileBuilder-->>UserService: returns UserProfileBuilder
+    deactivate UserProfileBuilder
+
+    UserService->>PreferenceProfileBuilder: new()
+    activate PreferenceProfileBuilder
+    PreferenceProfileBuilder->>AgeRange: new(minAge, maxAge)
+    activate AgeRange
+    AgeRange-->>PreferenceProfileBuilder: returns AgeRange
+    deactivate AgeRange
+
+    PreferenceProfileBuilder->>PreferenceProfileBuilder: setAgeRange(min, max)
+    PreferenceProfileBuilder->>AgeRange: new(minAge, maxAge)
+    activate AgeRange
+    AgeRange-->>PreferenceProfileBuilder: returns AgeRange
+    deactivate AgeRange
+    PreferenceProfileBuilder-->>UserService: returns PreferenceProfileBuilder
+    deactivate PreferenceProfileBuilder
+
+    UserService->>UserProfileBuilder: build()
+    activate UserProfileBuilder
+    UserProfileBuilder->>UserProfile: new(name, age, genderIdentity, orientation, bio, interests)
+    activate UserProfile
+    UserProfile-->>UserProfileBuilder: returns UserProfile
+    deactivate UserProfile
+    UserProfileBuilder-->>UserService: returns UserProfile
+    deactivate UserProfileBuilder
+
+    UserService->>PreferenceProfileBuilder: build()
+    activate PreferenceProfileBuilder
+    PreferenceProfileBuilder->>PreferenceProfile: new(genderIdentities, interests, ageRange)
+    activate PreferenceProfile
+    PreferenceProfile-->>PreferenceProfileBuilder: returns PreferenceProfile
+    deactivate PreferenceProfile
+    PreferenceProfileBuilder-->>UserService: returns PreferenceProfile
+    deactivate PreferenceProfileBuilder
+
+    Note over UserService: 3) Create final User object <br/> (basic or premium)
+    UserService->>UserFactory: createUser(username, userProfile, isPremium)
+    activate UserFactory
+    alt isPremium == true
+        UserFactory->>PremiumUser: new(username, userProfile)
+        activate PremiumUser
+        PremiumUser-->>UserFactory: returns PremiumUser
+        deactivate PremiumUser
+    else
+        UserFactory->>BasicUser: new(username, userProfile)
+        activate BasicUser
+        BasicUser-->>UserFactory: returns BasicUser
+        deactivate BasicUser
+    end
+    UserFactory-->>UserService: returns User
+    deactivate UserFactory
+
+    Note over UserService: 4) Matching flow
+    UserService->>MatchingEngine: new(candidates)
+    activate MatchingEngine
+
+    MatchingEngine->>MatchingEngine: match(user, specificationBuilder)
+    activate MatchStrategy
+    MatchStrategy-->>MatchingEngine: returns matchedUsers
+    deactivate MatchStrategy
+
+    MatchingEngine-->>UserService: returns matchedUsers
+    deactivate MatchingEngine
+
+    Note over UserService: 5) Sort or compare matches <br/> using a lambda
+    UserService->>LambdaComparator: compare(u1, u2)
+    activate LambdaComparator
+    LambdaComparator-->>UserService: returns comparison result
+    deactivate LambdaComparator
+
+    Note over UserService: 6) Convert matched Users <br/> into DTOs
+    UserService->>userMapperToDTO: toDTO(user)
+    activate userMapperToDTO
+    userMapperToDTO->>userData: new()
+    deactivate userMapperToDTO
+    userData-->>UserService: returns UserData
+
+    UserService-->>DeiResources: returns List<UserData>
+    deactivate UserService
+ ```
