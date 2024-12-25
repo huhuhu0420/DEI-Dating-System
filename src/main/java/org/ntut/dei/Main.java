@@ -52,6 +52,7 @@ public class Main {
                                 .setName("Bob")
                                 .setAge(25)
                                 .setGenderIdentityWithEnum(GenderIdentityEnum.FEMALE)
+                                .setInterests(List.of("Movies"))
                                 .build();
                 PreferenceProfile bobPreference = new PreferenceProfileBuilder()
                                 .setAgeRange(20, 30)
