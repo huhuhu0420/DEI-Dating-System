@@ -34,6 +34,22 @@ Key Features:
 
 - Inclusivity and Diversity: By supporting custom identities and orientations, the system breaks down the barriers present in traditional dating apps. It acknowledges and embraces the diversity of its users, providing an inclusive environment where everyone feels seen and valued.
 
+## Quick Start
+
+> the server will be running on `http://localhost:8080`
+
+#### Maven
+
+```
+mvn exec:java -Dexec.mainClass="org.ntut.dei.jersey.JettyServer"
+```
+
+#### Docker
+
+```
+docker-compose up
+```
+
 ## Future
 
 ## Technique
@@ -389,4 +405,4 @@ sequenceDiagram
 
     UserService-->>DeiResources: returns List<UserData>
     deactivate UserService
- ```
+```
