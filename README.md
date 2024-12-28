@@ -157,6 +157,8 @@ Specification<UserProfile> combinedSpec = interestSpec.and(ageSpec);
 
 ![img.png](images/specification.png)
 
+reference: [Specifications](https://martinfowler.com/apsupp/spec.pdf)
+
 ### Strategy Pattern
 
 The matching algorithm is a crucial component of the DEI Dating System. By using the Strategy Pattern, we can define multiple algorithms for matching users based on different criteria. For instance, we have default matching algorithm and bi-directional matching algorithm. The system can switch between these algorithms at runtime, allowing users to choose the one that best suits their preferences.
