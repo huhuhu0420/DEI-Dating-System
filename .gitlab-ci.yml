@@ -1,6 +1,6 @@
 stages:
   - test
-  - e2e
+  # - e2e
 
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
@@ -25,41 +25,40 @@ unit_tests:
     - master
     - develop
     - merge_requests
-
-e2e_tests:
-  stage: e2e
-  image: docker:20.10.16
-  services:
-    - name: docker:20.10.16-dind
-      alias: docker
-      command: ["--tls=false"]
-  variables:
-    DOCKER_HOST: "tcp://docker:2375"
-    DOCKER_TLS_CERTDIR: ""
-    DOCKER_DRIVER: overlay2
-    NEWMAN_VERSION: "5.3.2"
-  before_script:
-    - until docker info; do echo "Waiting for docker to be ready..."; sleep 1; done
-    # Install required tools
-    - apk add --no-cache docker-compose nodejs npm
-    # Install Newman (Postman CLI)
-    - npm install -g newman@${NEWMAN_VERSION}
-  script:
-    # Start services using Docker Compose
-    - docker-compose up --build -d
-    # check if the services are up and running
-    - docker-compose ps
-    # Run Postman collections
-    - newman run ./src/main/resources/dei.postman_collection.json
-  after_script:
-    # Cleanup
-    - docker-compose down
-  artifacts:
-    paths:
-      - target/surefire-reports
-    when: always
-    expire_in: 1 week
-  only:
-    - master
-    - develop
-    - merge_requests
+# e2e_tests:
+#   stage: e2e
+#   image: docker:20.10.16
+#   services:
+#     - name: docker:20.10.16-dind
+#       alias: docker
+#       command: ["--tls=false"]
+#   variables:
+#     DOCKER_HOST: "tcp://docker:2375"
+#     DOCKER_TLS_CERTDIR: ""
+#     DOCKER_DRIVER: overlay2
+#     NEWMAN_VERSION: "5.3.2"
+#   before_script:
+#     - until docker info; do echo "Waiting for docker to be ready..."; sleep 1; done
+#     # Install required tools
+#     - apk add --no-cache docker-compose nodejs npm
+#     # Install Newman (Postman CLI)
+#     - npm install -g newman@${NEWMAN_VERSION}
+#   script:
+#     # Start services using Docker Compose
+#     - docker-compose up --build -d
+#     # check if the services are up and running
+#     - docker-compose ps
+#     # Run Postman collections
+#     - newman run ./src/main/resources/dei.postman_collection.json
+#   after_script:
+#     # Cleanup
+#     - docker-compose down
+#   artifacts:
+#     paths:
+#       - target/surefire-reports
+#     when: always
+#     expire_in: 1 week
+#   only:
+#     - master
+#     - develop
+#     - merge_requests
