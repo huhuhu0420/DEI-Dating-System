@@ -251,11 +251,14 @@ sequenceDiagram
 
     DeiResources->>UserService: createUser(userRequest)
     activate UserService
+
+    Note over UserService: 1) Convert DTO to <br/> User entity
     UserService->>UserMapper: toEntity(userData)
     activate UserMapper
     UserMapper-->>UserService: returns User entity
     deactivate UserMapper
 
+    Note over UserService: 2) (Optional) Build profiles <br/> (UserProfile/PreferenceProfile)
     UserService->>UserProfileBuilder: new()
     activate UserProfileBuilder
     UserProfileBuilder->>GenderIdentity: new(genderIdentity)
@@ -300,6 +303,7 @@ sequenceDiagram
     PreferenceProfileBuilder-->>UserService: returns PreferenceProfile
     deactivate PreferenceProfileBuilder
 
+    Note over UserService: 3) Create final User object <br/> (basic or premium)
     UserService->>UserFactory: createUser(username, userProfile, isPremium)
     activate UserFactory
     alt isPremium == true
@@ -316,6 +320,7 @@ sequenceDiagram
     UserFactory-->>UserService: returns User
     deactivate UserFactory
 
+    Note over UserService: 4) Add user to the system
     UserService->>UserFactory: addUser(user)
     deactivate UserService
 
