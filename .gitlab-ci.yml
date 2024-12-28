@@ -55,11 +55,14 @@ e2e_tests:
     NEWMAN_VERSION: "5.3.2"
   before_script:
     - until docker info; do echo "Waiting for docker to be ready..."; sleep 1; done
+    # Install required tools
+    - apk add --no-cache docker-compose nodejs npm
     # Install Newman (Postman CLI)
     - npm install -g newman@${NEWMAN_VERSION}
-  script:
+  build:
     # Start services using Docker Compose
     - docker-compose up --build -d
+  script:
     # check if the services are up and running
     - sleep 5
     - until docker-compose ps | grep "Up"; do echo "Waiting for services to be ready..."; sleep 5; done
