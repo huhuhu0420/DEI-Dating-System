@@ -34,7 +34,6 @@ e2e_tests:
       alias: docker
       command: ["--tls=false"]
   variables:
-  variables:
     DOCKER_HOST: "tcp://docker:2375"
     DOCKER_TLS_CERTDIR: ""
     DOCKER_DRIVER: overlay2
@@ -49,6 +48,7 @@ e2e_tests:
     # Start services using Docker Compose
     - docker-compose up --build -d
     # check if the services are up and running
+    - docker-compose ps
     - until docker-compose ps | grep "Up"; do echo "Waiting for services to be ready..."; sleep 5; done
     # Run Postman collections
     - newman run ./src/main/resources/dei.postman_collection.json
