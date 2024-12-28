@@ -64,21 +64,22 @@ public class Main {
                 List<User> users = List.of(alex, alice, bob);
 
                 MatchingEngine engine = new MatchingEngine(users);
-                engine.setMatchStrategy(new BiDirectionalStrategy());
                 SpecificationBuilder specificationBuilder = new SpecificationBuilder();
-                List<User> matches = engine.match(alex, specificationBuilder);
+                List<User> matches = List.of();
 
+                engine.setMatchStrategy(new DefaultMatchStrategy());
+                matches = engine.match(alex, specificationBuilder);
+                System.out.println("Matches for Alex using DefaultMatchStrategy:");
+                for (User match : matches) {
+                        System.out.println(match.getDescription());
+                }
+
+                engine.setMatchStrategy(new BiDirectionalStrategy());
+                matches = engine.match(alex, specificationBuilder);
                 System.out.println("Matches for Alex using BiDirectionalStrategy:");
                 for (User match : matches) {
                         System.out.println(match.getDescription());
                 }
 
-                engine.setMatchStrategy(new DefaultMatchStrategy());
-                matches = engine.match(alex, specificationBuilder);
-
-                System.out.println("Matches for Alex using DefaultMatchStrategy:");
-                for (User match : matches) {
-                        System.out.println(match.getDescription());
-                }
         }
 }

@@ -27,7 +27,7 @@ public class IntegrationTest {
                                 .setName("Alex")
                                 .setAge(20)
                                 .setGenderIdentityWithEnum(GenderIdentityEnum.MALE)
-                                .setSexualOrientation(SexualOrientation.HETEROSEXUAL)
+                                .setSexualOrientation(SexualOrientation.OTHER)
                                 .setInterests(List.of("Music"))
                                 .build();
                 PreferenceProfile alexPreference = new PreferenceProfileBuilder()
@@ -61,6 +61,7 @@ public class IntegrationTest {
                                 .build();
                 PreferenceProfile bobPreference = new PreferenceProfileBuilder()
                                 .setAgeRange(20, 30)
+                                .setPreferedInterests(List.of("Coding"))
                                 .addPreferenceGenderIdentityWithEnum(GenderIdentityEnum.CUSTOM, "Airplane")
                                 .build();
                 bobProfile.setPreferenceProfile(bobPreference);
@@ -69,15 +70,18 @@ public class IntegrationTest {
                 List<User> users = List.of(alex, alice, bob);
 
                 SpecificationBuilder specificationBuilder = new SpecificationBuilder();
-
                 MatchingEngine engine = new MatchingEngine(users);
-                engine.setMatchStrategy(new BiDirectionalStrategy());
-                List<User> matches = engine.match(alex, specificationBuilder);
-                assertEquals(1, matches.size());
+                List<User> matches = List.of();
 
                 engine.setMatchStrategy(new DefaultMatchStrategy());
                 matches = engine.match(alex, specificationBuilder);
                 assertEquals(2, matches.size());
+                assertTrue(matches.get(0).isPremium());
+
+
+                engine.setMatchStrategy(new BiDirectionalStrategy());
+                matches = engine.match(alex, specificationBuilder);
+                assertEquals(1, matches.size());
                 assertTrue(matches.get(0).isPremium());
 
         }
