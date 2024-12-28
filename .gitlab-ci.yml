@@ -1,5 +1,6 @@
 stages:
   - test
+  - e2e
 
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
