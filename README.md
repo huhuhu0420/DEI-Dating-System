@@ -36,18 +36,50 @@ Key Features:
 
 ## Quick Start
 
+### Server
+
 > the server will be running on `http://localhost:8080`
 
 #### Maven
 
-```
+```bash
 mvn exec:java -Dexec.mainClass="org.ntut.dei.jersey.JettyServer"
 ```
 
 #### Docker
 
+```bash
+docker-compose up app
 ```
-docker-compose up
+
+### Add mock users
+
+#### Python
+
+```bash
+python3 src/main/resources/request.py
+```
+
+#### Docker
+
+```bash
+docker-compose up mock_data
+```
+
+> or just run `docker-compose up` to start both the server and mock data
+
+### Test
+
+#### Unit Test
+
+```bash
+mvn clean test
+```
+
+#### End-to-End Test
+
+```bash
+newman run src/main/resources/dei.postman_collection.json
 ```
 
 ## Future
