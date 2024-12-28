@@ -1,6 +1,5 @@
 stages:
   - test
-  - e2e
 
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
@@ -15,24 +14,10 @@ unit_tests:
   stage: test
   image: maven:3.9.9-eclipse-temurin-23
   script:
-    - mvn clean test jacoco:report
+    - mvn clean test -Pjacoco jacoco:report
   artifacts:
     paths:
       - target/surefire-reports
-      - target/site/jacoco
-    expire_in: 1 week
-  only:
-    - master
-    - develop
-    - merge_requests
-
-jacoco_coverage:
-  stage: test
-  image: maven:3.9.9-eclipse-temurin-23
-  script:
-    - mvn -Pjacoco test jacoco:report
-  artifacts:
-    paths:
       - target/site/jacoco
     expire_in: 1 week
   only:
