@@ -9,7 +9,6 @@ import org.ntut.dei.matching.BiDirectionalStrategy;
 import org.ntut.dei.matching.MatchingEngine;
 import org.ntut.dei.models.User;
 import org.ntut.dei.models.UserFactory;
-import org.ntut.dei.specifications.Specification;
 import org.ntut.dei.specifications.SpecificationBuilder;
 
 public class UserService {
