@@ -15,3 +15,4 @@ services:
     command: sh -c "pip install --no-cache-dir requests && python /usr/src/app/request.py http://app:8080"
     depends_on:
       - app
+    restart: no

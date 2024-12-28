@@ -199,7 +199,9 @@ The matching algorithm is a crucial component of the DEI Dating System. By using
 
 ### MVC Architecture
 
-Implement UserService to handle user requests from jersey and interact with the model.
+* Controller: Jersey RESTful Web Services
+* Model: User, MatchEngine, etc.
+* View: React Frontend
 
 ![img.png](images/mvc.png)
 

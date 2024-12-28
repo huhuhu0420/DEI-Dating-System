@@ -711,6 +711,7 @@
     "sexualOrientation": "OTHER",
     "bio": "I'm a minor, please don't match me with anyone.",
     "interests": ["Monitor", "Coding"],
+    "preferedGenderIdentity":[{"genderIdentityEnum":"CUSTOM","customGenderIdentity":"Linux Kernel"}],
     "preferedMinAge": 20,
     "preferedMaxAge": 30
   },
