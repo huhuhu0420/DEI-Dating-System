@@ -49,7 +49,6 @@ e2e_tests:
     - docker-compose up --build -d
     # check if the services are up and running
     - docker-compose ps
-    - until docker-compose ps | grep "Up"; do echo "Waiting for services to be ready..."; sleep 5; done
     # Run Postman collections
     - newman run ./src/main/resources/dei.postman_collection.json
   after_script:
