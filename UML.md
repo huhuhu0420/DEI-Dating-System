@@ -4,162 +4,159 @@
 ```mermaid
 classDiagram
 direction BT
+
 class AgeRange {
-  + AgeRange(int, int) 
-  - int maxAge
-  - int minAge
-   int maxAge
-   int minAge
-}
-class BasicUser {
-  + BasicUser(UserProfile) 
-  + BasicUser(String, UserProfile) 
-  ~ UserProfile userProfile
-  ~ String username
-   String description
-   String username
-   boolean premium
-   UserProfile userProfile
-}
-class GenderIdentity {
-  + GenderIdentity(GenderIdentityEnum, String) 
-  + GenderIdentity() 
-  + GenderIdentity(GenderIdentityEnum) 
-  - GenderIdentityEnum genderIdentityEnum
-  - String genderIdentity
-   String genderIdentity
-   GenderIdentityEnum genderIdentityEnum
-   String customGenderIdentity
-}
-class GenderIdentityEnum {
-<<enumeration>>
-  - GenderIdentityEnum(String) 
-  - String displayName
-  + values() GenderIdentityEnum[]
-  + valueOf(String) GenderIdentityEnum
-   String displayName
-}
-class PreferenceProfile {
-  + PreferenceProfile(List~GenderIdentity~, List~String~, AgeRange) 
-  - List~String~ preferedInterests
-  - AgeRange preferedAgeRange
-  - List~GenderIdentity~ preferedGenderIdentity
-   AgeRange preferedAgeRange
-   List~GenderIdentity~ preferedGenderIdentity
-   List~String~ preferedInterests
-}
-class PreferenceProfileBuilder {
-  + PreferenceProfileBuilder() 
-  - List~GenderIdentity~ preferedGenderIdentity
-  - List~String~ preferedInterests
-  + build() PreferenceProfile
-  + addPreferenceGenderIdentityWithEnum(GenderIdentityEnum, String) PreferenceProfileBuilder
-  + addPreferenceGenderIdentity(GenderIdentityEnum) PreferenceProfileBuilder
-  + setAgeRange(int, int) PreferenceProfileBuilder
-   List~GenderIdentityEnum~ preferedGenderIdentityWithEnum
-   List~GenderIdentity~ preferedGenderIdentity
-   List~String~ preferedInterests
-}
-class PremiumUser {
-  + PremiumUser(String, UserProfile) 
-  + PremiumUser(UserProfile) 
-  - UserProfile userProfile
-  - String username
-   String description
-   String username
-   boolean premium
-   UserProfile userProfile
-}
-class SexualOrientation {
-<<enumeration>>
-  + SexualOrientation() 
-  + valueOf(String) SexualOrientation
-  + values() SexualOrientation[]
-}
-class User {
-<<Interface>>
-   String description
-   String username
-   boolean premium
-   UserProfile userProfile
-}
-class UserFactory {
-  - UserFactory() 
-  - List~User~ users
-  + createUser(UserProfile, boolean) User
-  + createUser(String, UserProfile, boolean) User
-  + addUser(User) void
-  + clearUsers() void
-   List~User~ users
-}
-class UserProfile {
-  + UserProfile(String, int, GenderIdentity, SexualOrientation, String, List~String~) 
-  - int age
-  - SexualOrientation sexualOrientation
-  - PreferenceProfile preferenceProfile
-  - GenderIdentity genderIdentity
-  - String bio
-  - List~String~ interests
-  - String name
-   String name
-   String bio
-   String customGenderIdentity
-   List~String~ interests
-   GenderIdentity genderIdentity
-   SexualOrientation sexualOrientation
-   GenderIdentityEnum genderIdentityEnum
-   int age
-   PreferenceProfile preferenceProfile
-}
-class UserProfileBuilder {
-  + UserProfileBuilder() 
-  - List~String~ interests
-  - int age
-  - SexualOrientation sexualOrientation
-  - String name
-  - String bio
-  - GenderIdentity genderIdentity
-  + build() UserProfile
-  + setGenderIdentity(GenderIdentityEnum, String) UserProfileBuilder
-   String name
-   String bio
-   List~String~ interests
-   GenderIdentity genderIdentity
-   SexualOrientation sexualOrientation
-   int age
-   GenderIdentityEnum genderIdentityWithEnum
+    + AgeRange(int minAge, int maxAge)
+    - int minAge
+    - int maxAge
 }
 
-BasicUser  ..>  User 
-BasicUser "1" *--> "userProfile 1" UserProfile 
-GenderIdentity "1" *--> "genderIdentityEnum 1" GenderIdentityEnum 
-PreferenceProfile "1" *--> "preferedAgeRange 1" AgeRange 
-PreferenceProfile "1" *--> "preferedGenderIdentity *" GenderIdentity 
-PreferenceProfileBuilder "1" *--> "ageRange 1" AgeRange 
-PreferenceProfileBuilder  ..>  AgeRange : «create»
-PreferenceProfileBuilder  ..>  GenderIdentity : «create»
-PreferenceProfileBuilder "1" *--> "preferedGenderIdentity *" GenderIdentity 
-PreferenceProfileBuilder  ..>  GenderIdentityEnum 
-PreferenceProfileBuilder  ..>  PreferenceProfile : «create»
-PreferenceProfileBuilder  ..>  PreferenceProfileBuilder 
-PremiumUser  ..>  User 
-PremiumUser "1" *--> "userProfile 1" UserProfile 
-User  ..>  UserProfile 
-UserFactory  ..>  BasicUser : «create»
-UserFactory  ..>  PremiumUser : «create»
-UserFactory "1" *--> "users *" User 
-UserFactory  ..>  UserProfile 
-UserProfile "1" *--> "genderIdentity 1" GenderIdentity 
-UserProfile  ..>  GenderIdentityEnum 
-UserProfile "1" *--> "preferenceProfile 1" PreferenceProfile 
-UserProfile  ..>  PreferenceProfileBuilder : «create»
-UserProfile "1" *--> "sexualOrientation 1" SexualOrientation 
-UserProfileBuilder "1" *--> "genderIdentity 1" GenderIdentity 
-UserProfileBuilder  ..>  GenderIdentity : «create»
-UserProfileBuilder  ..>  GenderIdentityEnum 
-UserProfileBuilder "1" *--> "sexualOrientation 1" SexualOrientation 
-UserProfileBuilder  ..>  UserProfile : «create»
-UserProfileBuilder  ..>  UserProfileBuilder 
+class BasicUser {
+    + BasicUser(UserProfile userProfile)
+    + BasicUser(String username, UserProfile userProfile)
+    ~ UserProfile userProfile
+    ~ String username
+    ~ String description
+    ~ boolean premium
+}
+
+class GenderIdentity {
+    + GenderIdentity(GenderIdentityEnum genderIdentityEnum, String customGenderIdentity)
+    + GenderIdentity()
+    + GenderIdentity(GenderIdentityEnum genderIdentityEnum)
+    - GenderIdentityEnum genderIdentityEnum
+    - String genderIdentity
+    - String customGenderIdentity
+}
+
+class GenderIdentityEnum {
+<<enumeration>>
+    - String displayName
+    + values() GenderIdentityEnum[]
+    + valueOf(String name) GenderIdentityEnum
+}
+
+class PreferenceProfile {
+    + PreferenceProfile(List~GenderIdentity~ genderIdentities, 
+                       List~String~ interests, 
+                       AgeRange ageRange)
+    - List~String~ preferedInterests
+    - AgeRange preferedAgeRange
+    - List~GenderIdentity~ preferedGenderIdentity
+}
+
+class PreferenceProfileBuilder {
+    + PreferenceProfileBuilder()
+    + addPreferenceGenderIdentityWithEnum(GenderIdentityEnum enumVal, String customValue) PreferenceProfileBuilder
+    + addPreferenceGenderIdentity(GenderIdentityEnum enumVal) PreferenceProfileBuilder
+    + setAgeRange(int minAge, int maxAge) PreferenceProfileBuilder
+    + build() PreferenceProfile
+    - List~GenderIdentityEnum~ preferedGenderIdentityWithEnum
+    - List~GenderIdentity~ preferedGenderIdentity
+    - List~String~ preferedInterests
+}
+
+class PremiumUser {
+    + PremiumUser(String username, UserProfile userProfile)
+    + PremiumUser(UserProfile userProfile)
+    - UserProfile userProfile
+    - String username
+    - String description
+    - boolean premium
+}
+
+class SexualOrientation {
+<<enumeration>>
+    + values() SexualOrientation[]
+    + valueOf(String name) SexualOrientation
+}
+
+class User {
+<<Interface>>
+    String description
+    String username
+    boolean premium
+    UserProfile userProfile
+}
+
+class UserFactory {
+    - UserFactory()
+    - List~User~ users
+    + createUser(UserProfile userProfile, boolean premium) User
+    + createUser(String username, UserProfile userProfile, boolean premium) User
+    + addUser(User user) void
+    + clearUsers() void
+}
+
+class UserProfile {
+    + UserProfile(String name, int age, 
+                  GenderIdentity genderIdentity, 
+                  SexualOrientation sexualOrientation, 
+                  String bio, 
+                  List~String~ interests)
+    - String name
+    - int age
+    - String bio
+    - List~String~ interests
+    - GenderIdentity genderIdentity
+    - SexualOrientation sexualOrientation
+    - PreferenceProfile preferenceProfile
+}
+
+class UserProfileBuilder {
+    + UserProfileBuilder()
+    + setGenderIdentity(GenderIdentityEnum enumVal, String customValue) UserProfileBuilder
+    + build() UserProfile
+    - String name
+    - int age
+    - String bio
+    - List~String~ interests
+    - GenderIdentity genderIdentity
+    - SexualOrientation sexualOrientation
+    - GenderIdentityEnum genderIdentityWithEnum
+}
+
+%% RELATIONSHIPS
+
+BasicUser  ..>  User
+BasicUser "1" *--> "userProfile 1" UserProfile
+
+GenderIdentity "1" *--> "genderIdentityEnum 1" GenderIdentityEnum
+
+PreferenceProfile "1" *--> "preferedAgeRange 1" AgeRange
+PreferenceProfile "1" *--> "preferedGenderIdentity *" GenderIdentity
+
+PreferenceProfileBuilder "1" *--> "ageRange 1" AgeRange
+PreferenceProfileBuilder ..> AgeRange : «create»
+PreferenceProfileBuilder ..> GenderIdentity : «create»
+PreferenceProfileBuilder "1" *--> "preferedGenderIdentity *" GenderIdentity
+PreferenceProfileBuilder ..> GenderIdentityEnum
+PreferenceProfileBuilder ..> PreferenceProfile : «create»
+PreferenceProfileBuilder ..> PreferenceProfileBuilder
+
+PremiumUser ..> User
+PremiumUser "1" *--> "userProfile 1" UserProfile
+
+User ..> UserProfile
+
+UserFactory ..> BasicUser : «create»
+UserFactory ..> PremiumUser : «create»
+UserFactory "1" *--> "users *" User
+UserFactory ..> UserProfile
+
+UserProfile "1" *--> "genderIdentity 1" GenderIdentity
+UserProfile ..> GenderIdentityEnum
+UserProfile "1" *--> "preferenceProfile 1" PreferenceProfile
+UserProfile ..> PreferenceProfileBuilder : «create»
+UserProfile "1" *--> "sexualOrientation 1" SexualOrientation
+
+UserProfileBuilder "1" *--> "genderIdentity 1" GenderIdentity
+UserProfileBuilder ..> GenderIdentity : «create»
+UserProfileBuilder ..> GenderIdentityEnum
+UserProfileBuilder "1" *--> "sexualOrientation 1" SexualOrientation
+UserProfileBuilder ..> UserProfile : «create»
+UserProfileBuilder ..> UserProfileBuilder
+
 ```
 
 ### Specification
