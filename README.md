@@ -440,3 +440,7 @@ sequenceDiagram
     UserService-->>DeiResources: returns List<UserData>
     deactivate UserService
 ```
+
+## Class Diagram
+
+[Class Diagram](UML.md)
