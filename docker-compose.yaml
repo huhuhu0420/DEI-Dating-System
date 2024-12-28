@@ -6,7 +6,4 @@ services:
     container_name: dei_app
     ports:
       - "8080:8080" 
-    # volumes:
-    #   - ./config:/app/config
-    #   - ./logs:/app/logs
     restart: always
