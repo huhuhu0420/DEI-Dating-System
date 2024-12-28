@@ -163,79 +163,96 @@ UserProfileBuilder ..> UserProfileBuilder
 ```mermaid
 classDiagram
 direction BT
-class AgeRangeSpecification {
-  + AgeRangeSpecification(int, int) 
-  + isSatisfiedBy(UserProfile) boolean
-}
-class AndSpecification~T~ {
-  + AndSpecification(Specification~T~, Specification~T~) 
-  + isSatisfiedBy(T) boolean
-}
-class IdentitySpecification {
-  + IdentitySpecification(List~GenderIdentity~) 
-  + isSatisfiedBy(UserProfile) boolean
-}
-class InterestSpecification {
-  + InterestSpecification(List~String~) 
-  + isSatisfiedBy(UserProfile) boolean
-}
-class OrSpecification~T~ {
-  + OrSpecification(Specification~T~, Specification~T~) 
-  + isSatisfiedBy(T) boolean
-}
+
 class Specification~T~ {
-<<Interface>>
-  + and(Specification~T~) Specification~T~
-  + isSatisfiedBy(T) boolean
-  + or(Specification~T~) Specification~T~
-}
-class SpecificationBuilder {
-  + SpecificationBuilder() 
-  + buildSpecificationFromPreferences(UserProfile) Specification~UserProfile~
+  <<interface>>
+  + isSatisfiedBy(T item) boolean
+  + and(Specification~T~ otherSpec) Specification~T~
+  + or(Specification~T~ otherSpec) Specification~T~
 }
 
-AgeRangeSpecification  ..>  Specification~T~ 
-AndSpecification~T~  ..>  Specification~T~ 
-AndSpecification~T~ "1" *--> "leftSpecification 1" Specification~T~ 
-IdentitySpecification  ..>  Specification~T~ 
-InterestSpecification  ..>  Specification~T~ 
-OrSpecification~T~  ..>  Specification~T~ 
-OrSpecification~T~ "1" *--> "leftSpecification 1" Specification~T~ 
-Specification~T~  ..>  AndSpecification~T~ : «create»
-Specification~T~  ..>  OrSpecification~T~ : «create»
-Specification~T~  ..>  Specification~T~ 
-SpecificationBuilder  ..>  AgeRangeSpecification : «create»
-SpecificationBuilder  ..>  IdentitySpecification : «create»
-SpecificationBuilder  ..>  InterestSpecification : «create»
-SpecificationBuilder  ..>  Specification~T~ 
+class AgeRangeSpecification {
+  + AgeRangeSpecification(int minAge, int maxAge)
+  + isSatisfiedBy(UserProfile user) boolean
+}
+
+class AndSpecification~T~ {
+  + AndSpecification(Specification~T~ leftSpec, Specification~T~ rightSpec)
+  + isSatisfiedBy(T item) boolean
+}
+
+class OrSpecification~T~ {
+  + OrSpecification(Specification~T~ leftSpec, Specification~T~ rightSpec)
+  + isSatisfiedBy(T item) boolean
+}
+
+class IdentitySpecification {
+  + IdentitySpecification(List~GenderIdentity~ allowedIdentities)
+  + isSatisfiedBy(UserProfile user) boolean
+}
+
+class InterestSpecification {
+  + InterestSpecification(List~String~ allowedInterests)
+  + isSatisfiedBy(UserProfile user) boolean
+}
+
+class SpecificationBuilder {
+  + SpecificationBuilder()
+  + buildSpecificationFromPreferences(UserProfile user) Specification~UserProfile~
+}
+
+%% IMPLEMENTS / EXTENDS
+AgeRangeSpecification ..|> Specification~UserProfile~
+IdentitySpecification ..|> Specification~UserProfile~
+InterestSpecification ..|> Specification~UserProfile~
+
+AndSpecification~T~ ..|> Specification~T~
+OrSpecification~T~  ..|> Specification~T~
+
+%% ASSOCIATIONS
+AndSpecification~T~ "1" o-- "leftSpecification 1" Specification~T~
+AndSpecification~T~ "1" o-- "rightSpecification 1" Specification~T~
+OrSpecification~T~  "1" o-- "leftSpecification 1" Specification~T~
+OrSpecification~T~  "1" o-- "rightSpecification 1" Specification~T~
+
+SpecificationBuilder ..> AgeRangeSpecification : «create»
+SpecificationBuilder ..> IdentitySpecification : «create»
+SpecificationBuilder ..> InterestSpecification : «create»
+SpecificationBuilder ..> Specification~UserProfile~ : «return»
 ```
 
 ### Matching
 ```mermaid
 classDiagram
 direction BT
+
 class BiDirectionalStrategy {
-  + BiDirectionalStrategy() 
-  + match(User, List~User~, SpecificationBuilder) List~User~
-}
-class DefaultMatchStrategy {
-  + DefaultMatchStrategy() 
-  + match(User, List~User~, SpecificationBuilder) List~User~
-}
-class MatchStrategy {
-<<Interface>>
-  + match(User, List~User~, SpecificationBuilder) List~User~
-}
-class MatchingEngine {
-  + MatchingEngine(List~User~) 
-  + match(User, SpecificationBuilder) List~User~
-   MatchStrategy matchStrategy
+    + BiDirectionalStrategy()
+    + match(User user, List~User~ users, SpecificationBuilder builder) List~User~
 }
 
-BiDirectionalStrategy  ..>  MatchStrategy 
-DefaultMatchStrategy  ..>  MatchStrategy 
-MatchingEngine  ..>  DefaultMatchStrategy : «create»
-MatchingEngine "1" *--> "matchingStrategy 1" MatchStrategy 
+class DefaultMatchStrategy {
+    + DefaultMatchStrategy()
+    + match(User user, List~User~ users, SpecificationBuilder builder) List~User~
+}
+
+class MatchStrategy {
+    <<Interface>>
+    + match(User user, List~User~ users, SpecificationBuilder builder) List~User~
+}
+
+class MatchingEngine {
+    + MatchingEngine(List~User~ userList)
+    + match(User user, SpecificationBuilder builder) List~User~
+    - MatchStrategy matchStrategy
+}
+
+BiDirectionalStrategy --|> MatchStrategy
+DefaultMatchStrategy --|> MatchStrategy
+
+MatchingEngine ..> DefaultMatchStrategy : «create»
+MatchingEngine "1" *--> "matchStrategy 1" MatchStrategy
+ 
 ```
 
 ### DTO
