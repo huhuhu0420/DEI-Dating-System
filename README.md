@@ -34,6 +34,10 @@ Key Features:
 
 - Inclusivity and Diversity: By supporting custom identities and orientations, the system breaks down the barriers present in traditional dating apps. It acknowledges and embraces the diversity of its users, providing an inclusive environment where everyone feels seen and valued.
 
+## Demo Video
+
+![demo](images/demo.mp4)
+
 ## Quick Start
 
 ### Server
@@ -455,7 +459,3 @@ sequenceDiagram
 ## Class Diagram
 
 [Class Diagram](UML.md)
-
-## Demo Video
-
-![demo](images/demo.mp4)
