@@ -703,6 +703,19 @@
     "preferedMaxAge": 30
   },
   {
+    "name": "FBI Open Up",
+    "age": 15,
+    "genderIdentity": {
+      "genderIdentityEnum": "FEMALE"
+    },
+    "sexualOrientation": "OTHER",
+    "bio": "I'm a minor, please don't match me with anyone.",
+    "interests": ["Monitor", "Coding"],
+    "preferedGenderIdentity":[{"genderIdentityEnum":"CUSTOM","customGenderIdentity":"Linux Kernel"}],
+    "preferedMinAge": 20,
+    "preferedMaxAge": 30
+  },
+  {
     "name": "Ethan Clark",
     "age": 31,
     "genderIdentity": {
@@ -710,13 +723,14 @@
     },
     "sexualOrientation": "HETEROSEXUAL",
     "bio": "Tech entrepreneur and software developer.",
-    "interests": ["Entrepreneurship", "Software Development"],
+    "interests": ["Entrepreneurship", "Software Development", "Coding"],
     "preferedGenderIdentity": [
       {
         "genderIdentityEnum": "FEMALE"
       }
     ],
     "preferedMinAge": 28,
-    "preferedMaxAge": 40
+    "preferedMaxAge": 40,
+    "premium": true
   }
 ]

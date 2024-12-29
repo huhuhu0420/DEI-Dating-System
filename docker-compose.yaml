@@ -7,3 +7,12 @@ services:
     ports:
       - "8080:8080" 
     restart: always
+  mock_data:
+    image: python:3.11-alpine
+    container_name: dei_mock_data
+    volumes:
+      - ./src/main/resources:/usr/src/app
+    command: sh -c "pip install --no-cache-dir requests && python /usr/src/app/request.py http://app:8080"
+    depends_on:
+      - app
+    restart: no
