@@ -448,6 +448,10 @@ sequenceDiagram
     deactivate UserService
 ```
 
+### Simplified
+
+![img.png](images/sequence.png)
+
 ## Class Diagram
 
 [Class Diagram](UML.md)
