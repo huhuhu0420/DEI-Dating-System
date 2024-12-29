@@ -456,6 +456,6 @@ sequenceDiagram
 
 ![img.png](images/sequence.png)
 
-## Class Diagram
+## Completed Class Diagram
 
 [Class Diagram](UML.md)
