@@ -34,6 +34,10 @@ Key Features:
 
 - Inclusivity and Diversity: By supporting custom identities and orientations, the system breaks down the barriers present in traditional dating apps. It acknowledges and embraces the diversity of its users, providing an inclusive environment where everyone feels seen and valued.
 
+## Demo Video
+
+![demo](images/demo.mp4)
+
 ## Quick Start
 
 ### Server
@@ -185,6 +189,9 @@ For example, a user may specify that they are looking for matches who are intere
 Specification<UserProfile> interestSpec = new InterestSpecification("hiking");
 Specification<UserProfile> ageSpec = new AgeRangeSpecification(25, 35);
 Specification<UserProfile> combinedSpec = interestSpec.and(ageSpec);
+Specification<UserProfile> orSpec = interestSpec.or(ageSpec);
+combinedSpec.isSatisfiedBy(userProfile);
+orSpec.isSatisfiedBy(userProfile);
 ```
 
 ![img.png](images/specification.png)
@@ -202,6 +209,28 @@ The matching algorithm is a crucial component of the DEI Dating System. By using
 * Controller: Jersey RESTful Web Services
 * Model: User, MatchEngine, etc.
 * View: React Frontend
+
+```java
+@POST
+    @Path("/match")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response match(@Valid UserData userRequest) {
+        logger.info("matching users...");
+        List<UserData> response = new ArrayList<>();
+        response = new UserService().match(userRequest);
+        return Response.ok(response).build();
+    }
+
+    @POST
+    @Path("/user")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createUser(@Valid UserData userRequest) {
+        logger.info("creating user...");
+        new UserService().createUser(userRequest);
+        return Response.ok().build();
+    }
+```
 
 ![img.png](images/mvc.png)
 
@@ -452,6 +481,6 @@ sequenceDiagram
 
 ![img.png](images/sequence.png)
 
-## Class Diagram
+## Completed Class Diagram
 
 [Class Diagram](UML.md)
