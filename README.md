@@ -36,6 +36,9 @@ Key Features:
 
 ## Demo Video
 
+
+https://github.com/user-attachments/assets/3769a668-ec5a-42df-88c7-5b6a9ddcddc0
+
 ![demo](images/demo.mp4)
 
 ## Quick Start
